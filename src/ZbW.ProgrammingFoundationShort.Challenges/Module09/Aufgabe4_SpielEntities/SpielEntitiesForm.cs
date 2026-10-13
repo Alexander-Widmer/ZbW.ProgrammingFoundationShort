@@ -55,9 +55,9 @@ public sealed class SpielEntitiesForm : Form
       return;
     }
 
-    if (!IsValidValue(CmbFirstType.Text, firstValue) || !IsValidValue(CmbSecondType.Text, secondValue))
+    if (!IsValidValue(firstValue) || !IsValidValue(secondValue))
     {
-      TxtLog.Text = "Werte müssen positiv sein (Archer: Accuracy 1–100).";
+      TxtLog.Text = "Alle Werte müssen zwischen 1 und 100 liegen.";
       return;
     }
 
@@ -66,14 +66,11 @@ public sealed class SpielEntitiesForm : Form
     TxtLog.Text = new Battle().SimulateFight(firstEntity, secondEntity);
   }
 
-  private static bool IsValidValue(string type, int value)
+  // Kleiner, fester Bereich für alle Typen: hält das Spiel überschaubar und verhindert Zahlenüberlauf
+  // (z. B. MagicPower * 2 bei sehr grossen Werten)
+  private static bool IsValidValue(int value)
   {
-    if (type == "Archer")
-    {
-      return value >= 1 && value <= 100;
-    }
-
-    return value > 0;
+    return value >= 1 && value <= 100;
   }
 
   private GameEntity CreateEntity(string type, string name, int value)

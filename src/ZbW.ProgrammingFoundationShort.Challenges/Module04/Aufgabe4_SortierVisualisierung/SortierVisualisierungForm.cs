@@ -25,6 +25,12 @@ public partial class SortierVisualisierungForm : Form
         "Eingabefehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
+    catch (OverflowException)
+    {
+      MessageBox.Show("Eine Zahl ist zu gross oder zu klein für int (erlaubt: -2147483648 bis 2147483647).",
+        "Eingabefehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      return;
+    }
 
     if (zahlen.Length < 2)
     {

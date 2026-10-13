@@ -25,7 +25,9 @@ public partial class ZahlenAnalyseForm : Form
     }
 
     // Berechnungen
-    int summe = zahl1 + zahl2 + zahl3;
+    // long: drei grosse int-Werte würden in int überlaufen. (long) vor der ersten Addition,
+    // sonst wird zuerst in int gerechnet und erst das falsche Ergebnis umgewandelt.
+    long summe = (long)zahl1 + zahl2 + zahl3;
     double durchschnitt = summe / 3.0;
 
     // Grösste Zahl (nur Operatoren, keine Methoden)
