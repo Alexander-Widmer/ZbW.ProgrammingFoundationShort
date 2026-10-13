@@ -53,7 +53,15 @@ public partial class ZahlenAnalyseForm : Form
     }
 
     // Gerade oder ungerade (Modulo)
-    string geradeOderUngerade = (summe % 2 == 0) ? "gerade" : "ungerade";
+    string geradeOderUngerade;
+    if (summe % 2 == 0)
+    {
+      geradeOderUngerade = "gerade";
+    }
+    else
+    {
+      geradeOderUngerade = "ungerade";
+    }
 
     // Ergebnisse anzeigen
     LblSumme.Text = $"Summe: {summe}";

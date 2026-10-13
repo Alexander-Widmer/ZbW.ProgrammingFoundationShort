@@ -21,19 +21,14 @@ public partial class EinheitenrechnerForm : Form
     InitializeComponent();
   }
 
-  // ── Hilfsmethode ─────────────────────────────────────────────
-
-  private static void ShowError(string message)
-    => MessageBox.Show(message, "Ungültige Eingabe",
-      MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
   // ── Temperatur ───────────────────────────────────────────────
 
   private void CmdCelsiusToFahrenheit_Click(object sender, EventArgs e)
   {
     if (!decimal.TryParse(TxtCelsius.Text, out decimal celsius))
     {
-      ShowError("Bitte einen gültigen Wert für °C eingeben.");
+      MessageBox.Show("Bitte einen gültigen Wert für °C eingeben.",
+        "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
@@ -46,7 +41,8 @@ public partial class EinheitenrechnerForm : Form
   {
     if (!decimal.TryParse(TxtFahrenheit.Text, out decimal fahrenheit))
     {
-      ShowError("Bitte einen gültigen Wert für °F eingeben.");
+      MessageBox.Show("Bitte einen gültigen Wert für °F eingeben.",
+        "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
@@ -61,7 +57,8 @@ public partial class EinheitenrechnerForm : Form
   {
     if (!decimal.TryParse(TxtKg.Text, out decimal kg))
     {
-      ShowError("Bitte einen gültigen Wert für kg eingeben.");
+      MessageBox.Show("Bitte einen gültigen Wert für kg eingeben.",
+        "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
@@ -75,7 +72,8 @@ public partial class EinheitenrechnerForm : Form
   {
     if (!decimal.TryParse(TxtKm.Text, out decimal km))
     {
-      ShowError("Bitte einen gültigen Wert für km eingeben.");
+      MessageBox.Show("Bitte einen gültigen Wert für km eingeben.",
+        "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
@@ -87,7 +85,8 @@ public partial class EinheitenrechnerForm : Form
   {
     if (!decimal.TryParse(TxtMeilen.Text, out decimal miles))
     {
-      ShowError("Bitte einen gültigen Wert für Meilen eingeben.");
+      MessageBox.Show("Bitte einen gültigen Wert für Meilen eingeben.",
+        "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
@@ -99,7 +98,8 @@ public partial class EinheitenrechnerForm : Form
   {
     if (!decimal.TryParse(TxtPfund.Text, out decimal pounds))
     {
-      ShowError("Bitte einen gültigen Wert für Pfund eingeben.");
+      MessageBox.Show("Bitte einen gültigen Wert für Pfund eingeben.",
+        "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 

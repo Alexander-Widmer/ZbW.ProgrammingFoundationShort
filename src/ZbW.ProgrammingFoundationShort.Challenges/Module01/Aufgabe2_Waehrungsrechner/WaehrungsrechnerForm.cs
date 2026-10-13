@@ -2,13 +2,14 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module01.Aufgabe2_Waehrungsr
 
 /// <summary>
 ///   Musterlösung: Aufgabe 2 – Währungsrechner (⭐⭐ Mittel)
-///   CHF ↔ EUR Konvertierung.
-///   Wechselkurs: 1 CHF = 1/ChfEurRate EUR (d. h. 1 EUR = ChfEurRate CHF)
+///   CHF ↔ EUR Konvertierung mit decimal (Geldbeträge!).
 /// </summary>
 public partial class WaehrungsrechnerForm : Form
 {
-  // Wechselkurs: 1 EUR = 1.05 CHF  →  1 CHF = 1/1.05 EUR
-  private const double ChfEurRate = 1.05;
+  // Fester Übungskurs: 1 EUR = 1.05 CHF
+  //   CHF → EUR:  eur = chf / ChfPerEur
+  //   EUR → CHF:  chf = eur * ChfPerEur
+  private const decimal ChfPerEur = 1.05m;
 
   public WaehrungsrechnerForm()
   {
@@ -17,7 +18,7 @@ public partial class WaehrungsrechnerForm : Form
 
   private void CmdChfToEur_Click(object sender, EventArgs e)
   {
-    if (!double.TryParse(TxtBetrag.Text, out double betrag))
+    if (!decimal.TryParse(TxtBetrag.Text, out decimal betrag))
     {
       MessageBox.Show("Bitte einen gültigen Betrag eingeben.",
         "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -31,13 +32,13 @@ public partial class WaehrungsrechnerForm : Form
       return;
     }
 
-    double eur = betrag / ChfEurRate;
+    decimal eur = betrag / ChfPerEur;
     LblErgebnis.Text = $"{betrag:F2} CHF = {eur:F2} EUR";
   }
 
   private void CmdEurToChf_Click(object sender, EventArgs e)
   {
-    if (!double.TryParse(TxtBetrag.Text, out double betrag))
+    if (!decimal.TryParse(TxtBetrag.Text, out decimal betrag))
     {
       MessageBox.Show("Bitte einen gültigen Betrag eingeben.",
         "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -51,7 +52,7 @@ public partial class WaehrungsrechnerForm : Form
       return;
     }
 
-    double chf = betrag * ChfEurRate;
+    decimal chf = betrag * ChfPerEur;
     LblErgebnis.Text = $"{betrag:F2} EUR = {chf:F2} CHF";
   }
 }

@@ -8,50 +8,52 @@ public static class TaschenrechnerLoesung
   public static void Start()
   {
     Console.Write("Erste Zahl: ");
-    if (!double.TryParse(Console.ReadLine(), out double zahl1))
+    if (!double.TryParse(Console.ReadLine() ?? "", out double zahl1))
     {
       Console.WriteLine("Ungültige Zahl.");
       return;
     }
 
     Console.Write("Zweite Zahl: ");
-    if (!double.TryParse(Console.ReadLine(), out double zahl2))
+    if (!double.TryParse(Console.ReadLine() ?? "", out double zahl2))
     {
       Console.WriteLine("Ungültige Zahl.");
       return;
     }
 
     Console.Write("Operation (+, -, *, /): ");
-    string operation = Console.ReadLine() ?? "";
+    string operation = (Console.ReadLine() ?? "").Trim();
 
-    try
-    {
-      double result = Berechnen(zahl1, zahl2, operation);
-      Console.WriteLine($"Ergebnis: {result:F2}");
-    }
-    catch (DivideByZeroException)
-    {
-      Console.WriteLine("Fehler: Division durch 0 ist nicht erlaubt.");
-    }
-    catch (ArgumentException ex)
-    {
-      Console.WriteLine($"Fehler: {ex.Message}");
-    }
-  }
+    double result;
 
-  public static double Berechnen(double zahl1, double zahl2, string operation)
-  {
-    switch (operation)
+    if (operation == "+")
     {
-      case "+": return zahl1 + zahl2;
-      case "-": return zahl1 - zahl2;
-      case "*": return zahl1 * zahl2;
-      case "/":
-        if (zahl2 == 0)
-          throw new DivideByZeroException("Divisor darf nicht 0 sein.");
-        return zahl1 / zahl2;
-      default:
-        throw new ArgumentException($"Unbekannter Operator: '{operation}'");
+      result = zahl1 + zahl2;
     }
+    else if (operation == "-")
+    {
+      result = zahl1 - zahl2;
+    }
+    else if (operation == "*")
+    {
+      result = zahl1 * zahl2;
+    }
+    else if (operation == "/")
+    {
+      if (zahl2 == 0)
+      {
+        Console.WriteLine("Fehler: Division durch 0 ist nicht erlaubt.");
+        return;
+      }
+
+      result = zahl1 / zahl2;
+    }
+    else
+    {
+      Console.WriteLine($"Unbekannte Operation: '{operation}'");
+      return;
+    }
+
+    Console.WriteLine($"Ergebnis: {result:F2}");
   }
 }

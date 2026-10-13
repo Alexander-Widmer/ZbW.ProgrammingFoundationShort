@@ -1,7 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
+    <!-- Exe statt WinExe: öffnet zusätzlich ein Konsolenfenster,
+         damit die Konsolen-Aufträge (Console.ReadLine/WriteLine) funktionieren. -->
+    <OutputType>Exe</OutputType>
     <UseWindowsForms>true</UseWindowsForms>
   </PropertyGroup>
 

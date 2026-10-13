@@ -33,15 +33,6 @@ public partial class BmiForm : Form
     // BMI berechnen
     double bmi = gewicht / (groesse * groesse);
 
-    // Kategorie bestimmen
-    string kategorie = bmi switch
-    {
-      < 18.5 => "Untergewicht",
-      < 25.0 => "Normalgewicht",
-      < 30.0 => "Übergewicht",
-      _ => "Adipositas"
-    };
-
-    LblErgebnis.Text = $"Ihr BMI beträgt: {bmi:F2} ({kategorie})";
+    LblErgebnis.Text = $"Ihr BMI beträgt: {bmi:F2}";
   }
 }

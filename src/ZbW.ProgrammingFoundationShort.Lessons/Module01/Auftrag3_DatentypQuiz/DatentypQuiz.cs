@@ -1,65 +1,59 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module01.Auftrag3_DatentypQuiz;
 
 // ============================================================
-// AUFTRAG 3 – Datentyp-Quiz (⭐⭐⭐ Erweitert | ~10 Min.)
+// AUFTRAG 3 – Datentyp-Quiz (⭐⭐⭐ Erweitert | ~30 Min.)
 //
-// Erstelle ein Quiz mit 5 Fragen zu C#-Datentypen.
+// Erstelle ein Konsolen-Quiz mit 5 Fragen zu C#-Datentypen und Operatoren.
 //
 // Anforderungen:
-//   - Fragen per Console.Write ausgeben
-//   - Antwort mit Console.ReadLine() einlesen
+//   - Fragen per Console.Write ausgeben, Antwort mit Console.ReadLine() einlesen
+//   - Gross-/Kleinschreibung ignorieren: .Trim().ToLower()
+//   - Mindestens 1 Frage erwartet eine Zahl → mit int.TryParse prüfen
 //   - Am Ende: $"Resultat: {punkte}/5" ausgeben
-//   - Mindestens 1 Frage erwartet eine Zahl (int.TryParse)
-//   - Gross-/Kleinschreibung ignorieren: .ToLower()
-//   - Bonus: Zeit pro Frage mit Stopwatch messen
+//   - Bonus: Gesamtzeit mit Stopwatch messen
+//
+// Frage 1 ist als Beispiel fertig. Ergänze die Fragen 2–5.
 // ============================================================
 
 public static class DatentypQuiz
 {
   /// <summary>
-  ///   Prüft ob eine Antwort (case-insensitiv) korrekt ist.
-  /// </summary>
-  public static bool IstKorrekt(string gegebeneAntwort, string richtigeAntwort)
-  {
-    // TODO: Vergleiche gegebeneAntwort.Trim().ToLower() mit richtigeAntwort.ToLower()
-    throw new NotImplementedException("TODO: IstKorrekt implementieren");
-  }
-  // TODO 1: Fragen und Antworten definieren
-  //         Tipp: Verwende zwei parallele Arrays oder ein Dictionary
-  //
-  // Beispiel-Fragen:
-  //   "Wie viele Bits hat ein int?"          → Antwort: "32"
-  //   "Welcher Typ speichert true/false?"    → Antwort: "bool"
-  //   "Was ist der Standardwert von int?"    → Antwort: "0"
-  //   "Welcher Typ für genaue Geldbeträge?"  → Antwort: "decimal"
-  //   "Max-Wert von byte?"                   → Antwort: "255"
-
-  /// <summary>
   ///   Startet das Quiz auf der Konsole.
   /// </summary>
   public static void Start()
   {
-    // TODO 2: Stopwatch starten (Bonus)
-    //         var stopwatch = new System.Diagnostics.Stopwatch();
-    //         stopwatch.Start();
+    // TODO (Bonus): Stopwatch starten
+    //         var stopwatch = System.Diagnostics.Stopwatch.StartNew();
 
-    // int punkte = 0; // TODO: aktivieren, wenn die Schleife implementiert wird.\r\n
-    // TODO 3: Schleife über alle Fragen
-    //         for (int i = 0; i < fragen.Length; i++)
-    //         {
-    //             Console.Write($"Frage {i + 1}: {fragen[i]} ");
-    //             string antwort = Console.ReadLine() ?? "";
-    //
-    //             // Prüfen ob Antwort korrekt ist (ToLower-Vergleich)
-    //             // Bei Zahlen-Fragen: int.TryParse verwenden
-    //         }
+    int punkte = 0;
 
-    // TODO 4: Ergebnis ausgeben
-    //         Console.WriteLine($"Resultat: {punkte}/5");
+    // ── Frage 1 (Beispiel, Textantwort) ──────────────────────
+    Console.Write("Frage 1: Welcher Datentyp speichert true/false? ");
+    string antwort1 = (Console.ReadLine() ?? "").Trim().ToLower();
 
-    // TODO 5 (Bonus): Stopwatch stoppen und Zeit ausgeben
+    if (antwort1 == "bool")
+    {
+      Console.WriteLine("  Richtig!");
+      punkte++;
+    }
+    else
+    {
+      Console.WriteLine("  Falsch. Richtige Antwort: bool");
+    }
+
+    // TODO 2: Frage 2 (Text) – z. B. «Welcher Typ eignet sich für Geldbeträge?» → decimal
+
+    // TODO 3: Frage 3 (Zahl) – z. B. «Was ergibt 7 / 2, wenn beide Zahlen int sind?» → 3
+    //         if (int.TryParse(Console.ReadLine() ?? "", out int antwort3) && antwort3 == 3)
+
+    // TODO 4: Frage 4 (Zahl) – z. B. «Was ergibt 10 % 3?» → 1
+
+    // TODO 5: Frage 5 (Text) – z. B. «Welcher Typ speichert genau ein Zeichen?» → char
+
+    Console.WriteLine($"Resultat: {punkte}/5");
+
+    // TODO (Bonus): Stopwatch stoppen und Zeit ausgeben
     //         stopwatch.Stop();
     //         Console.WriteLine($"Zeit: {stopwatch.Elapsed.TotalSeconds:F1} Sekunden");
   }
 }
-
