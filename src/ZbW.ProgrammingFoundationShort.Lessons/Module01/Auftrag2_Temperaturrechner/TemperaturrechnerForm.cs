@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module01.Auftrag2_Temperaturrechner;
 
 // ============================================================
-// AUFTRAG 2 – Temperaturrechner (⭐⭐ Mittel | ~10 Min.)
+// AUFTRAG 2 – Temperaturrechner (⭐⭐ Mittel | ~30 Min.)
 //
 // Konvertiere Celsius ↔ Fahrenheit in einer WinForms-App.
 //

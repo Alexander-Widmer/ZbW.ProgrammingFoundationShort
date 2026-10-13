@@ -30,29 +30,39 @@ public partial class BibliothekForm : Form
       return;
     }
 
-    _library.AddBook(book);
+    if (!_library.AddBook(book))
+    {
+      MessageBox.Show("Bitte eine ISBN eingeben, die noch nicht vorhanden ist.",
+        "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+      return;
+    }
+
     AktualisiereListe();
-    TxtTitle.Clear(); TxtAuthor.Clear(); TxtISBN.Clear();
+    LblStatus.Text = $"Buch {book.ISBN} hinzugefügt. {Bestand()}";
+    TxtTitle.Clear();
+    TxtAuthor.Clear();
+    TxtISBN.Clear();
   }
 
   private void CmdLeihen_Click(object sender, EventArgs e)
   {
     string isbn = TxtISBN.Text.Trim();
     bool erfolg = _library.BorrowBook(isbn);
-    LblStatus.Text = erfolg
-      ? $"Buch {isbn} ausgeliehen."
-      : $"Buch {isbn} nicht verfügbar oder nicht gefunden.";
     AktualisiereListe();
+    // Meldung NACH dem Aktualisieren setzen, sonst wird sie sofort überschrieben
+    LblStatus.Text = erfolg
+      ? $"Buch {isbn} ausgeliehen. {Bestand()}"
+      : $"Buch {isbn} nicht verfügbar oder nicht gefunden. {Bestand()}";
   }
 
   private void CmdZurueckgeben_Click(object sender, EventArgs e)
   {
     string isbn = TxtISBN.Text.Trim();
     bool erfolg = _library.ReturnBook(isbn);
-    LblStatus.Text = erfolg
-      ? $"Buch {isbn} zurückgegeben."
-      : $"Buch {isbn} war nicht ausgeliehen oder nicht gefunden.";
     AktualisiereListe();
+    LblStatus.Text = erfolg
+      ? $"Buch {isbn} zurückgegeben. {Bestand()}"
+      : $"Buch {isbn} war nicht ausgeliehen oder nicht gefunden. {Bestand()}";
   }
 
   private void CmdSuchen_Click(object sender, EventArgs e)
@@ -75,6 +85,11 @@ public partial class BibliothekForm : Form
       LstBuecher.Items.Add(book.ToString());
     }
 
-    LblStatus.Text = $"Bücher: {_library.GetAll().Count} gesamt, {_library.AvailableCount} verfügbar";
+    LblStatus.Text = Bestand();
+  }
+
+  private string Bestand()
+  {
+    return $"Bücher: {_library.GetAll().Count} gesamt, {_library.AvailableCount} verfügbar";
   }
 }

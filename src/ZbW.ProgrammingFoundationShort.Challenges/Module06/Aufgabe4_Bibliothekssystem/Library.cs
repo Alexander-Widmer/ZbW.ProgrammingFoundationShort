@@ -22,9 +22,16 @@ public class Library
     }
   }
 
-  public void AddBook(Book book)
+  /// <summary>Fügt ein Buch hinzu. Jede ISBN nur einmal – sonst wäre ein Exemplar nicht mehr ausleihbar.</summary>
+  public bool AddBook(Book book)
   {
+    if (string.IsNullOrEmpty(book.ISBN) || FindByIsbn(book.ISBN) != null)
+    {
+      return false;
+    }
+
     _books.Add(book);
+    return true;
   }
 
   public bool BorrowBook(string isbn)

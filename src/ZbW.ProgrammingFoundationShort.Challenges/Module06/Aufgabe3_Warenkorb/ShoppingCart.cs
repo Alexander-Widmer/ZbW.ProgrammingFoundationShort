@@ -30,16 +30,18 @@ public class ShoppingCart
 
   public void AddProduct(Product product)
   {
-    // Prüfen ob Produkt bereits vorhanden
-    Product existing = FindByName(product.Name);
-    if (existing != null)
+    // Gleiches Produkt = gleicher Name UND gleicher Preis → nur Menge erhöhen.
+    // Anderer Preis → eigene Position, damit kein Preis verloren geht.
+    foreach (Product item in _items)
     {
-      existing.Quantity += product.Quantity;
+      if (item.Name == product.Name && item.Price == product.Price)
+      {
+        item.Quantity += product.Quantity;
+        return;
+      }
     }
-    else
-    {
-      _items.Add(product);
-    }
+
+    _items.Add(product);
   }
 
   public bool RemoveProduct(string name)

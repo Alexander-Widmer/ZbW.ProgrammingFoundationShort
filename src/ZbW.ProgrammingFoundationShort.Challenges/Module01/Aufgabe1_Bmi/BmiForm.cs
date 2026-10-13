@@ -15,17 +15,17 @@ public partial class BmiForm : Form
   private void CmdBerechnen_Click(object sender, EventArgs e)
   {
     // Gewicht einlesen und validieren
-    if (!double.TryParse(TxtGewicht.Text, out double gewicht) || gewicht <= 0)
+    if (!double.TryParse(TxtGewicht.Text, out double gewicht) || double.IsNaN(gewicht) || gewicht <= 0 || gewicht > 500)
     {
-      MessageBox.Show("Bitte ein gültiges Gewicht eingeben (z. B. 75).",
+      MessageBox.Show("Bitte ein gültiges Gewicht in kg eingeben (z. B. 75, höchstens 500).",
         "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
     // Grösse einlesen und validieren
-    if (!double.TryParse(TxtGroesse.Text, out double groesse) || groesse <= 0)
+    if (!double.TryParse(TxtGroesse.Text, out double groesse) || double.IsNaN(groesse) || groesse <= 0 || groesse > 3)
     {
-      MessageBox.Show("Bitte eine gültige Grösse eingeben (z. B. 1.78).",
+      MessageBox.Show("Bitte eine gültige Grösse in Metern eingeben (z. B. 1.78, höchstens 3).",
         "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }

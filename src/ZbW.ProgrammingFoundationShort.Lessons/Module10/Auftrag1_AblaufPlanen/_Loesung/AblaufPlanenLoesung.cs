@@ -39,6 +39,7 @@ public static class AblaufPlanenLoesung
                // TODO: Sehr gute Punktzahl prüfen
                // TODO: Bestandene Punktzahl prüfen
                // TODO: Sonst nicht bestanden zurückgeben
+               return "TODO"; // Platzhalter, damit die Methode kompiliert
            }
            """;
   }

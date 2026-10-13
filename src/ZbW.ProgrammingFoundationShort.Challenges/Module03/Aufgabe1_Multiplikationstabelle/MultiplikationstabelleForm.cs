@@ -22,18 +22,17 @@ public partial class MultiplikationstabelleForm : Form
 
     TxtAusgabe.Clear();
 
+    // Vorwärts: 1 nach 10 (immer)
+    for (int i = 1; i <= 10; i++)
+    {
+      TxtAusgabe.AppendText($"{zahl} × {i,2} = {zahl * i,3}\r\n");
+    }
+
+    // Zusatz: zusätzlich rückwärts 10 nach 1
     if (ChkRueckwaerts.Checked)
     {
-      // Rückwärts: 10 nach 1
+      TxtAusgabe.AppendText("-- rückwärts --\r\n");
       for (int i = 10; i >= 1; i--)
-      {
-        TxtAusgabe.AppendText($"{zahl} × {i,2} = {zahl * i,3}\r\n");
-      }
-    }
-    else
-    {
-      // Vorwärts: 1 nach 10
-      for (int i = 1; i <= 10; i++)
       {
         TxtAusgabe.AppendText($"{zahl} × {i,2} = {zahl * i,3}\r\n");
       }

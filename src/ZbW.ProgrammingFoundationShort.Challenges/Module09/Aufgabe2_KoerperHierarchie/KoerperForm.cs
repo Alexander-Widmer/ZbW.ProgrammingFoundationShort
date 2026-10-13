@@ -30,6 +30,10 @@ public sealed class KoerperForm : Form
     LblTotal = new Label { Location = new Point(300, 300), Size = new Size(360, 30) };
 
     cmdAdd.Click += CmdAdd_Click;
+    RadCube.CheckedChanged += RadShape_CheckedChanged;
+    RadCuboid.CheckedChanged += RadShape_CheckedChanged;
+    RadSphere.CheckedChanged += RadShape_CheckedChanged;
+    RadShape_CheckedChanged(this, EventArgs.Empty);
 
     Controls.Add(new Label { Location = new Point(12, 15), Size = new Size(100, 20), Text = "Körper:" });
     Controls.Add(new Label { Location = new Point(12, 48), Size = new Size(100, 20), Text = "Farbe:" });
@@ -50,9 +54,10 @@ public sealed class KoerperForm : Form
 
   private void CmdAdd_Click(object sender, EventArgs e)
   {
-    if (!double.TryParse(TxtA.Text, out double a) || !double.TryParse(TxtB.Text, out double b) || !double.TryParse(TxtC.Text, out double c))
+    // Nur die Felder lesen, die der gewählte Körper braucht
+    if (!TryReadSize(TxtA, out double a))
     {
-      LblTotal.Text = "Bitte gültige Zahlen eingeben.";
+      LblTotal.Text = "Wert 1: positive Zahl bis 1000 eingeben.";
       return;
     }
 
@@ -64,6 +69,12 @@ public sealed class KoerperForm : Form
     }
     else if (RadCuboid.Checked)
     {
+      if (!TryReadSize(TxtB, out double b) || !TryReadSize(TxtC, out double c))
+      {
+        LblTotal.Text = "Quader: Werte 2 und 3 als positive Zahlen bis 1000 eingeben.";
+        return;
+      }
+
       solid = new Cuboid(a, b, c, TxtColor.Text);
     }
     else
@@ -83,6 +94,18 @@ public sealed class KoerperForm : Form
     }
 
     LblTotal.Text = $"Gesamtvolumen: {totalVolume:F2}";
+  }
+
+  private static bool TryReadSize(TextBox textBox, out double value)
+  {
+    return double.TryParse(textBox.Text, out value) && double.IsFinite(value) && value > 0 && value <= 1000;
+  }
+
+  private void RadShape_CheckedChanged(object sender, EventArgs e)
+  {
+    // Werte 2 und 3 braucht nur der Quader
+    TxtB.Enabled = RadCuboid.Checked;
+    TxtC.Enabled = RadCuboid.Checked;
   }
 }
 

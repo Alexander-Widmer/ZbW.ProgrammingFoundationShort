@@ -46,8 +46,16 @@ public sealed class MitarbeiterForm : Form
 
   private void CmdAdd_Click(object sender, EventArgs e)
   {
-    if (!decimal.TryParse(TxtBaseSalary.Text, out decimal baseSalary) || !double.TryParse(TxtExtra.Text, out double extra))
+    if (!decimal.TryParse(TxtBaseSalary.Text, out decimal baseSalary) || baseSalary <= 0)
     {
+      LblTotal.Text = "Basislohn muss eine positive Zahl sein.";
+      return;
+    }
+
+    // IsFinite: NaN/Unendlich würden später bei der Umrechnung in decimal abstürzen
+    if (!double.TryParse(TxtExtra.Text, out double extra) || !double.IsFinite(extra) || extra < 0 || extra > 1000)
+    {
+      LblTotal.Text = "Bonus/Std/Team: Zahl zwischen 0 und 1000 eingeben.";
       return;
     }
 
@@ -55,8 +63,9 @@ public sealed class MitarbeiterForm : Form
 
     if (CmbType.SelectedItem?.ToString() == "Manager")
     {
-      if (!int.TryParse(TxtTeamSize.Text, out int teamSize))
+      if (!int.TryParse(TxtTeamSize.Text, out int teamSize) || teamSize < 0)
       {
+        LblTotal.Text = "Teamgrösse muss eine ganze Zahl ab 0 sein.";
         return;
       }
 

@@ -25,9 +25,10 @@ public class Vehicle
 
   public void Drive(double km)
   {
-    if (km <= 0)
+    // IsFinite: NaN und Unendlich sind keine gültigen Strecken
+    if (!double.IsFinite(km) || km <= 0)
     {
-      throw new ArgumentException("Kilometeranzahl muss positiv sein.");
+      throw new ArgumentException("Kilometeranzahl muss eine positive Zahl sein.");
     }
 
     Mileage += km;

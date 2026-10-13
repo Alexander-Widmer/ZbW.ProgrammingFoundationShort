@@ -9,7 +9,8 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag3_RabattKalkula
 //   - TxtBetrag: Kaufbetrag einlesen
 //   - RadioButtons: Normal (0%), Premium (10%), VIP (20%)
 //   - CheckBox: Lehrling (+5% extra Rabatt)
-//   - Gesamtrabatt berechnen und Endpreis anzeigen
+//   - Anzeige: Originalbetrag, Rabatt in CHF, Endbetrag (2 Nachkommastellen)
+//   - Geld als decimal (Block 01)
 // ============================================================
 
 public partial class RabattKalkulatorForm : Form
@@ -21,7 +22,7 @@ public partial class RabattKalkulatorForm : Form
 
   private void CmdBerechnen_Click(object sender, EventArgs e)
   {
-    // TODO 1: Betrag aus TxtBetrag lesen (double.TryParse)
+    // TODO 1: Betrag aus TxtBetrag lesen (decimal.TryParse), muss grösser als 0 sein
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
 
     // TODO 2: Rabatt aus RadioButton ermitteln
@@ -29,8 +30,9 @@ public partial class RabattKalkulatorForm : Form
 
     // TODO 3: Wenn ChkLehrling.Checked → Rabatt += 5
 
-    // TODO 4: Endpreis berechnen: endpreis = betrag * (1 - rabatt / 100.0)
+    // TODO 4: Rabatt in CHF und Endbetrag berechnen:
+    //         rabattBetrag = betrag * rabatt / 100m;  endbetrag = betrag - rabattBetrag
 
-    // TODO 5: LblErgebnis.Text setzen mit Betrag, Rabatt % und Endpreis
+    // TODO 5: LblErgebnis.Text setzen: Originalbetrag, Rabatt in CHF (und %), Endbetrag
   }
 }

@@ -43,7 +43,7 @@ public sealed class MathBibliothekForm : Form
 
   private void CmdCalculate_Click(object sender, EventArgs e)
   {
-    if (!double.TryParse(TxtNumber.Text, out double firstValue))
+    if (!double.TryParse(TxtNumber.Text, out double firstValue) || !double.IsFinite(firstValue))
     {
       LblResult.Text = "Bitte Wert 1 als Zahl eingeben.";
       return;
@@ -59,7 +59,7 @@ public sealed class MathBibliothekForm : Form
     }
     else if (RadRectangleArea.Checked)
     {
-      if (!double.TryParse(TxtSecondNumber.Text, out double secondValue))
+      if (!double.TryParse(TxtSecondNumber.Text, out double secondValue) || !double.IsFinite(secondValue))
       {
         LblResult.Text = "Bitte Wert 2 als Zahl eingeben.";
         return;
@@ -69,12 +69,23 @@ public sealed class MathBibliothekForm : Form
     }
     else if (RadPrime.Checked)
     {
-      int number = (int)firstValue;
+      // Primzahl nur für ganze Zahlen: int.TryParse statt Cast, sonst würde aus 17.9 still 17
+      if (!int.TryParse(TxtNumber.Text, out int number))
+      {
+        LblResult.Text = "Primzahltest nur für ganze Zahlen.";
+        return;
+      }
+
       LblResult.Text = MathHelper.IsPrime(number) ? $"{number} ist prim." : $"{number} ist nicht prim.";
     }
     else if (RadFactorial.Checked)
     {
-      int number = (int)firstValue;
+      if (!int.TryParse(TxtNumber.Text, out int number))
+      {
+        LblResult.Text = "Fakultät nur für ganze Zahlen.";
+        return;
+      }
+
       if (number < 0 || number > 20)
       {
         LblResult.Text = "Fakultät nur für 0 bis 20 möglich.";

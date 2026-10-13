@@ -6,6 +6,7 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe3_InventarVe
 /// </summary>
 public partial class InventarVerwaltungForm : Form
 {
+  private const int MaxMenge = 100000; // Übungsbereich pro Artikel, verhindert int-Überlauf
   private readonly Dictionary<string, int> _inventar = new();
 
   public InventarVerwaltungForm()
@@ -25,15 +26,22 @@ public partial class InventarVerwaltungForm : Form
   private void CmdHinzufuegen_Click(object sender, EventArgs e)
   {
     string artikel = TxtArtikel.Text.Trim();
-    if (string.IsNullOrEmpty(artikel) || !int.TryParse(TxtMenge.Text, out int menge) || menge <= 0)
+    if (string.IsNullOrEmpty(artikel) || !int.TryParse(TxtMenge.Text, out int menge) || menge <= 0 || menge > MaxMenge)
     {
-      MessageBox.Show("Bitte gültigen Artikel und positive Menge eingeben.",
+      MessageBox.Show($"Bitte gültigen Artikel und eine Menge von 1 bis {MaxMenge} eingeben.",
         "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
     if (_inventar.ContainsKey(artikel))
     {
+      if (_inventar[artikel] + menge > MaxMenge)
+      {
+        MessageBox.Show($"Höchstens {MaxMenge} Stück pro Artikel.",
+          "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        return;
+      }
+
       _inventar[artikel] += menge;
     }
     else
