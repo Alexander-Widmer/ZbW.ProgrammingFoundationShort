@@ -1,29 +1,17 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag3_Kontaktmanager;
 
-/// <summary>Datenklasse für einen Kontakt mit null-sicherer Ausgabe und Equals.</summary>
+/// <summary>Datenklasse für einen Kontakt.</summary>
 public class PersonKontakt
 {
   public string FirstName { get; set; } = "";
   public string LastName { get; set; } = "";
-  public string? Email { get; set; } // nullable
+  public string? Email { get; set; } // darf null sein
 
-  // TODO: Equals nach FirstName + LastName vergleichen
-  // TODO: GetHashCode
-  // TODO: ToString mit ?. und ?? für Email
+  // TODO 1: Equals(object? obj) überschreiben:
+  //         zwei Kontakte sind gleich, wenn FirstName und LastName gleich sind
 
-  public override bool Equals(object? obj)
-  {
-    if (obj is PersonKontakt other)
-      return FirstName == other.FirstName && LastName == other.LastName;
-    return false;
-  }
+  // TODO 2: GetHashCode() passend zu Equals überschreiben (HashCode.Combine)
 
-  public override int GetHashCode() => HashCode.Combine(FirstName, LastName);
-
-  public override string ToString()
-  {
-    // ?. und ?? Operatoren
-    return $"{FirstName} {LastName} – {Email ?? "(keine E-Mail)"}";
-  }
+  // TODO 3: ToString() überschreiben: "Vorname Nachname – E-Mail"
+  //         fehlt die E-Mail (null), "(keine E-Mail)" anzeigen (Operator ??)
 }
-

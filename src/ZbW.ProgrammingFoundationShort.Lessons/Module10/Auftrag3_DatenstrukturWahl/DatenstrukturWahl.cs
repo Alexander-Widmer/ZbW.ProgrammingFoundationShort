@@ -17,6 +17,14 @@ public static class DatenstrukturWahl
   public static Stack<string> CreateBackHistory()
   {
     // TODO: Mindestens drei Seiten mit Push() hinzufügen und zurückgeben.
+    //       Die zuletzt gepushte Seite ist die aktuelle Seite.
     return new Stack<string>();
+  }
+
+  public static string RunDemo()
+  {
+    // TODO: Aufgaben, eine Telefonnummer und die "Zurück"-Seite ausgeben.
+    //       Zurück = aktuelle Seite mit Pop() verlassen, dann mit Peek() die vorherige anzeigen.
+    return "TODO";
   }
 }

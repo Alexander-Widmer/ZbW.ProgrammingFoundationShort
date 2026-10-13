@@ -1,10 +1,13 @@
-using System.Text;
-
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag2_AbstractShape._Loesung;
 
-public abstract class ShapeLoesung
+public abstract class Shape
 {
-  public string Color { get; set; } = "";
+  protected Shape(string color)
+  {
+    Color = color;
+  }
+
+  public string Color { get; }
 
   public abstract double Area();
 
@@ -12,13 +15,18 @@ public abstract class ShapeLoesung
 
   public virtual string Describe()
   {
-    return $"{GetType().Name}, Farbe: {Color}, Fläche: {Area():F2}, Umfang: {Perimeter():F2}";
+    return $"{GetType().Name}, {Color}: Fläche {Area():F2}, Umfang {Perimeter():F2}";
   }
 }
 
-public sealed class CircleLoesung : ShapeLoesung
+public class Circle : Shape
 {
-  public double Radius { get; set; }
+  public Circle(double radius, string color) : base(color)
+  {
+    Radius = radius;
+  }
+
+  public double Radius { get; }
 
   public override double Area()
   {
@@ -31,10 +39,16 @@ public sealed class CircleLoesung : ShapeLoesung
   }
 }
 
-public sealed class RectangleLoesung : ShapeLoesung
+public class Rectangle : Shape
 {
-  public double Width { get; set; }
-  public double Height { get; set; }
+  public Rectangle(double width, double height, string color) : base(color)
+  {
+    Width = width;
+    Height = height;
+  }
+
+  public double Width { get; }
+  public double Height { get; }
 
   public override double Area()
   {
@@ -47,11 +61,18 @@ public sealed class RectangleLoesung : ShapeLoesung
   }
 }
 
-public sealed class TriangleLoesung : ShapeLoesung
+public class Triangle : Shape
 {
-  public double A { get; set; }
-  public double B { get; set; }
-  public double C { get; set; }
+  public Triangle(double a, double b, double c, string color) : base(color)
+  {
+    A = a;
+    B = b;
+    C = c;
+  }
+
+  public double A { get; }
+  public double B { get; }
+  public double C { get; }
 
   public override double Area()
   {
@@ -67,28 +88,25 @@ public sealed class TriangleLoesung : ShapeLoesung
 
 public static class ShapeDemoLoesung
 {
-  public static string RunDemo()
+  public static void Start()
   {
-    List<ShapeLoesung> shapes = new List<ShapeLoesung>
+    List<Shape> shapes = new List<Shape>
     {
-      new CircleLoesung { Color = "Rot", Radius = 5 },
-      new CircleLoesung { Color = "Blau", Radius = 2 },
-      new RectangleLoesung { Color = "Grün", Width = 4, Height = 3 },
-      new RectangleLoesung { Color = "Gelb", Width = 8, Height = 2 },
-      new TriangleLoesung { Color = "Orange", A = 3, B = 4, C = 5 },
-      new TriangleLoesung { Color = "Violett", A = 5, B = 5, C = 6 }
+      new Circle(5, "Rot"),
+      new Circle(2, "Blau"),
+      new Rectangle(4, 3, "Grün"),
+      new Rectangle(8, 2, "Gelb"),
+      new Triangle(3, 4, 5, "Orange"),
+      new Triangle(5, 5, 6, "Violett")
     };
 
-    StringBuilder builder = new StringBuilder();
     double totalArea = 0;
-
-    foreach (ShapeLoesung shape in shapes)
+    foreach (Shape shape in shapes)
     {
-      builder.AppendLine(shape.Describe());
+      Console.WriteLine(shape.Describe());
       totalArea += shape.Area();
     }
 
-    builder.AppendLine($"Gesamtfläche: {totalArea:F2}");
-    return builder.ToString();
+    Console.WriteLine($"Gesamtfläche: {totalArea:F2}");
   }
 }

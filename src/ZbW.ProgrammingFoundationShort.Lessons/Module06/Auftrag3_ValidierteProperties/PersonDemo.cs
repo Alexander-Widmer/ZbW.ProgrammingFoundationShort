@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag3_ValidierteProperties;
 
 // ============================================================
-// AUFTRAG 3 – ValidierteProperties (⭐⭐⭐ Erweitert | ~10 Min.)
+// AUFTRAG 3 – ValidierteProperties (⭐⭐⭐ Erweitert | ~30 Min.)
 // ============================================================
 
 public static class PersonDemo

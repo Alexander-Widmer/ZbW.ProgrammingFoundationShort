@@ -23,14 +23,20 @@ public partial class RabattKalkulatorFormLoesung : Form
 
     // Rabatt aus RadioButton
     int rabatt = 0;
-    if (RdoPremium.Checked)
+    if (RadPremium.Checked)
+    {
       rabatt = 10;
-    else if (RdoVip.Checked)
+    }
+    else if (RadVip.Checked)
+    {
       rabatt = 20;
+    }
 
     // Lehrlings-Bonus
     if (ChkLehrling.Checked)
+    {
       rabatt += 5;
+    }
 
     // Endpreis berechnen
     double endpreis = betrag * (1 - rabatt / 100.0);

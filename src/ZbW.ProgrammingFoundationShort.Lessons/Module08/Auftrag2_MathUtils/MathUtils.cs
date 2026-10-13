@@ -1,35 +1,28 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag2_MathUtils;
 
-/// <summary>Statische Mathe-Hilfsbibliothek.</summary>
+/// <summary>Statische Mathe-Hilfsbibliothek – von dir zu implementieren.</summary>
 public static class MathUtils
 {
-  public static readonly double GoldenRatio = (1 + Math.Sqrt(5)) / 2;
+  // TODO 1: static readonly double GoldenRatio = (1 + √5) / 2  (Math.Sqrt)
+  public static readonly double GoldenRatio = 0;
 
   public static bool IsPrime(int n)
   {
-    if (n < 2) return false;
-    for (int i = 2; i <= Math.Sqrt(n); i++)
-      if (n % i == 0) return false;
-    return true;
+    // TODO 2: true, wenn n eine Primzahl ist (n < 2 ist keine Primzahl)
+    return false;
   }
 
   public static long Factorial(int n)
   {
-    if (n < 0) throw new ArgumentException("n muss >= 0 sein.");
-    if (n == 0 || n == 1) return 1;
-    long result = 1;
-    for (int i = 2; i <= n; i++)
-      result *= i;
-    return result;
+    // TODO 3: n! mit einer Schleife berechnen
+    //         n < 0 oder n > 20 → ArgumentOutOfRangeException (long läuft ab 21! über)
+    return 0;
   }
 
   public static double[] GenerateLinspace(double start, double end, int count)
   {
-    if (count < 2) throw new ArgumentException("count muss >= 2 sein.");
-    double[] result = new double[count];
-    double step = (end - start) / (count - 1);
-    for (int i = 0; i < count; i++)
-      result[i] = start + i * step;
-    return result;
+    // TODO 4: count gleichmässig verteilte Werte von start bis end (inklusive)
+    //         count < 2 → ArgumentException
+    return new double[0];
   }
 }

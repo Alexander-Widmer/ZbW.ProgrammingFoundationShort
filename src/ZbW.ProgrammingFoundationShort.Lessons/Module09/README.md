@@ -2,7 +2,8 @@
 
 ## Lernziele
 
-- Basisklassen und abgeleitete Klassen verwenden
+- Vererbungshierarchien selbst entwerfen (die Stubs geben nur die Startmethode vor)
+- Konstruktoren mit `base(...)` verketten, `protected` gezielt einsetzen
 - `virtual` und `override` einsetzen
 - Abstrakte Klassen modellieren
 - Polymorphismus über Basisklassen anwenden

@@ -2,20 +2,20 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag3_TrafficLightL
 
 public static class AppLogger
 {
-  private static readonly List<string> messages = new List<string>();
+  private static readonly List<string> _messages = new List<string>();
 
-  public static IReadOnlyList<string> Messages
+  public static List<string> GetMessages()
   {
-    get { return messages; }
+    return new List<string>(_messages); // Kopie zurückgeben
   }
 
   public static void Log(string message)
   {
-    // TODO: Zeitstempel und Meldung in messages speichern.
+    // TODO: Zeitstempel und Meldung in _messages speichern.
   }
 
   public static void Clear()
   {
-    messages.Clear();
+    _messages.Clear();
   }
 }

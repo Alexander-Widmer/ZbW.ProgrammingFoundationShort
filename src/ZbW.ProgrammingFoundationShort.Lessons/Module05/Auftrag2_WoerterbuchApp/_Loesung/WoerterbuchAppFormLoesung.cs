@@ -24,12 +24,19 @@ public partial class WoerterbuchAppFormLoesung : Form
   private void CmdNachschlagen_Click(object sender, EventArgs e)
   {
     string suche = TxtSuche.Text.Trim();
-    if (string.IsNullOrEmpty(suche)) return;
+    if (string.IsNullOrEmpty(suche))
+    {
+      return;
+    }
 
     if (_woerterbuch.TryGetValue(suche, out string? uebersetzung))
+    {
       LblErgebnis.Text = $"{suche} → {uebersetzung}";
+    }
     else
+    {
       LblErgebnis.Text = $"Kein Eintrag für \"{suche}\" gefunden.";
+    }
   }
 
   private void CmdHinzufuegen_Click(object sender, EventArgs e)
@@ -48,7 +55,10 @@ public partial class WoerterbuchAppFormLoesung : Form
     {
       var result = MessageBox.Show($"\"{key}\" existiert bereits. Überschreiben?",
         "Duplikat", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-      if (result != DialogResult.Yes) return;
+      if (result != DialogResult.Yes)
+      {
+        return;
+      }
     }
 
     _woerterbuch[key] = value;
@@ -61,6 +71,8 @@ public partial class WoerterbuchAppFormLoesung : Form
   {
     LstEintraege.Items.Clear();
     foreach (var kvp in _woerterbuch)
+    {
       LstEintraege.Items.Add($"{kvp.Key} → {kvp.Value}");
+    }
   }
 }

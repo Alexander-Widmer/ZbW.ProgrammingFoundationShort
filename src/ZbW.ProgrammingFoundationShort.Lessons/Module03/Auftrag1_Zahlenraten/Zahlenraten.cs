@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag1_Zahlenraten;
 
 // ============================================================
-// AUFTRAG 1 – Zahlenraten (⭐ Einfach | ~10 Min.)
+// AUFTRAG 1 – Zahlenraten (⭐ Einfach | ~15 Min.)
 //
 // Das Programm generiert eine Zufallszahl und der Benutzer
 // versucht sie zu erraten.

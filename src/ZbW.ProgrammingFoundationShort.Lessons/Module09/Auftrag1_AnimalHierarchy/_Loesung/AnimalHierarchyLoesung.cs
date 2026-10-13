@@ -1,11 +1,15 @@
-using System.Text;
-
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag1_AnimalHierarchy._Loesung;
 
-public class AnimalLoesung
+public class Animal
 {
-  public string Name { get; set; } = "";
-  public int Age { get; set; }
+  public Animal(string name, int age)
+  {
+    Name = name;
+    Age = age;
+  }
+
+  public string Name { get; }
+  public int Age { get; }
 
   public virtual string MakeSound()
   {
@@ -18,9 +22,14 @@ public class AnimalLoesung
   }
 }
 
-public sealed class DogLoesung : AnimalLoesung
+public class Dog : Animal
 {
-  public string Breed { get; set; } = "";
+  public Dog(string name, int age, string breed) : base(name, age)
+  {
+    Breed = breed;
+  }
+
+  public string Breed { get; }
 
   public override string MakeSound()
   {
@@ -33,16 +42,24 @@ public sealed class DogLoesung : AnimalLoesung
   }
 }
 
-public sealed class CatLoesung : AnimalLoesung
+public class Cat : Animal
 {
+  public Cat(string name, int age) : base(name, age)
+  {
+  }
+
   public override string MakeSound()
   {
     return "Miau!";
   }
 }
 
-public sealed class BirdLoesung : AnimalLoesung
+public class Bird : Animal
 {
+  public Bird(string name, int age) : base(name, age)
+  {
+  }
+
   public override string MakeSound()
   {
     return "Piep!";
@@ -51,23 +68,21 @@ public sealed class BirdLoesung : AnimalLoesung
 
 public static class AnimalHierarchyLoesung
 {
-  public static string RunDemo()
+  public static void Start()
   {
-    List<AnimalLoesung> animals = new List<AnimalLoesung>
+    List<Animal> animals = new List<Animal>
     {
-      new DogLoesung { Name = "Bello", Age = 3, Breed = "Golden Retriever" },
-      new DogLoesung { Name = "Luna", Age = 5, Breed = "Labrador" },
-      new CatLoesung { Name = "Mia", Age = 2 },
-      new CatLoesung { Name = "Nala", Age = 4 },
-      new BirdLoesung { Name = "Kiki", Age = 1 },
-      new BirdLoesung { Name = "Rio", Age = 2 }
+      new Dog("Bello", 3, "Golden Retriever"),
+      new Dog("Luna", 5, "Labrador"),
+      new Cat("Mia", 2),
+      new Cat("Nala", 4),
+      new Bird("Kiki", 2),
+      new Bird("Rio", 4)
     };
 
-    StringBuilder builder = new StringBuilder();
-
-    foreach (AnimalLoesung animal in animals)
-      builder.AppendLine($"{animal}: {animal.MakeSound()}");
-
-    return builder.ToString();
+    foreach (Animal animal in animals)
+    {
+      Console.WriteLine($"{animal}: {animal.MakeSound()}");
+    }
   }
 }

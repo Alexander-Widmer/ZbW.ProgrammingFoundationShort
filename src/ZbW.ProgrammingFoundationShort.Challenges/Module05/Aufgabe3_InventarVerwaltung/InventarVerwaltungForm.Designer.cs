@@ -17,7 +17,7 @@ partial class InventarVerwaltungForm
     LblMenge = new Label(); TxtMenge = new TextBox();
     CmdHinzufuegen = new Button(); CmdEntfernen = new Button();
     CmdSuchen = new Button(); CmdAlleAnzeigen = new Button();
-    LstInventar = new ListBox(); LblGesamt = new Label();
+    LstInventar = new ListBox(); LblGesamt = new Label(); LblAusverkauft = new Label();
     SuspendLayout();
 
     LblArtikel.AutoSize = true; LblArtikel.Location = new Point(12, 20); LblArtikel.Text = "Artikel:";
@@ -34,11 +34,12 @@ partial class InventarVerwaltungForm
     LstInventar.Location = new Point(12, 85); LstInventar.Name = "LstInventar"; LstInventar.Size = new Size(360, 160);
 
     LblGesamt.AutoSize = true; LblGesamt.Location = new Point(12, 258); LblGesamt.Name = "LblGesamt"; LblGesamt.Text = "";
+    LblAusverkauft.AutoSize = true; LblAusverkauft.ForeColor = Color.Red; LblAusverkauft.Location = new Point(12, 282); LblAusverkauft.Name = "LblAusverkauft"; LblAusverkauft.Text = "";
 
-    AutoScaleDimensions = new SizeF(7F, 15F); AutoScaleMode = AutoScaleMode.Font; ClientSize = new Size(390, 290);
+    AutoScaleDimensions = new SizeF(7F, 15F); AutoScaleMode = AutoScaleMode.Font; ClientSize = new Size(390, 315);
     Controls.Add(LblArtikel); Controls.Add(TxtArtikel); Controls.Add(LblMenge); Controls.Add(TxtMenge);
     Controls.Add(CmdHinzufuegen); Controls.Add(CmdEntfernen); Controls.Add(CmdSuchen); Controls.Add(CmdAlleAnzeigen);
-    Controls.Add(LstInventar); Controls.Add(LblGesamt);
+    Controls.Add(LstInventar); Controls.Add(LblGesamt); Controls.Add(LblAusverkauft);
     Name = "InventarVerwaltungForm"; Text = "Inventar-Verwaltung – Aufgabe 3";
     ResumeLayout(false); PerformLayout();
   }
@@ -47,5 +48,5 @@ partial class InventarVerwaltungForm
   private Label LblMenge; private TextBox TxtMenge;
   private Button CmdHinzufuegen; private Button CmdEntfernen;
   private Button CmdSuchen; private Button CmdAlleAnzeigen;
-  private ListBox LstInventar; private Label LblGesamt;
+  private ListBox LstInventar; private Label LblGesamt; private Label LblAusverkauft;
 }

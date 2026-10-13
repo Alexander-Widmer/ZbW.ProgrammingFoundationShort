@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag2_WochentageApp;
 
 // ============================================================
-// AUFTRAG 2 – WochentageApp (⭐⭐ Mittel | ~15 Min.)
+// AUFTRAG 2 – WochentageApp (⭐⭐ Mittel | ~30 Min.)
 //
 // Zeige Infos zum gewählten Wochentag.
 //

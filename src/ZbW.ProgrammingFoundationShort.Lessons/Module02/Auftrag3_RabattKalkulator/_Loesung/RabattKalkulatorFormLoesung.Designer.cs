@@ -16,9 +16,9 @@ partial class RabattKalkulatorFormLoesung
     LblBetrag = new Label();
     TxtBetrag = new TextBox();
     GrpKundentyp = new GroupBox();
-    RdoNormal = new RadioButton();
-    RdoPremium = new RadioButton();
-    RdoVip = new RadioButton();
+    RadNormal = new RadioButton();
+    RadPremium = new RadioButton();
+    RadVip = new RadioButton();
     ChkLehrling = new CheckBox();
     CmdBerechnen = new Button();
     LblErgebnis = new Label();
@@ -37,25 +37,25 @@ partial class RabattKalkulatorFormLoesung
     GrpKundentyp.Name = "GrpKundentyp";
     GrpKundentyp.Size = new Size(220, 95);
     GrpKundentyp.Text = "Kundentyp";
-    GrpKundentyp.Controls.Add(RdoNormal);
-    GrpKundentyp.Controls.Add(RdoPremium);
-    GrpKundentyp.Controls.Add(RdoVip);
+    GrpKundentyp.Controls.Add(RadNormal);
+    GrpKundentyp.Controls.Add(RadPremium);
+    GrpKundentyp.Controls.Add(RadVip);
 
-    RdoNormal.AutoSize = true;
-    RdoNormal.Checked = true;
-    RdoNormal.Location = new Point(10, 20);
-    RdoNormal.Name = "RdoNormal";
-    RdoNormal.Text = "Normal (0%)";
+    RadNormal.AutoSize = true;
+    RadNormal.Checked = true;
+    RadNormal.Location = new Point(10, 20);
+    RadNormal.Name = "RadNormal";
+    RadNormal.Text = "Normal (0%)";
 
-    RdoPremium.AutoSize = true;
-    RdoPremium.Location = new Point(10, 45);
-    RdoPremium.Name = "RdoPremium";
-    RdoPremium.Text = "Premium (10%)";
+    RadPremium.AutoSize = true;
+    RadPremium.Location = new Point(10, 45);
+    RadPremium.Name = "RadPremium";
+    RadPremium.Text = "Premium (10%)";
 
-    RdoVip.AutoSize = true;
-    RdoVip.Location = new Point(10, 68);
-    RdoVip.Name = "RdoVip";
-    RdoVip.Text = "VIP (20%)";
+    RadVip.AutoSize = true;
+    RadVip.Location = new Point(10, 68);
+    RadVip.Name = "RadVip";
+    RadVip.Text = "VIP (20%)";
 
     ChkLehrling.AutoSize = true;
     ChkLehrling.Location = new Point(12, 155);
@@ -93,9 +93,9 @@ partial class RabattKalkulatorFormLoesung
   private Label LblBetrag;
   private TextBox TxtBetrag;
   private GroupBox GrpKundentyp;
-  private RadioButton RdoNormal;
-  private RadioButton RdoPremium;
-  private RadioButton RdoVip;
+  private RadioButton RadNormal;
+  private RadioButton RadPremium;
+  private RadioButton RadVip;
   private CheckBox ChkLehrling;
   private Button CmdBerechnen;
   private Label LblErgebnis;

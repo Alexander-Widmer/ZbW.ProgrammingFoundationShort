@@ -23,7 +23,12 @@ public partial class HaeufigkeitsAnalyseForm : Form
 
     Dictionary<char, int> haeufigkeit = CountLetters(text);
     List<KeyValuePair<char, int>> sortiert = SortByFrequency(haeufigkeit);
-    KeyValuePair<char, int>[] topFive = sortiert.Take(5).ToArray();
+    int anzahlTop = Math.Min(5, sortiert.Count);
+    KeyValuePair<char, int>[] topFive = new KeyValuePair<char, int>[anzahlTop];
+    for (int i = 0; i < anzahlTop; i++)
+    {
+      topFive[i] = sortiert[i];
+    }
 
     TxtErgebnis.Clear();
     TxtErgebnis.AppendText($"Analysierter Text: {text.Length} Zeichen\r\n");
@@ -39,33 +44,53 @@ public partial class HaeufigkeitsAnalyseForm : Form
     foreach (char raw in text.ToLowerInvariant())
     {
       if (raw < 'a' || raw > 'z')
+      {
         continue;
+      }
 
       if (result.ContainsKey(raw))
+      {
         result[raw]++;
+      }
       else
+      {
         result[raw] = 1;
+      }
     }
     return result;
   }
 
   private static List<KeyValuePair<char, int>> SortByFrequency(Dictionary<char, int> dict)
   {
-    var liste = new List<KeyValuePair<char, int>>(dict);
-    liste.Sort((a, b) => b.Value.CompareTo(a.Value));
+    List<KeyValuePair<char, int>> liste = new List<KeyValuePair<char, int>>(dict);
+
+    // Bubble Sort (aus Block 04), absteigend nach Häufigkeit
+    for (int i = 0; i < liste.Count - 1; i++)
+    {
+      for (int j = 0; j < liste.Count - 1 - i; j++)
+      {
+        if (liste[j].Value < liste[j + 1].Value)
+        {
+          KeyValuePair<char, int> temp = liste[j];
+          liste[j] = liste[j + 1];
+          liste[j + 1] = temp;
+        }
+      }
+    }
+
     return liste;
   }
 
   private static string FormatOutput(params KeyValuePair<char, int>[] entries)
   {
-    var builder = new System.Text.StringBuilder();
+    string ausgabe = "";
 
     foreach (KeyValuePair<char, int> entry in entries)
     {
       string balken = new string('█', Math.Min(entry.Value, 40));
-      builder.AppendLine($"{entry.Key}: {balken} ({entry.Value})");
+      ausgabe += $"{entry.Key}: {balken} ({entry.Value})" + Environment.NewLine;
     }
 
-    return builder.ToString();
+    return ausgabe;
   }
 }

@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag1_ReferenzExperiment;
 
 // ============================================================
-// AUFTRAG 1 – ReferenzExperiment (⭐⭐ Mittel | ~15 Min.)
+// AUFTRAG 1 – ReferenzExperiment (⭐ Einfach | ~15 Min.)
 //
 // Zeige den Unterschied zwischen Wert- und Referenztypen.
 //

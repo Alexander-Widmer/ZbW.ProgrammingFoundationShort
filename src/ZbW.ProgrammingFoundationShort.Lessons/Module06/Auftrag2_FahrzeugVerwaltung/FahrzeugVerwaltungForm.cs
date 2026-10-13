@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag2_FahrzeugVerwaltung;
 
 // ============================================================
-// AUFTRAG 2 – FahrzeugVerwaltung (⭐⭐ Mittel | ~20 Min.)
+// AUFTRAG 2 – FahrzeugVerwaltung (⭐⭐ Mittel | ~30 Min.)
 //
 // Verwaltet Fahrzeuge mit einer Klasse Vehicle.
 //

@@ -55,3 +55,15 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+
+# IDE: Visual Studio, Rider, VS Code (lokale Einstellungen gehören nicht ins Repo)
+.vs/
+*.user
+*.suo
+*.userprefs
+.idea/
+.vscode/
+
+# Betriebssystem
+Thumbs.db
+.DS_Store

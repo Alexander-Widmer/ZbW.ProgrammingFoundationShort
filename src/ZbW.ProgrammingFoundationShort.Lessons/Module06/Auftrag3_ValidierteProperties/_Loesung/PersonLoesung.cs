@@ -15,7 +15,10 @@ public class PersonLoesung
     set
     {
       if (string.IsNullOrWhiteSpace(value))
+      {
         throw new ArgumentException("Name darf nicht leer sein.");
+      }
+
       _name = value.Trim();
     }
   }
@@ -26,7 +29,10 @@ public class PersonLoesung
     set
     {
       if (value < 0 || value > 120)
+      {
         throw new ArgumentOutOfRangeException(nameof(value), "Alter muss zwischen 0 und 120 liegen.");
+      }
+
       _age = value;
     }
   }
@@ -36,8 +42,11 @@ public class PersonLoesung
     get => _email;
     set
     {
-      if (!value.Contains('@'))
+      if (string.IsNullOrWhiteSpace(value) || !value.Contains('@'))
+      {
         throw new ArgumentException("E-Mail muss ein @-Zeichen enthalten.");
+      }
+
       _email = value;
     }
   }

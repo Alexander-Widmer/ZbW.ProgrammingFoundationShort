@@ -1,12 +1,13 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag1_StatischerZaehler;
 
 // ============================================================
-// AUFTRAG 1 – Statischer Zähler (⭐ Einfach | ~8 Min.)
+// AUFTRAG 1 – Statischer Zähler (⭐ Einfach | ~15 Min.)
 //
 // Zählt, wie viele User-Objekte erstellt wurden.
 //
 // Anforderungen:
 //   - User.cs: static int UserCount im Konstruktor erhöhen
+//   - Instanz-Property Id = fortlaufende Nummer (Zählerstand beim Erstellen)
 //   - 3 User erstellen, User.UserCount ausgeben
 //   - zeigen, dass der Zähler zur Klasse gehört
 // ============================================================
@@ -22,5 +23,7 @@ public static class StatischerZaehlerDemo
 
     // TODO 2: Console.WriteLine($"Erstellte User: {User.UserCount}");
     //         → Sollte 3 ausgeben
+
+    // TODO 3: Id jedes Users ausgeben (1, 2, 3) – Instanzwert vs. Klassenwert
   }
 }

@@ -1,52 +1,36 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag3_MediaHierarchy;
 
+// ============================================================
+// AUFTRAG 3 – Media Hierarchy mit Polymorphismus (⭐⭐ Mittel | ~30 Min.)
+//
+// Anforderungen:
+//   - abstract class MediaItem: Property Title, protected Konstruktor MediaItem(string title)
+//     abstract void PrintInfo()
+//   - Book(title, author), Magazine(title, issueNumber), DVD(title, lengthMinutes)
+//     erben von MediaItem, rufen base(title) auf und überschreiben PrintInfo()
+//   - PrintAll(List<MediaItem> items) ruft PrintInfo() polymorph auf
+//   - Start(): je 2 Instanzen jeder Klasse, PrintAll aufrufen
+// ============================================================
+
 public abstract class MediaItem
 {
-  public string Title { get; set; } = "";
+  // TODO 1: Property Title und protected Konstruktor MediaItem(string title)
 
-  public abstract void PrintInfo();
+  // TODO 2: abstract void PrintInfo()
 }
 
-public sealed class Book : MediaItem
-{
-  public string Author { get; set; } = "";
-
-  public override void PrintInfo()
-  {
-    // TODO: Buchinformationen mit Console.WriteLine ausgeben.
-  }
-}
-
-public sealed class Magazine : MediaItem
-{
-  public int IssueNumber { get; set; }
-
-  public override void PrintInfo()
-  {
-    // TODO: Magazin-Informationen ausgeben.
-  }
-}
-
-public sealed class DVD : MediaItem
-{
-  public int LengthMinutes { get; set; }
-
-  public override void PrintInfo()
-  {
-    // TODO: DVD-Informationen ausgeben.
-  }
-}
+// TODO 3: Klassen Book, Magazine und DVD
 
 public static class MediaDemo
 {
   public static void Start()
   {
-    // TODO 1: List<MediaItem> mit je 2 Book, Magazine und DVD erstellen.
-    // TODO 2: PrintAll(media) aufrufen.
+    // TODO 4: List<MediaItem> mit je 2 Book, Magazine und DVD erstellen
+    // TODO 5: PrintAll(media) aufrufen
   }
 
   public static void PrintAll(List<MediaItem> items)
   {
-    // TODO: foreach über alle Elemente und PrintInfo() aufrufen.
+    // TODO 6: foreach über alle Elemente und PrintInfo() aufrufen
   }
 }

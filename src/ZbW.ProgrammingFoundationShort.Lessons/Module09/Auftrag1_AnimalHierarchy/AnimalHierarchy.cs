@@ -1,61 +1,31 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag1_AnimalHierarchy;
 
-public class Animal
-{
-  public string Name { get; set; } = "";
-  public int Age { get; set; }
+// ============================================================
+// AUFTRAG 1 – Animal Hierarchy (⭐ Einfach | ~15 Min.)
+//
+// Entwirf die Hierarchie selbst – hier steht nur die Startmethode.
+//
+// Anforderungen:
+//   - Basisklasse Animal: Name, Age; Konstruktor Animal(string name, int age)
+//     virtual string MakeSound() → "...", override ToString() → "Bello, 3 Jahre"
+//   - Dog : Animal mit zusätzlicher Property Breed
+//     Konstruktor Dog(name, age, breed) : base(name, age)
+//     MakeSound() → "Wuff!", ToString() erweitert base.ToString() um die Rasse
+//   - Cat ("Miau!") und Bird ("Piep!") mit eigenem Konstruktor und base(...)
+//   - Start(): List<Animal> mit je 2 Tieren, foreach → "Bello, 3 Jahre, Labrador: Wuff!"
+// ============================================================
 
-  public virtual string MakeSound()
-  {
-    // TODO: Standardsound zurückgeben.
-    return "";
-  }
+// TODO 1: Klasse Animal
 
-  public override string ToString()
-  {
-    // TODO: Name und Alter formatieren.
-    return "";
-  }
-}
+// TODO 2: Klasse Dog
 
-public sealed class Dog : Animal
-{
-  public string Breed { get; set; } = "";
-
-  public override string MakeSound()
-  {
-    // TODO: Hundesound zurückgeben.
-    return "";
-  }
-}
-
-public sealed class Cat : Animal
-{
-  public override string MakeSound()
-  {
-    // TODO: Katzensound zurückgeben.
-    return "";
-  }
-}
-
-public sealed class Bird : Animal
-{
-  public override string MakeSound()
-  {
-    // TODO: Vogelsound zurückgeben.
-    return "";
-  }
-}
+// TODO 3: Klassen Cat und Bird
 
 public static class AnimalHierarchy
 {
-  public static string RunDemo()
+  public static void Start()
   {
-    List<Animal> animals = new List<Animal>();
-
-    // TODO: Je 2 Hunde, Katzen und Vögel hinzufügen.
-    // TODO: foreach über animals, MakeSound() polymorphisch aufrufen.
-
-    return "";
+    // TODO 4: List<Animal> mit je 2 Hunden, Katzen und Vögeln füllen
+    // TODO 5: foreach über die Liste: Tier und MakeSound() ausgeben (Polymorphismus)
   }
 }

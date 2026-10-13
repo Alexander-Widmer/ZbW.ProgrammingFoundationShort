@@ -16,7 +16,7 @@ partial class MathUtilsForm
     LblGolden = new Label();
     LblEingabe = new Label(); TxtEingabe = new TextBox();
     GrpFunktion = new GroupBox();
-    RdoPrim = new RadioButton(); RdoFakultaet = new RadioButton(); RdoLinspace = new RadioButton();
+    RadPrim = new RadioButton(); RadFakultaet = new RadioButton(); RadLinspace = new RadioButton();
     CmdBerechnen = new Button(); LblErgebnis = new Label();
     GrpFunktion.SuspendLayout();
     SuspendLayout();
@@ -26,10 +26,10 @@ partial class MathUtilsForm
     TxtEingabe.Location = new Point(100, 42); TxtEingabe.Name = "TxtEingabe"; TxtEingabe.Size = new Size(80, 23);
 
     GrpFunktion.Location = new Point(12, 75); GrpFunktion.Name = "GrpFunktion"; GrpFunktion.Size = new Size(280, 40); GrpFunktion.Text = "Funktion";
-    GrpFunktion.Controls.Add(RdoPrim); GrpFunktion.Controls.Add(RdoFakultaet); GrpFunktion.Controls.Add(RdoLinspace);
-    RdoPrim.AutoSize = true; RdoPrim.Checked = true; RdoPrim.Location = new Point(8, 15); RdoPrim.Name = "RdoPrim"; RdoPrim.Text = "Primzahl?";
-    RdoFakultaet.AutoSize = true; RdoFakultaet.Location = new Point(100, 15); RdoFakultaet.Name = "RdoFakultaet"; RdoFakultaet.Text = "n!";
-    RdoLinspace.AutoSize = true; RdoLinspace.Location = new Point(160, 15); RdoLinspace.Name = "RdoLinspace"; RdoLinspace.Text = "Linspace";
+    GrpFunktion.Controls.Add(RadPrim); GrpFunktion.Controls.Add(RadFakultaet); GrpFunktion.Controls.Add(RadLinspace);
+    RadPrim.AutoSize = true; RadPrim.Checked = true; RadPrim.Location = new Point(8, 15); RadPrim.Name = "RadPrim"; RadPrim.Text = "Primzahl?";
+    RadFakultaet.AutoSize = true; RadFakultaet.Location = new Point(100, 15); RadFakultaet.Name = "RadFakultaet"; RadFakultaet.Text = "n!";
+    RadLinspace.AutoSize = true; RadLinspace.Location = new Point(160, 15); RadLinspace.Name = "RadLinspace"; RadLinspace.Text = "Linspace";
 
     CmdBerechnen.Location = new Point(12, 125); CmdBerechnen.Name = "CmdBerechnen"; CmdBerechnen.Size = new Size(120, 28); CmdBerechnen.Text = "Berechnen"; CmdBerechnen.Click += CmdBerechnen_Click;
     LblErgebnis.AutoSize = true; LblErgebnis.Location = new Point(12, 165); LblErgebnis.Name = "LblErgebnis"; LblErgebnis.Text = "";
@@ -45,6 +45,6 @@ partial class MathUtilsForm
   private Label LblGolden;
   private Label LblEingabe; private TextBox TxtEingabe;
   private GroupBox GrpFunktion;
-  private RadioButton RdoPrim; private RadioButton RdoFakultaet; private RadioButton RdoLinspace;
+  private RadioButton RadPrim; private RadioButton RadFakultaet; private RadioButton RadLinspace;
   private Button CmdBerechnen; private Label LblErgebnis;
 }

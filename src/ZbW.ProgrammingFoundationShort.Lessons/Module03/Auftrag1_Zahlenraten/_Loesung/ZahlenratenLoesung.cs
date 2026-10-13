@@ -30,9 +30,13 @@ public static class ZahlenratenLoesung
       versuche++;
 
       if (tipp < geheimzahl)
+      {
         Console.WriteLine("Zu klein! Versuche es nochmal.");
+      }
       else if (tipp > geheimzahl)
+      {
         Console.WriteLine("Zu gross! Versuche es nochmal.");
+      }
       else
       {
         geraten = true;

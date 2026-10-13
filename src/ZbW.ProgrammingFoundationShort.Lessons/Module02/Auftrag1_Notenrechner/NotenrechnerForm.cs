@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag1_Notenrechner;
 
 // ============================================================
-// AUFTRAG 1 – Notenrechner (⭐ Einfach | ~10 Min.)
+// AUFTRAG 1 – Notenrechner (⭐ Einfach | ~15 Min.)
 //
 // Berechne eine Note anhand von Punkten mittels if/else-Kette.
 //

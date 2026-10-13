@@ -1,15 +1,25 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag3_MediaHierarchy._Loesung;
 
-public abstract class MediaItemLoesung
+public abstract class MediaItem
 {
-  public string Title { get; set; } = "";
+  protected MediaItem(string title)
+  {
+    Title = title;
+  }
+
+  public string Title { get; }
 
   public abstract void PrintInfo();
 }
 
-public sealed class BookLoesung : MediaItemLoesung
+public class Book : MediaItem
 {
-  public string Author { get; set; } = "";
+  public Book(string title, string author) : base(title)
+  {
+    Author = author;
+  }
+
+  public string Author { get; }
 
   public override void PrintInfo()
   {
@@ -17,9 +27,14 @@ public sealed class BookLoesung : MediaItemLoesung
   }
 }
 
-public sealed class MagazineLoesung : MediaItemLoesung
+public class Magazine : MediaItem
 {
-  public int IssueNumber { get; set; }
+  public Magazine(string title, int issueNumber) : base(title)
+  {
+    IssueNumber = issueNumber;
+  }
+
+  public int IssueNumber { get; }
 
   public override void PrintInfo()
   {
@@ -27,9 +42,14 @@ public sealed class MagazineLoesung : MediaItemLoesung
   }
 }
 
-public sealed class DVDLoesung : MediaItemLoesung
+public class DVD : MediaItem
 {
-  public int LengthMinutes { get; set; }
+  public DVD(string title, int lengthMinutes) : base(title)
+  {
+    LengthMinutes = lengthMinutes;
+  }
+
+  public int LengthMinutes { get; }
 
   public override void PrintInfo()
   {
@@ -41,22 +61,24 @@ public static class MediaDemoLoesung
 {
   public static void Start()
   {
-    var media = new List<MediaItemLoesung>
+    List<MediaItem> media = new List<MediaItem>
     {
-      new BookLoesung { Title = "Clean Code", Author = "Robert C. Martin" },
-      new BookLoesung { Title = "The Pragmatic Programmer", Author = "Andrew Hunt" },
-      new MagazineLoesung { Title = "c't", IssueNumber = 12 },
-      new MagazineLoesung { Title = "dotnetpro", IssueNumber = 5 },
-      new DVDLoesung { Title = "Inception", LengthMinutes = 148 },
-      new DVDLoesung { Title = "The Matrix", LengthMinutes = 136 }
+      new Book("Clean Code", "Robert C. Martin"),
+      new Book("The Pragmatic Programmer", "Andrew Hunt"),
+      new Magazine("c't", 12),
+      new Magazine("dotnetpro", 5),
+      new DVD("Inception", 148),
+      new DVD("The Matrix", 136)
     };
 
     PrintAll(media);
   }
 
-  public static void PrintAll(List<MediaItemLoesung> items)
+  public static void PrintAll(List<MediaItem> items)
   {
-    foreach (MediaItemLoesung item in items)
+    foreach (MediaItem item in items)
+    {
       item.PrintInfo();
+    }
   }
 }

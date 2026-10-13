@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag1_BankAccount;
 
 // ============================================================
-// AUFTRAG 1 – BankAccount (⭐ Einfach | ~8 Min.)
+// AUFTRAG 1 – BankAccount (⭐ Einfach | ~15 Min.)
 //
 // Erstelle eine BankAccount-Klasse und teste sie.
 //

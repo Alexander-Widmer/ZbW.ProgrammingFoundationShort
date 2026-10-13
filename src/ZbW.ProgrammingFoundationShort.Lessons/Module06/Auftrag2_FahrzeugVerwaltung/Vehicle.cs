@@ -1,28 +1,21 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag2_FahrzeugVerwaltung;
 
 // ============================================================
-// HILFSKLASSE: Vehicle
+// KLASSE Vehicle – von dir zu schreiben
+//
+//   - Properties Make, Model (string), Year (int), Price (decimal)
+//   - Konstruktor, der alle vier Properties setzt
+//   - Property Age (nur get): DateTime.Now.Year - Year
+//   - Methode string Description(): z. B. "2020 VW Golf – 18500.00 CHF (Alter: 6 Jahre)"
 // ============================================================
 
 public class Vehicle
 {
-  public string Make { get; set; }
-  public string Model { get; set; }
-  public int Year { get; set; }
-  public decimal Price { get; set; }
+  // TODO 1: Properties Make, Model, Year, Price
 
-  public Vehicle(string make, string model, int year, decimal price)
-  {
-    Make = make;
-    Model = model;
-    Year = year;
-    Price = price;
-  }
+  // TODO 2: Konstruktor Vehicle(string make, string model, int year, decimal price)
 
-  public int Age => DateTime.Now.Year - Year;
+  // TODO 3: Property Age
 
-  public string Description()
-  {
-    return $"{Year} {Make} {Model} – {Price:F2} CHF (Alter: {Age} Jahre)";
-  }
+  // TODO 4: Methode Description()
 }

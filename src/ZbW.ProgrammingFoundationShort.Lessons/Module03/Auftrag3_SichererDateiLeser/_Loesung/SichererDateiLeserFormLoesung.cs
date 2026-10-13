@@ -14,6 +14,8 @@ public partial class SichererDateiLeserFormLoesung : Form
   private void CmdLesen_Click(object sender, EventArgs e)
   {
     LstZeilen.Items.Clear();
+    LblStatus.Text = "Lese...";
+    CmdLesen.Enabled = false;   // Doppelklick während des Lesens verhindern
 
     try
     {
@@ -42,8 +44,8 @@ public partial class SichererDateiLeserFormLoesung : Form
     }
     finally
     {
-      // finally wird immer ausgeführt
-      LblStatus.Text += " | Lesevorgang abgeschlossen.";
+      // finally wird immer ausgeführt – egal ob Erfolg oder Fehler
+      CmdLesen.Enabled = true;
     }
   }
 }

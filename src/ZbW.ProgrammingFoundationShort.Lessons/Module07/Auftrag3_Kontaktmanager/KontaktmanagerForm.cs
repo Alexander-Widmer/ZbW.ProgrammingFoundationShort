@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag3_Kontaktmanager;
 
 // ============================================================
-// AUFTRAG 3 – Kontaktmanager (⭐⭐⭐ Schwer | ~20 Min.)
+// AUFTRAG 3 – Kontaktmanager (⭐⭐⭐ Erweitert | ~30 Min.)
 //
 // Kontaktmanager mit getrennter UI, Logik und Datenklasse.
 //

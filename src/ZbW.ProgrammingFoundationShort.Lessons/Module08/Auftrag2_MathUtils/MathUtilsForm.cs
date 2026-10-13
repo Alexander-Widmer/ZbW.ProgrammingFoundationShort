@@ -1,14 +1,15 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag2_MathUtils;
 
 // ============================================================
-// AUFTRAG 2 – MathUtils (⭐⭐ Mittel | ~20 Min.)
+// AUFTRAG 2 – MathUtils (⭐⭐ Mittel | ~30 Min.)
 //
 // Nutzt die statische MathUtils-Klasse.
 //
 // Anforderungen:
-//   - MathUtils.cs: static class mit IsPrime/Factorial/GenerateLinspace
-//   - TxtEingabe + RadioButtons für Funktion
-//   - CmdBerechnen → Methode aufrufen, LblErgebnis setzen
+//   - MathUtils.cs: IsPrime, Factorial, GenerateLinspace, GoldenRatio implementieren
+//   - CmdBerechnen → Eingabe lesen, je nach RadioButton Methode aufrufen
+//   - Ergebnis in LblErgebnis anzeigen; ungültige Eingaben abfangen
+//   - Lösung: _Loesung/MathUtilsLoesung.cs + MathUtilsFormLoesung.cs
 // ============================================================
 
 public partial class MathUtilsForm : Form
@@ -24,9 +25,9 @@ public partial class MathUtilsForm : Form
     // TODO 1: Eingabe lesen (int)
 
     // TODO 2: Je nach RadioButton:
-    //         RdoPrim: MathUtils.IsPrime(n)
-    //         RdoFakultaet: MathUtils.Factorial(n)
-    //         RdoLinspace: MathUtils.GenerateLinspace(0, n, 5)
+    //         RadPrim: MathUtils.IsPrime(n)
+    //         RadFakultaet: MathUtils.Factorial(n)
+    //         RadLinspace: MathUtils.GenerateLinspace(0, n, 5)
 
     // TODO 3: Ergebnis in LblErgebnis anzeigen
   }

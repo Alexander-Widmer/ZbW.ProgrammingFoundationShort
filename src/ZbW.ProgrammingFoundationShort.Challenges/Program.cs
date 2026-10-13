@@ -37,8 +37,8 @@ internal static class Program
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module04.Aufgabe4_SortierVisualisierung.SortierVisualisierungForm());
 
     // ---- Modul 05 ----
-    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe1_Einkaufsliste.EinkaufslisteForm());
-    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe2_Woerterbuch.WoerterbuchForm());
+    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe1_Leseliste.LeselisteForm());
+    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe2_HauptstadtLexikon.HauptstadtLexikonForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe3_InventarVerwaltung.InventarVerwaltungForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module05.Aufgabe4_HaeufigkeitsAnalyse.HaeufigkeitsAnalyseForm());
 
@@ -58,11 +58,11 @@ internal static class Program
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module08.Aufgabe1_MathBibliothek.MathBibliothekForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module08.Aufgabe2_InstanceCounter.InstanceCounterForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module08.Aufgabe3_ValidierungsFramework.ValidierungsForm());
-    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module08.Aufgabe4_StatischerLogger.StatischerLoggerForm());
+    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module08.Aufgabe4_TicketSystem.TicketSystemForm());
 
     // ---- Modul 09 ----
-    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module09.Aufgabe1_TierHierarchie.TierHierarchieForm());
-    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module09.Aufgabe2_GeometrieHierarchie.GeometrieForm());
+    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module09.Aufgabe1_FahrzeugHierarchie.FahrzeugHierarchieForm());
+    // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module09.Aufgabe2_KoerperHierarchie.KoerperForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module09.Aufgabe3_MitarbeiterHierarchie.MitarbeiterForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Challenges.Module09.Aufgabe4_SpielEntities.SpielEntitiesForm());
 

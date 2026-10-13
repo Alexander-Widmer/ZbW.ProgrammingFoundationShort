@@ -21,26 +21,17 @@ public partial class WochentageAppFormLoesung : Form
 
   private void CmdAnzeigen_Click(object sender, EventArgs e)
   {
-    // Gewählten Tag auswerten (Index 0 = Montag)
-    int index = CmbWochentag.SelectedIndex;
+    string tagName = CmbWochentag.Text;
 
-    // switch expression → Tagesnummer 1–7
-    int tagNummer = index switch
+    // switch expression: Wochenende oder Werktag?
+    bool istWerktag = tagName switch
     {
-      0 => 1,
-      1 => 2,
-      2 => 3,
-      3 => 4,
-      4 => 5,
-      5 => 6,
-      6 => 7,
-      _ => 0
+      "Samstag" or "Sonntag" => false,
+      _ => true
     };
 
-    // Ternärer Operator: Werktag oder Wochenende
-    string typ = (tagNummer <= 5) ? "Werktag" : "Wochenende";
-
-    string tagName = CmbWochentag.SelectedItem?.ToString() ?? "";
-    LblErgebnis.Text = $"{tagName} ist Tag {tagNummer} der Woche ({typ}).";
+    // Ternärer Operator für den Ausgabetext
+    string typ = istWerktag ? "Werktag" : "Wochenende";
+    LblErgebnis.Text = $"{tagName} ist ein {typ}.";
   }
 }

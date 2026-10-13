@@ -5,7 +5,7 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag3_Kontaktmanage
 /// </summary>
 public partial class KontaktmanagerFormLoesung : Form
 {
-  private readonly ContactManager _contactManager = new();
+  private readonly ContactManagerLoesung _contactManager = new();
 
   public KontaktmanagerFormLoesung()
   {
@@ -14,7 +14,7 @@ public partial class KontaktmanagerFormLoesung : Form
 
   private void CmdHinzufuegen_Click(object sender, EventArgs e)
   {
-    var kontakt = new PersonKontakt
+    var kontakt = new PersonKontaktLoesung
     {
       FirstName = TxtFirstName.Text.Trim(),
       LastName = TxtLastName.Text.Trim(),
@@ -50,7 +50,7 @@ public partial class KontaktmanagerFormLoesung : Form
   private void AktualisiereListBox()
   {
     LstKontakte.Items.Clear();
-    foreach (PersonKontakt kontakt in _contactManager.GetAll())
+    foreach (PersonKontaktLoesung kontakt in _contactManager.GetAll())
     {
       LstKontakte.Items.Add(kontakt.ToString());
     }

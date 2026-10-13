@@ -17,7 +17,9 @@ public static class StatistikRechnerLoesung
     {
       Console.Write($"  Zahl {i + 1}: ");
       while (!int.TryParse(Console.ReadLine(), out zahlen[i]))
+      {
         Console.Write("  Ungültig. Nochmal: ");
+      }
     }
 
     Console.WriteLine($"\nMinimum:     {Minimum(zahlen)}");
@@ -29,8 +31,13 @@ public static class StatistikRechnerLoesung
   {
     int min = zahlen[0];
     for (int i = 1; i < zahlen.Length; i++)
+    {
       if (zahlen[i] < min)
+      {
         min = zahlen[i];
+      }
+    }
+
     return min;
   }
 
@@ -38,8 +45,13 @@ public static class StatistikRechnerLoesung
   {
     int max = zahlen[0];
     for (int i = 1; i < zahlen.Length; i++)
+    {
       if (zahlen[i] > max)
+      {
         max = zahlen[i];
+      }
+    }
+
     return max;
   }
 
@@ -47,7 +59,10 @@ public static class StatistikRechnerLoesung
   {
     int summe = 0;
     for (int i = 0; i < zahlen.Length; i++)
+    {
       summe += zahlen[i];
+    }
+
     return (double)summe / zahlen.Length;
   }
 }

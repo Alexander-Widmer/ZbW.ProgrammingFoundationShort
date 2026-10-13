@@ -33,7 +33,7 @@ public partial class EinkaufslisteForm : Form
   private void CmdEntfernen_Click(object sender, EventArgs e)
   {
     // TODO 6: SelectedIndex prüfen (>= 0)
-    // TODO 7: _artikel.Remove(LstArtikel.SelectedItem.ToString())
+    // TODO 7: _artikel.RemoveAt(LstArtikel.SelectedIndex)  – Index statt Text (Duplikate!)
     // TODO 8: ListBox aktualisieren
   }
 

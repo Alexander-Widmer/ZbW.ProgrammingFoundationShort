@@ -11,9 +11,14 @@ public class BankAccountLoesung
   public BankAccountLoesung(string owner, decimal initialBalance = 0)
   {
     if (string.IsNullOrWhiteSpace(owner))
+    {
       throw new ArgumentException("Kontoinhaber darf nicht leer sein.");
+    }
+
     if (initialBalance < 0)
+    {
       throw new ArgumentException("Startguthaben darf nicht negativ sein.");
+    }
 
     Owner = owner.Trim();
     Balance = initialBalance;
@@ -22,16 +27,24 @@ public class BankAccountLoesung
   public void Deposit(decimal amount)
   {
     if (amount <= 0)
+    {
       throw new ArgumentException("Einzahlbetrag muss positiv sein.");
+    }
+
     Balance += amount;
   }
 
   public bool Withdraw(decimal amount)
   {
     if (amount <= 0)
+    {
       throw new ArgumentException("Abhebebetrag muss positiv sein.");
+    }
+
     if (amount > Balance)
+    {
       return false;
+    }
 
     Balance -= amount;
     return true;

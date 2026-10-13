@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag2_WoerterbuchApp;
 
 // ============================================================
-// AUFTRAG 2 – WoerterbuchApp (⭐⭐ Mittel | ~15 Min.)
+// AUFTRAG 2 – WoerterbuchApp (⭐⭐ Mittel | ~30 Min.)
 //
 // Übersetzungs-App mit Dictionary<string,string>.
 //

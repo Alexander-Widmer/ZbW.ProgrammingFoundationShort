@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag2_EqualsUeberschreiben;
 
 /// <summary>
-///   Lösung: == vs .Equals() Demo und HashSet.
+///   Lösung: == vs .Equals() Demo und Contains.
 /// </summary>
 public static class ProductEqualsDemoLoesung
 {
@@ -21,8 +21,8 @@ public static class ProductEqualsDemoLoesung
     Console.WriteLine($"p1.Equals(p2): {p1.Equals(p2)}"); // true (gleiche Artikelnummer)
     Console.WriteLine($"p1.Equals(p3): {p1.Equals(p3)}"); // false
 
-    // HashSet verwendet GetHashCode + Equals
-    var set = new HashSet<ProductEqualsLoesung> { p1, p2, p3 };
-    Console.WriteLine($"\nHashSet-Grösse (erwarte 2): {set.Count}");
+    // Contains nutzt das überschriebene Equals
+    List<ProductEqualsLoesung> lager = new List<ProductEqualsLoesung> { p1, p3 };
+    Console.WriteLine($"\nLager enthält Artikel wie p2 (A001)? {lager.Contains(p2)}"); // true
   }
 }

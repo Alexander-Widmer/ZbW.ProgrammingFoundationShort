@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag3_RabattKalkulator;
 
 // ============================================================
-// AUFTRAG 3 – RabattKalkulator (⭐⭐ Mittel | ~15 Min.)
+// AUFTRAG 3 – RabattKalkulator (⭐⭐⭐ Erweitert | ~30 Min.)
 //
 // Berechne einen Rabatt anhand von Kundentyp und Lehrling-Status.
 //
@@ -25,7 +25,7 @@ public partial class RabattKalkulatorForm : Form
     //         Bei ungültiger Eingabe: MessageBox anzeigen und return
 
     // TODO 2: Rabatt aus RadioButton ermitteln
-    //         RdoNormal = 0%, RdoPremium = 10%, RdoVip = 20%
+    //         RadNormal = 0%, RadPremium = 10%, RadVip = 20%
 
     // TODO 3: Wenn ChkLehrling.Checked → Rabatt += 5
 

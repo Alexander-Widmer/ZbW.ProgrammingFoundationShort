@@ -26,7 +26,7 @@ public static class DatenstrukturWahlLoesung
     Stack<string> history = new Stack<string>();
     history.Push("start.ch");
     history.Push("lernen.zbw.ch");
-    history.Push("github.com");
+    history.Push("github.com"); // aktuelle Seite liegt zuoberst
     return history;
   }
 
@@ -36,8 +36,10 @@ public static class DatenstrukturWahlLoesung
     Dictionary<string, string> phoneBook = CreatePhoneBook();
     Stack<string> history = CreateBackHistory();
 
+    history.Pop(); // aktuelle Seite (github.com) verlassen
+
     return $"Aufgaben: {string.Join(", ", todos)}{Environment.NewLine}" +
            $"Ana: {phoneBook["Ana"]}{Environment.NewLine}" +
-           $"Zurück zu: {history.Pop()}";
+           $"Zurück zu: {history.Peek()}"; // lernen.zbw.ch
   }
 }

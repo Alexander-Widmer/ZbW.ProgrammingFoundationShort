@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag3_FilmarchivAuswertung;
 
 // ============================================================
-// AUFTRAG 3 – FilmarchivAuswertung (⭐⭐⭐ Erweitert | ~15 Min.)
+// AUFTRAG 3 – FilmarchivAuswertung (⭐⭐⭐ Erweitert | ~30 Min.)
 //
 // Wertet ein Filmarchiv mit Dictionary, foreach und if aus.
 // LINQ ist nur Bonus und wird hier nicht vorausgesetzt.

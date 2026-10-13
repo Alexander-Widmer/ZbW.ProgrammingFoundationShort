@@ -12,7 +12,7 @@ public static class StatischerZaehlerDemoLoesung
     var u3 = new UserLoesung("Carla");
 
     Console.WriteLine($"Erstellte User: {UserLoesung.UserCount}"); // 3
-    Console.WriteLine($"u1: {u1.Name}, u2: {u2.Name}, u3: {u3.Name}");
+    Console.WriteLine($"u1: {u1.Name} (Id {u1.Id}), u2: {u2.Name} (Id {u2.Id}), u3: {u3.Name} (Id {u3.Id})");
     Console.WriteLine("→ UserCount ist statisch: gehört zur Klasse, nicht zum Objekt");
   }
 }

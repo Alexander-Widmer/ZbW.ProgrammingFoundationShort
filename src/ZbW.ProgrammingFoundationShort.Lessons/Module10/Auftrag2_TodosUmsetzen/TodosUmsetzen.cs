@@ -13,7 +13,7 @@ public static class TodosUmsetzen
 
   public static string RunDemo()
   {
-    int[] testValues = { -5, 50, 60, 85, 120 };
+    int[] testValues = { -5, 0, 50, 59, 60, 79, 80, 85, 100, 101, 120 }; // inkl. Grenzwerte
     List<string> lines = new List<string>();
 
     foreach (int points in testValues)

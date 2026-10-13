@@ -5,7 +5,7 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag2_FahrzeugVerwa
 /// </summary>
 public partial class FahrzeugVerwaltungFormLoesung : Form
 {
-  private readonly List<Vehicle> _fahrzeuge = new();
+  private readonly List<VehicleLoesung> _fahrzeuge = new();
 
   public FahrzeugVerwaltungFormLoesung()
   {
@@ -28,7 +28,7 @@ public partial class FahrzeugVerwaltungFormLoesung : Form
       return;
     }
 
-    var fahrzeug = new Vehicle(TxtMake.Text.Trim(), TxtModel.Text.Trim(), year, price);
+    var fahrzeug = new VehicleLoesung(TxtMake.Text.Trim(), TxtModel.Text.Trim(), year, price);
 
     _fahrzeuge.Add(fahrzeug);
     AktualisiereListBox();
@@ -45,10 +45,14 @@ public partial class FahrzeugVerwaltungFormLoesung : Form
       return;
     }
 
-    Vehicle guenstigstes = _fahrzeuge[0];
+    VehicleLoesung guenstigstes = _fahrzeuge[0];
     for (int i = 1; i < _fahrzeuge.Count; i++)
+    {
       if (_fahrzeuge[i].Price < guenstigstes.Price)
+      {
         guenstigstes = _fahrzeuge[i];
+      }
+    }
 
     LblErgebnis.Text = $"Günstigstes: {guenstigstes.Description()}";
   }
@@ -57,6 +61,8 @@ public partial class FahrzeugVerwaltungFormLoesung : Form
   {
     LstFahrzeuge.Items.Clear();
     foreach (var f in _fahrzeuge)
+    {
       LstFahrzeuge.Items.Add(f.Description());
+    }
   }
 }

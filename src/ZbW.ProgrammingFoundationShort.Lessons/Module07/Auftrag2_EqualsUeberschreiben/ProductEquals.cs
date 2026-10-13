@@ -25,7 +25,7 @@ public class ProductEquals
 
   public override string ToString()
   {
-    // TODO: $"[{ArticleNumber}] {Name} – {Price:C}"
+    // TODO: $"[{ArticleNumber}] {Name} – {Price:F2} CHF"
     throw new NotImplementedException("TODO: ToString implementieren");
   }
 }

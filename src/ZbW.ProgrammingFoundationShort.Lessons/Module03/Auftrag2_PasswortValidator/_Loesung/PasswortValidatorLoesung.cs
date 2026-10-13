@@ -2,7 +2,7 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag2_PasswortValid
 
 /// <summary>
 ///   Lösung: Auftrag 2 – PasswortValidator
-///   do-while-Schleife mit LINQ-Validierung.
+///   do-while-Schleife, Ziffernsuche mit foreach.
 /// </summary>
 public static class PasswortValidatorLoesung
 {
@@ -10,27 +10,40 @@ public static class PasswortValidatorLoesung
   {
     Console.WriteLine("=== Passwort-Validator ===");
     string passwort;
+    bool gueltig;
 
     do
     {
       Console.Write("Passwort eingeben: ");
       passwort = Console.ReadLine() ?? "";
 
-      if (!Pruefen(passwort))
+      bool hatZiffer = false;
+      foreach (char zeichen in passwort)
+      {
+        if (char.IsDigit(zeichen))
+        {
+          hatZiffer = true;
+          break;
+        }
+      }
+
+      gueltig = passwort.Length >= 8 && hatZiffer;
+
+      if (!gueltig)
       {
         Console.WriteLine("Ungültiges Passwort!");
         if (passwort.Length < 8)
+        {
           Console.WriteLine("  - Mindestens 8 Zeichen erforderlich.");
-        if (!passwort.Any(char.IsDigit))
+        }
+
+        if (!hatZiffer)
+        {
           Console.WriteLine("  - Mindestens eine Ziffer erforderlich.");
+        }
       }
-    } while (!Pruefen(passwort));
+    } while (!gueltig);
 
-    Console.WriteLine($"Passwort '{passwort}' ist gültig!");
-  }
-
-  public static bool Pruefen(string passwort)
-  {
-    return passwort.Length >= 8 && passwort.Any(char.IsDigit);
+    Console.WriteLine("Passwort ist gültig!");
   }
 }

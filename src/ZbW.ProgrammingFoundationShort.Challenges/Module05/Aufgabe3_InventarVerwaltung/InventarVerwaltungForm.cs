@@ -12,14 +12,12 @@ public partial class InventarVerwaltungForm : Form
   {
     InitializeComponent();
 
-    LstInventar.DrawMode = DrawMode.OwnerDrawFixed;
-    LstInventar.DrawItem += LstInventar_DrawItem;
-
     _inventar["Äpfel"] = 50;
     _inventar["Bananen"] = 30;
     _inventar["Orangen"] = 20;
     _inventar["Trauben"] = 15;
     _inventar["Mangos"] = 10;
+    _inventar["Kiwis"] = 0;
 
     AktualisiereListBox();
   }
@@ -35,9 +33,13 @@ public partial class InventarVerwaltungForm : Form
     }
 
     if (_inventar.ContainsKey(artikel))
+    {
       _inventar[artikel] += menge;
+    }
     else
+    {
       _inventar[artikel] = menge;
+    }
 
     AktualisiereListBox();
     TxtArtikel.Clear();
@@ -71,9 +73,13 @@ public partial class InventarVerwaltungForm : Form
   {
     string artikel = TxtArtikel.Text.Trim();
     if (_inventar.TryGetValue(artikel, out int menge))
+    {
       LblGesamt.Text = $"Lagerbestand \"{artikel}\": {menge} Stück";
+    }
     else
+    {
       LblGesamt.Text = $"\"{artikel}\" nicht im Lager.";
+    }
   }
 
   private void CmdAlleAnzeigen_Click(object sender, EventArgs e)
@@ -85,41 +91,24 @@ public partial class InventarVerwaltungForm : Form
   {
     LstInventar.Items.Clear();
     int gesamt = 0;
-    foreach (var kvp in _inventar)
+    string ausverkauft = "";
+
+    foreach (KeyValuePair<string, int> eintrag in _inventar)
     {
-      LstInventar.Items.Add(new InventoryListItem(kvp.Key, kvp.Value));
-      gesamt += kvp.Value;
+      string zeile = $"{eintrag.Key}: {eintrag.Value} Stück";
+      if (eintrag.Value == 0)
+      {
+        zeile += " (ausverkauft)";
+        ausverkauft += eintrag.Key + " ";
+      }
+
+      LstInventar.Items.Add(zeile);
+      gesamt += eintrag.Value;
     }
+
     LblGesamt.Text = $"Gesamtbestand: {gesamt} Stück ({_inventar.Count} Artikel)";
-  }
 
-  private void LstInventar_DrawItem(object? sender, DrawItemEventArgs e)
-  {
-    if (e.Index < 0) return;
-
-    e.DrawBackground();
-    var item = (InventoryListItem)LstInventar.Items[e.Index];
-    Color color = item.Quantity == 0 ? Color.Red : e.ForeColor;
-
-    using var brush = new SolidBrush(color);
-    e.Graphics.DrawString(item.ToString(), e.Font ?? Font, brush, e.Bounds);
-    e.DrawFocusRectangle();
-  }
-
-  private sealed class InventoryListItem
-  {
-    public InventoryListItem(string article, int quantity)
-    {
-      Article = article;
-      Quantity = quantity;
-    }
-
-    public string Article { get; }
-    public int Quantity { get; }
-
-    public override string ToString()
-    {
-      return $"{Article,-20} {Quantity,6} Stück";
-    }
+    // Eine ListBox kann einzelne Zeilen nicht einfach einfärben → separates rotes Label
+    LblAusverkauft.Text = ausverkauft == "" ? "" : "Ausverkauft: " + ausverkauft;
   }
 }

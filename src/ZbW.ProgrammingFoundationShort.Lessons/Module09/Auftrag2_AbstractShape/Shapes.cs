@@ -1,70 +1,36 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag2_AbstractShape;
 
+// ============================================================
+// AUFTRAG 2 – Abstract Shape (⭐⭐ Mittel | ~30 Min.)
+//
+// Anforderungen:
+//   - abstract class Shape: Property Color
+//     protected Konstruktor Shape(string color) – nur Subklassen dürfen ihn aufrufen
+//     abstract double Area(), abstract double Perimeter()
+//     virtual string Describe() → "Circle, Rot: Fläche 78.54, Umfang 31.42" (GetType().Name)
+//   - Circle(radius, color), Rectangle(width, height, color),
+//     Triangle(a, b, c, color) – Fläche mit der Heron-Formel
+//     jeder Konstruktor ruft base(color) auf
+//   - Start(): List<Shape> mit je 2 Formen, alle beschreiben, Gesamtfläche ausgeben
+// ============================================================
+
 public abstract class Shape
 {
-  public string Color { get; set; } = "";
+  // TODO 1: Property Color und protected Konstruktor Shape(string color)
 
-  public abstract double Area();
+  // TODO 2: abstract double Area() und abstract double Perimeter()
 
-  public abstract double Perimeter();
-
-  public virtual string Describe()
-  {
-    // TODO: Farbe, Fläche und Umfang ausgeben.
-    return "";
-  }
+  // TODO 3: virtual string Describe()
 }
 
-public sealed class Circle : Shape
+// TODO 4: Klassen Circle, Rectangle und Triangle (: Shape)
+
+public static class ShapeDemo
 {
-  public double Radius { get; set; }
-
-  public override double Area()
+  public static void Start()
   {
-    // TODO: Kreisfläche berechnen.
-    return 0;
-  }
-
-  public override double Perimeter()
-  {
-    // TODO: Kreisumfang berechnen.
-    return 0;
-  }
-}
-
-public sealed class Rectangle : Shape
-{
-  public double Width { get; set; }
-  public double Height { get; set; }
-
-  public override double Area()
-  {
-    // TODO: Rechteckfläche berechnen.
-    return 0;
-  }
-
-  public override double Perimeter()
-  {
-    // TODO: Rechteckumfang berechnen.
-    return 0;
-  }
-}
-
-public sealed class Triangle : Shape
-{
-  public double A { get; set; }
-  public double B { get; set; }
-  public double C { get; set; }
-
-  public override double Area()
-  {
-    // TODO: Heron-Formel verwenden.
-    return 0;
-  }
-
-  public override double Perimeter()
-  {
-    // TODO: Umfang berechnen.
-    return 0;
+    // TODO 5: List<Shape> mit je 2 Kreisen, Rechtecken und Dreiecken
+    // TODO 6: foreach: Describe() ausgeben und Fläche aufsummieren
+    // TODO 7: Gesamtfläche ausgeben
   }
 }

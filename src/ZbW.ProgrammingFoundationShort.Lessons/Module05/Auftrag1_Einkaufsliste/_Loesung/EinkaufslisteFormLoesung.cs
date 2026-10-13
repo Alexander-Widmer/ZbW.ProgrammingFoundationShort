@@ -37,8 +37,8 @@ public partial class EinkaufslisteFormLoesung : Form
       return;
     }
 
-    string ausgewaehlt = LstArtikel.SelectedItem?.ToString() ?? "";
-    _artikel.Remove(ausgewaehlt);
+    // Über den Index löschen: bei doppelten Einträgen wird genau der ausgewählte entfernt
+    _artikel.RemoveAt(LstArtikel.SelectedIndex);
     AktualisiereListBox();
   }
 
@@ -52,7 +52,10 @@ public partial class EinkaufslisteFormLoesung : Form
   {
     LstArtikel.Items.Clear();
     foreach (string a in _artikel)
+    {
       LstArtikel.Items.Add(a);
+    }
+
     LblAnzahl.Text = $"Artikel: {_artikel.Count}";
   }
 }

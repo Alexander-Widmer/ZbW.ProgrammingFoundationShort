@@ -4,8 +4,8 @@
 
 | # | Name                | Typ      | Schwierigkeit |
 |---|---------------------|----------|---------------|
-| 1 | Einkaufsliste       | WinForms | Einfach       |
-| 2 | Woerterbuch         | WinForms | Mittel        |
+| 1 | Leseliste           | WinForms | Einfach       |
+| 2 | HauptstadtLexikon   | WinForms | Mittel        |
 | 3 | InventarVerwaltung  | WinForms | Schwer        |
 | 4 | HaeufigkeitsAnalyse | WinForms | Bonus         |
 

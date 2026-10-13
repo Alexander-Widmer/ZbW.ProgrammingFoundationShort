@@ -7,11 +7,14 @@ public class UserLoesung
 
   public static int UserCount => _userCount;
 
+  public int Id { get; }
+
   public string Name { get; set; }
 
   public UserLoesung(string name)
   {
     _userCount++;
+    Id = _userCount;
     Name = name;
   }
 }

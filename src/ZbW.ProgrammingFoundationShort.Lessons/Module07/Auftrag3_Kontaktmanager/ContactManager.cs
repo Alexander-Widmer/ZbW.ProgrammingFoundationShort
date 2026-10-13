@@ -7,28 +7,20 @@ public class ContactManager
 
   public bool Add(PersonKontakt kontakt)
   {
-    if (_kontakte.Contains(kontakt))
-    {
-      return false;
-    }
-
-    _kontakte.Add(kontakt);
-    return true;
+    // TODO 4: Duplikat prüfen (Contains nutzt dein Equals!) → false zurückgeben
+    //         sonst hinzufügen und true zurückgeben
+    return false;
   }
 
   public bool RemoveAt(int index)
   {
-    if (index < 0 || index >= _kontakte.Count)
-    {
-      return false;
-    }
-
-    _kontakte.RemoveAt(index);
-    return true;
+    // TODO 5: ungültigen Index abfangen (false), sonst entfernen (true)
+    return false;
   }
 
   public List<PersonKontakt> GetAll()
   {
-    return new List<PersonKontakt>(_kontakte);
+    // TODO 6: Kopie der Liste zurückgeben, damit niemand die interne Liste verändert
+    return new List<PersonKontakt>();
   }
 }

@@ -13,3 +13,7 @@ max_line_length = 180
 csharp_style_var_for_built_in_types = false:suggestion
 csharp_style_var_when_type_is_apparent = false:suggestion
 csharp_style_var_elsewhere = false:suggestion
+
+# Kursregel: geschweifte Klammern immer setzen (auch bei einzeiligen if/for/foreach/while)
+csharp_prefer_braces = true:warning
+dotnet_diagnostic.IDE0011.severity = warning

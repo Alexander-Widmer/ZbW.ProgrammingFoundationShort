@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag3_MatrixMultiplikation;
 
 // ============================================================
-// AUFTRAG 3 – MatrixMultiplikation (⭐⭐⭐ Schwer | ~20 Min.)
+// AUFTRAG 3 – MatrixMultiplikation (⭐⭐⭐ Erweitert | ~30 Min.)
 //
 // Multipliziert zwei 2×2-Matrizen.
 //

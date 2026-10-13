@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag3_SichererDateiLeser;
 
 // ============================================================
-// AUFTRAG 3 – SichererDateiLeser (⭐⭐ Mittel | ~15 Min.)
+// AUFTRAG 3 – SichererDateiLeser (⭐⭐⭐ Erweitert | ~30 Min.)
 //
 // Liest eine Datei mit try-catch-finally ab und zeigt Zeilen an.
 //
@@ -10,7 +10,7 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag3_SichererDatei
 //   - try: File.ReadAllLines, for-Schleife mit Zeilennummer
 //   - catch FileNotFoundException: eigene Meldung
 //   - catch Exception: allgemeiner Fehler
-//   - finally: LblStatus immer setzen
+//   - vor dem Lesen CmdLesen deaktivieren, im finally wieder aktivieren
 // ============================================================
 
 public partial class SichererDateiLeserForm : Form
@@ -36,7 +36,7 @@ public partial class SichererDateiLeserForm : Form
     // TODO 4: catch (Exception ex):
     //         MessageBox mit allgemeiner Fehlermeldung
 
-    // TODO 5: finally:
-    //         LblStatus.Text = "Lesevorgang abgeschlossen."
+    // TODO 5: finally (läuft immer):
+    //         CmdLesen.Enabled = true;
   }
 }

@@ -2,7 +2,7 @@ namespace ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag2_NotenVerwaltu
 
 /// <summary>
 ///   Lösung: Auftrag 2 – Noten-Verwaltung
-///   Arrays und Methoden für Notenverwaltung.
+///   Array mit Zähler, Statistikmethoden mit Parametern, sortierte Anzeige.
 /// </summary>
 public partial class NotenVerwaltungFormLoesung : Form
 {
@@ -23,50 +23,77 @@ public partial class NotenVerwaltungFormLoesung : Form
       return;
     }
 
-    // Note eintragen
-    _noten[_anzahl++] = note;
+    _noten[_anzahl] = note;
+    _anzahl++;
     TxtNote.Clear();
 
-    // Anzeige aktualisieren
-    AktualisiereLblNoten();
+    if (_anzahl == _noten.Length)
+    {
+      CmdHinzufuegen.Enabled = false; // Array ist voll
+    }
 
-    // Button deaktivieren wenn Array voll
-    if (_anzahl >= _noten.Length)
-      CmdHinzufuegen.Enabled = false;
+    AktualisiereAnzeige();
   }
 
-  private void AktualisiereLblNoten()
+  private void AktualisiereAnzeige()
   {
-    var notenText = new System.Text.StringBuilder();
-    for (int i = 0; i < _anzahl; i++)
-      notenText.Append($"{_noten[i]:F1}  ");
-    LblNoten.Text = notenText.ToString();
+    // Nur die belegten Plätze kopieren und sortieren – das Original bleibt unverändert
+    double[] sortiert = new double[_anzahl];
+    Array.Copy(_noten, sortiert, _anzahl);
+    Array.Sort(sortiert);
 
-    LblStats.Text = $"Durchschnitt: {GetAverage():F2}  |  " +
-                    $"Beste: {GetBest():F1}  |  Schlechteste: {GetWorst():F1}";
+    string text = "";
+    for (int i = 0; i < sortiert.Length; i++)
+    {
+      if (i > 0)
+      {
+        text += ", ";
+      }
+
+      text += sortiert[i].ToString("F1");
+    }
+
+    LblNoten.Text = text;
+    LblStats.Text = $"Durchschnitt: {Average(_noten, _anzahl):F2}  |  " +
+                    $"Beste: {Best(_noten, _anzahl):F1}  |  Schlechteste: {Worst(_noten, _anzahl):F1}";
   }
 
-  private double GetAverage()
+  private double Average(double[] noten, int anzahl)
   {
     double summe = 0;
-    for (int i = 0; i < _anzahl; i++)
-      summe += _noten[i];
-    return summe / _anzahl;
+    for (int i = 0; i < anzahl; i++)
+    {
+      summe += noten[i];
+    }
+
+    return summe / anzahl;
   }
 
-  private double GetBest()
+  private double Best(double[] noten, int anzahl)
   {
-    double best = _noten[0];
-    for (int i = 1; i < _anzahl; i++)
-      if (_noten[i] > best) best = _noten[i];
+    double best = noten[0];
+    for (int i = 1; i < anzahl; i++)
+    {
+      if (noten[i] > best)
+      {
+        best = noten[i];
+      }
+    }
+
     return best;
   }
 
-  private double GetWorst()
+  private double Worst(double[] noten, int anzahl)
   {
-    double worst = _noten[0];
-    for (int i = 1; i < _anzahl; i++)
-      if (_noten[i] < worst) worst = _noten[i];
+    double worst = noten[0];
+    for (int i = 1; i < anzahl; i++)
+    {
+      if (noten[i] < worst)
+      {
+        worst = noten[i];
+      }
+    }
+
     return worst;
   }
 }

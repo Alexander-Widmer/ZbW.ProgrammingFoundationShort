@@ -24,44 +24,44 @@ internal static class Program
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module02.Auftrag3_RabattKalkulator.RabattKalkulatorForm());
 
     // ---- Modul 03 ----
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag1_Zahlenraten.Zahlenraten.RunDemo());
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag2_PasswortValidator.PasswortValidator.Validate("Passwort1!"));
+    // ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag1_Zahlenraten.Zahlenraten.Start();
+    // ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag2_PasswortValidator.PasswortValidator.Start();
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module03.Auftrag3_SichererDateiLeser.SichererDateiLeserForm());
 
     // ---- Modul 04 ----
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag1_StatistikRechner.StatistikRechner.RunDemo());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag1_StatistikRechner.StatistikRechner.Start();
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag2_NotenVerwaltung.NotenVerwaltungForm());
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag3_MatrixMultiplikation.MatrixRechner.RunDemo());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module04.Auftrag3_MatrixMultiplikation.MatrixRechner.Start();
 
     // ---- Modul 05 ----
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag1_Einkaufsliste.EinkaufslisteForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag2_WoerterbuchApp.WoerterbuchAppForm());
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag3_FilmarchivAuswertung.FilmarchivAuswertung.RunDemo());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module05.Auftrag3_FilmarchivAuswertung.FilmarchivAuswertung.Start();
 
     // ---- Modul 06 ----
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag1_BankAccount.BankAccountDemo.RunDemo());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag1_BankAccount.BankAccountDemo.Start();
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag2_FahrzeugVerwaltung.FahrzeugVerwaltungForm());
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag3_ValidierteProperties.PersonDemo.RunDemo());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module06.Auftrag3_ValidierteProperties.PersonDemo.Start();
 
     // ---- Modul 07 ----
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag1_ReferenzExperiment.ReferenzExperimentDemo.RunDemo());
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag2_EqualsUeberschreiben.ProductEqualsDemo.RunDemo());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag1_ReferenzExperiment.ReferenzExperimentDemo.Start();
+    // ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag2_EqualsUeberschreiben.ProductEqualsDemo.Start();
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module07.Auftrag3_Kontaktmanager.KontaktmanagerForm());
 
     // ---- Modul 08 ----
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag1_StatischerZaehler.StatischerZaehlerDemo.RunDemo());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag1_StatischerZaehler.StatischerZaehlerDemo.Start();
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag2_MathUtils.MathUtilsForm());
     // Application.Run(new ZbW.ProgrammingFoundationShort.Lessons.Module08.Auftrag3_TrafficLightLogger.TrafficLightForm());
 
     // ---- Modul 09 ----
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag1_AnimalHierarchy.AnimalHierarchy.RunDemo());
-    // Console.WriteLine(new ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag2_AbstractShape.Circle { Color = "Rot", Radius = 5 }.Describe());
+    // ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag1_AnimalHierarchy.AnimalHierarchy.Start();
+    // ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag2_AbstractShape.ShapeDemo.Start();
     // ZbW.ProgrammingFoundationShort.Lessons.Module09.Auftrag3_MediaHierarchy.MediaDemo.Start();
 
     // ---- Modul 10 ----
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module10.Auftrag1_AblaufPlanen.AblaufPlanen.BuildFlowchart());
+    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module10.Auftrag1_AblaufPlanen.AblaufPlanen.EvaluatePointsDraft(85));
     // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module10.Auftrag2_TodosUmsetzen.TodosUmsetzen.RunDemo());
-    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module10.Auftrag3_DatenstrukturWahl._Loesung.DatenstrukturWahlLoesung.RunDemo());
+    // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module10.Auftrag3_DatenstrukturWahl.DatenstrukturWahl.RunDemo());
 
     // ---- Modul 11 ----
     // Console.WriteLine(ZbW.ProgrammingFoundationShort.Lessons.Module11.Auftrag1_IterationRekursion._Loesung.IterationRekursionLoesung.RunDemo());

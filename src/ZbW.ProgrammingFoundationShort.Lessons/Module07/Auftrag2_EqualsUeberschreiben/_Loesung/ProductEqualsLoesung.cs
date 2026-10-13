@@ -12,11 +12,14 @@ public class ProductEqualsLoesung
   public override bool Equals(object? obj)
   {
     if (obj is ProductEqualsLoesung other)
+    {
       return ArticleNumber == other.ArticleNumber;
+    }
+
     return false;
   }
 
   public override int GetHashCode() => ArticleNumber.GetHashCode();
 
-  public override string ToString() => $"[{ArticleNumber}] {Name} – {Price:C}";
+  public override string ToString() => $"[{ArticleNumber}] {Name} – {Price:F2} CHF";
 }
