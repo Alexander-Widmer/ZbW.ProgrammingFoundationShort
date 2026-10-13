@@ -19,7 +19,8 @@ public class Student
 
   public void AddNote(double note)
   {
-    if (note < 1.0 || note > 6.0)
+    // IsNaN: NaN ist weder < 1.0 noch > 6.0 und würde sonst durchrutschen
+    if (double.IsNaN(note) || note < 1.0 || note > 6.0)
     {
       throw new ArgumentOutOfRangeException(nameof(note), "Note muss zwischen 1.0 und 6.0 liegen.");
     }

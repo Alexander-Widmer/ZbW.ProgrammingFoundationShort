@@ -14,7 +14,8 @@ public partial class RabattKalkulatorFormLoesung : Form
   private void CmdBerechnen_Click(object sender, EventArgs e)
   {
     // Betrag validieren
-    if (!double.TryParse(TxtBetrag.Text, out double betrag) || betrag <= 0)
+    // decimal für Geldbeträge (Block 01); 0 CHF ist kein sinnvoller Einkauf
+    if (!decimal.TryParse(TxtBetrag.Text, out decimal betrag) || betrag <= 0)
     {
       MessageBox.Show("Bitte einen gültigen positiven Betrag eingeben.",
         "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -38,12 +39,13 @@ public partial class RabattKalkulatorFormLoesung : Form
       rabatt += 5;
     }
 
-    // Endpreis berechnen
-    double endpreis = betrag * (1 - rabatt / 100.0);
+    // Rabatt in CHF und Endbetrag berechnen
+    decimal rabattBetrag = betrag * rabatt / 100m;
+    decimal endbetrag = betrag - rabattBetrag;
 
-    // Ergebnis anzeigen
-    LblErgebnis.Text = $"Betrag: {betrag:F2} CHF\r\n" +
-                       $"Rabatt: {rabatt}%\r\n" +
-                       $"Endpreis: {endpreis:F2} CHF";
+    // Ergebnis anzeigen: Originalbetrag, Rabatt in CHF, Endbetrag
+    LblErgebnis.Text = $"Originalbetrag: {betrag:F2} CHF\r\n" +
+                       $"Rabatt: {rabattBetrag:F2} CHF ({rabatt}%)\r\n" +
+                       $"Endbetrag: {endbetrag:F2} CHF";
   }
 }

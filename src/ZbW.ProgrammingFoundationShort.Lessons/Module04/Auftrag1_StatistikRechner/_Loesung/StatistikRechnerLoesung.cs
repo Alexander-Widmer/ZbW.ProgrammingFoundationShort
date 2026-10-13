@@ -57,7 +57,8 @@ public static class StatistikRechnerLoesung
 
   public static double Average(int[] zahlen)
   {
-    int summe = 0;
+    // long statt int: fünf grosse int-Werte würden in einer int-Summe überlaufen
+    long summe = 0;
     for (int i = 0; i < zahlen.Length; i++)
     {
       summe += zahlen[i];

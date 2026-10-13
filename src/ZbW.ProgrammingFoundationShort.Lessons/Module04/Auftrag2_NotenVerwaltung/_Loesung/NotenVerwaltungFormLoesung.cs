@@ -16,7 +16,7 @@ public partial class NotenVerwaltungFormLoesung : Form
 
   private void CmdHinzufuegen_Click(object sender, EventArgs e)
   {
-    if (!double.TryParse(TxtNote.Text, out double note) || note < 1.0 || note > 6.0)
+    if (!double.TryParse(TxtNote.Text, out double note) || double.IsNaN(note) || note < 1.0 || note > 6.0)
     {
       MessageBox.Show("Bitte eine gültige Note zwischen 1.0 und 6.0 eingeben.",
         "Ungültige Note", MessageBoxButtons.OK, MessageBoxIcon.Warning);

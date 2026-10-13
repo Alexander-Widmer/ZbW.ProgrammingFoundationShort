@@ -5,7 +5,17 @@ public class ShoppingCart
 {
   private readonly List<Product> _items = new();
 
-  public int GetItemCount() => _items.Count;
+  /// <summary>Gesamtanzahl Artikel = Summe aller Mengen (2× dasselbe Buch zählt als 2).</summary>
+  public int GetItemCount()
+  {
+    int anzahl = 0;
+    foreach (Product item in _items)
+    {
+      anzahl += item.Quantity;
+    }
+
+    return anzahl;
+  }
 
   public decimal GetTotal()
   {

@@ -14,7 +14,7 @@ public partial class NotenrechnerForm : Form
   private void CmdBewerten_Click(object sender, EventArgs e)
   {
     // Note einlesen und validieren
-    if (!double.TryParse(TxtNote.Text, out double note) || note < 1.0 || note > 6.0)
+    if (!double.TryParse(TxtNote.Text, out double note) || double.IsNaN(note) || note < 1.0 || note > 6.0)
     {
       MessageBox.Show("Bitte eine gültige Note zwischen 1.0 und 6.0 eingeben.",
         "Ungültige Eingabe", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -124,13 +124,22 @@ public static class Validator
       return false;
     }
 
-    // Ziffern zählen (Leerzeichen und + werden ignoriert)
+    // Erlaubt: Ziffern, Leerzeichen und ein + ganz am Anfang – alles andere ist ungültig
     int digitCount = 0;
-    foreach (char character in phone)
+    for (int i = 0; i < phone.Length; i++)
     {
+      char character = phone[i];
       if (char.IsDigit(character))
       {
         digitCount++;
+      }
+      else if (character == '+' && i == 0)
+      {
+        continue; // führendes + ist erlaubt
+      }
+      else if (character != ' ')
+      {
+        return false;
       }
     }
 

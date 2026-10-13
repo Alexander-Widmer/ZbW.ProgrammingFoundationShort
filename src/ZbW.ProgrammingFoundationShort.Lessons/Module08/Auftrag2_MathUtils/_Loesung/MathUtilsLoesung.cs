@@ -12,7 +12,7 @@ public static class MathUtilsLoesung
       return false;
     }
 
-    for (int i = 2; i * i <= n; i++)
+    for (int i = 2; (long)i * i <= n; i++) // long: i * i würde bei grossem n überlaufen
     {
       if (n % i == 0)
       {

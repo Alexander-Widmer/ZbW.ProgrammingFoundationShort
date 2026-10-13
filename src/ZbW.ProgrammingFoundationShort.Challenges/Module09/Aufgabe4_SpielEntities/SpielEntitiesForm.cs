@@ -55,9 +55,25 @@ public sealed class SpielEntitiesForm : Form
       return;
     }
 
+    if (!IsValidValue(CmbFirstType.Text, firstValue) || !IsValidValue(CmbSecondType.Text, secondValue))
+    {
+      TxtLog.Text = "Werte müssen positiv sein (Archer: Accuracy 1–100).";
+      return;
+    }
+
     GameEntity firstEntity = CreateEntity(CmbFirstType.Text, TxtFirstName.Text, firstValue);
     GameEntity secondEntity = CreateEntity(CmbSecondType.Text, TxtSecondName.Text, secondValue);
     TxtLog.Text = new Battle().SimulateFight(firstEntity, secondEntity);
+  }
+
+  private static bool IsValidValue(string type, int value)
+  {
+    if (type == "Archer")
+    {
+      return value >= 1 && value <= 100;
+    }
+
+    return value > 0;
   }
 
   private GameEntity CreateEntity(string type, string name, int value)
@@ -85,6 +101,11 @@ public abstract class GameEntity
 
   public virtual void TakeDamage(int damage)
   {
+    if (damage < 0)
+    {
+      throw new ArgumentOutOfRangeException(nameof(damage), "Schaden darf nicht negativ sein.");
+    }
+
     Health = Math.Max(0, Health - damage);
   }
 
@@ -126,12 +147,15 @@ public sealed class Archer : GameEntity
 
 public sealed class Battle
 {
+  public const int MaxRounds = 100;
+
   public string SimulateFight(GameEntity firstEntity, GameEntity secondEntity)
   {
     string protokoll = "";
     int round = 1;
 
-    while (firstEntity.IsAlive && secondEntity.IsAlive)
+    // Rundenlimit: verhindert Endlosschleife, falls beide keinen Schaden machen
+    while (firstEntity.IsAlive && secondEntity.IsAlive && round <= MaxRounds)
     {
       int firstDamage = firstEntity.Attack();
       secondEntity.TakeDamage(firstDamage);
@@ -146,6 +170,12 @@ public sealed class Battle
       firstEntity.TakeDamage(secondDamage);
       protokoll += $"Runde {round}: {secondEntity.Name} verursacht {secondDamage}. {firstEntity.Name}: {firstEntity.Health}/{firstEntity.MaxHealth}" + Environment.NewLine;
       round++;
+    }
+
+    if (firstEntity.IsAlive && secondEntity.IsAlive)
+    {
+      protokoll += $"Unentschieden nach {MaxRounds} Runden.";
+      return protokoll;
     }
 
     string sieger = firstEntity.IsAlive ? firstEntity.Name : secondEntity.Name;
