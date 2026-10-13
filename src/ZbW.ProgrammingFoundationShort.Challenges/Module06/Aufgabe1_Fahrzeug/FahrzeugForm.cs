@@ -22,12 +22,8 @@ public partial class FahrzeugForm : Form
       return;
     }
 
-    _fahrzeug = new Vehicle
-    {
-      Make = TxtMake.Text.Trim(),
-      Model = TxtModel.Text.Trim(),
-      Year = year
-    };
+    // Neues Fahrzeug startet mit Kilometerstand 0
+    _fahrzeug = new Vehicle(TxtMake.Text.Trim(), TxtModel.Text.Trim(), year, 0);
 
     LblInfo.Text = _fahrzeug.GetInfo();
     CmdFahren.Enabled = true;
@@ -35,7 +31,10 @@ public partial class FahrzeugForm : Form
 
   private void CmdFahren_Click(object sender, EventArgs e)
   {
-    if (_fahrzeug == null) return;
+    if (_fahrzeug == null)
+    {
+      return;
+    }
 
     if (!double.TryParse(TxtKm.Text, out double km) || km <= 0)
     {

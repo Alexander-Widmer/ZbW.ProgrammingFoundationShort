@@ -3,14 +3,22 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module06.Aufgabe4_Bibliothek
 /// <summary>Buch mit Ausleihe-Status.</summary>
 public class Book
 {
-  public string Title { get; set; } = "";
-  public string Author { get; set; } = "";
-  public string ISBN { get; set; } = "";
-  public bool IsAvailable { get; set; } = true;
+  public Book(string title, string author, string isbn)
+  {
+    Title = title;
+    Author = author;
+    ISBN = isbn;
+    IsAvailable = true;
+  }
+
+  public string Title { get; set; }
+  public string Author { get; set; }
+  public string ISBN { get; set; }
+  public bool IsAvailable { get; set; }
 
   public override string ToString()
   {
-    string status = IsAvailable ? "verfügbar" : "ausgeliehen";
-    return $"\"{Title}\" von {Author} (ISBN: {ISBN}) – {status}";
+    string status = IsAvailable ? "[verfügbar]" : "[ausgeliehen]";
+    return $"{status} \"{Title}\" von {Author} (ISBN: {ISBN})";
   }
 }

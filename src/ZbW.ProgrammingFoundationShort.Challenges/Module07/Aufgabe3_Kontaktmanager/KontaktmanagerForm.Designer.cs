@@ -18,7 +18,7 @@ partial class KontaktmanagerForm
     LblPhone = new Label(); TxtPhone = new TextBox();
     LblEmail = new Label(); TxtEmail = new TextBox();
     LblBirthday = new Label(); TxtBirthday = new TextBox();
-    CmdHinzufuegen = new Button();
+    CmdHinzufuegen = new Button(); CmdLoeschen = new Button();
     LblSuche = new Label(); TxtSuche = new TextBox();
     CmdSuchen = new Button(); CmdAlleAnzeigen = new Button();
     TxtAusgabe = new TextBox();
@@ -36,6 +36,7 @@ partial class KontaktmanagerForm
     TxtBirthday.Location = new Point(95, 72); TxtBirthday.Name = "TxtBirthday"; TxtBirthday.Size = new Size(100, 23);
 
     CmdHinzufuegen.Location = new Point(12, 105); CmdHinzufuegen.Name = "CmdHinzufuegen"; CmdHinzufuegen.Size = new Size(110, 25); CmdHinzufuegen.Text = "Hinzufügen"; CmdHinzufuegen.Click += CmdHinzufuegen_Click;
+    CmdLoeschen.Location = new Point(130, 105); CmdLoeschen.Name = "CmdLoeschen"; CmdLoeschen.Size = new Size(150, 25); CmdLoeschen.Text = "Löschen (per Telefon)"; CmdLoeschen.Click += CmdLoeschen_Click;
 
     LblSuche.AutoSize = true; LblSuche.Location = new Point(12, 145); LblSuche.Text = "Suche:";
     TxtSuche.Location = new Point(65, 142); TxtSuche.Name = "TxtSuche"; TxtSuche.Size = new Size(150, 23);
@@ -48,7 +49,7 @@ partial class KontaktmanagerForm
     AutoScaleDimensions = new SizeF(7F, 15F); AutoScaleMode = AutoScaleMode.Font; ClientSize = new Size(500, 335);
     Controls.Add(LblFirst); Controls.Add(TxtFirst); Controls.Add(LblLast); Controls.Add(TxtLast);
     Controls.Add(LblPhone); Controls.Add(TxtPhone); Controls.Add(LblEmail); Controls.Add(TxtEmail);
-    Controls.Add(LblBirthday); Controls.Add(TxtBirthday); Controls.Add(CmdHinzufuegen);
+    Controls.Add(LblBirthday); Controls.Add(TxtBirthday); Controls.Add(CmdHinzufuegen); Controls.Add(CmdLoeschen);
     Controls.Add(LblSuche); Controls.Add(TxtSuche); Controls.Add(CmdSuchen); Controls.Add(CmdAlleAnzeigen);
     Controls.Add(TxtAusgabe);
     Name = "KontaktmanagerForm"; Text = "Kontaktmanager – UI, Logik, Daten";
@@ -60,7 +61,7 @@ partial class KontaktmanagerForm
   private Label LblPhone; private TextBox TxtPhone;
   private Label LblEmail; private TextBox TxtEmail;
   private Label LblBirthday; private TextBox TxtBirthday;
-  private Button CmdHinzufuegen;
+  private Button CmdHinzufuegen; private Button CmdLoeschen;
   private Label LblSuche; private TextBox TxtSuche;
   private Button CmdSuchen; private Button CmdAlleAnzeigen;
   private TextBox TxtAusgabe;

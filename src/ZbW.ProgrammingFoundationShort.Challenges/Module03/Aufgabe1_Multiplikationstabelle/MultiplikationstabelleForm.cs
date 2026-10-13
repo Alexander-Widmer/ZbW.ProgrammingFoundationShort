@@ -26,13 +26,17 @@ public partial class MultiplikationstabelleForm : Form
     {
       // Rückwärts: 10 nach 1
       for (int i = 10; i >= 1; i--)
+      {
         TxtAusgabe.AppendText($"{zahl} × {i,2} = {zahl * i,3}\r\n");
+      }
     }
     else
     {
       // Vorwärts: 1 nach 10
       for (int i = 1; i <= 10; i++)
+      {
         TxtAusgabe.AppendText($"{zahl} × {i,2} = {zahl * i,3}\r\n");
+      }
     }
   }
 }

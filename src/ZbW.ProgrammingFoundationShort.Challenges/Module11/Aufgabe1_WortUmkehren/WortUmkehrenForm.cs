@@ -2,10 +2,10 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module11.Aufgabe1_WortUmkehr
 
 public sealed class WortUmkehrenForm : Form
 {
-  private readonly TextBox txtWord;
-  private readonly Label lblIterative;
-  private readonly Label lblRecursive;
-  private readonly Label lblReflection;
+  private readonly TextBox TxtWord;
+  private readonly Label LblIterative;
+  private readonly Label LblRecursive;
+  private readonly Label LblReflection;
 
   public WortUmkehrenForm()
   {
@@ -14,27 +14,27 @@ public sealed class WortUmkehrenForm : Form
 
     Controls.Add(new Label { Location = new Point(12, 18), Size = new Size(80, 20), Text = "Wort:" });
 
-    txtWord = new TextBox { Location = new Point(95, 15), Size = new Size(180, 23), Text = "Algorithmus" };
+    TxtWord = new TextBox { Location = new Point(95, 15), Size = new Size(180, 23), Text = "Algorithmus" };
     Button cmdReverse = new Button { Location = new Point(290, 13), Size = new Size(110, 28), Text = "Umkehren" };
-    lblIterative = new Label { Location = new Point(12, 65), Size = new Size(520, 25) };
-    lblRecursive = new Label { Location = new Point(12, 100), Size = new Size(520, 25) };
-    lblReflection = new Label { Location = new Point(12, 140), Size = new Size(520, 70) };
+    LblIterative = new Label { Location = new Point(12, 65), Size = new Size(520, 25) };
+    LblRecursive = new Label { Location = new Point(12, 100), Size = new Size(520, 25) };
+    LblReflection = new Label { Location = new Point(12, 140), Size = new Size(520, 70) };
 
     cmdReverse.Click += CmdReverse_Click;
 
-    Controls.Add(txtWord);
+    Controls.Add(TxtWord);
     Controls.Add(cmdReverse);
-    Controls.Add(lblIterative);
-    Controls.Add(lblRecursive);
-    Controls.Add(lblReflection);
+    Controls.Add(LblIterative);
+    Controls.Add(LblRecursive);
+    Controls.Add(LblReflection);
   }
 
-  private void CmdReverse_Click(object? sender, EventArgs e)
+  private void CmdReverse_Click(object sender, EventArgs e)
   {
-    string word = txtWord.Text;
-    lblIterative.Text = $"Iterativ: {ReverseIterative(word)}";
-    lblRecursive.Text = $"Rekursiv: {ReverseRecursive(word)}";
-    lblReflection.Text = "Reflexion: Im Alltag ist die iterative Variante meist einfacher zu debuggen. " +
+    string word = TxtWord.Text;
+    LblIterative.Text = $"Iterativ: {ReverseIterative(word)}";
+    LblRecursive.Text = $"Rekursiv: {ReverseRecursive(word)}";
+    LblReflection.Text = "Reflexion: Im Alltag ist die iterative Variante meist einfacher zu debuggen. " +
                          "Rekursion zeigt aber gut das Prinzip: ein Zeichen plus das kleinere Restproblem.";
   }
 

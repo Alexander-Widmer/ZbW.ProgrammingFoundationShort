@@ -7,11 +7,11 @@
 | 1 | MathBibliothek        | WinForms | Einfach       |
 | 2 | InstanceCounter       | WinForms | Mittel        |
 | 3 | ValidierungsFramework | WinForms | Schwer        |
-| 4 | StatischerLogger      | WinForms | Bonus         |
+| 4 | TicketSystem          | WinForms | Bonus         |
 
 ## Inhalte
 
 - `MathHelper` mit `Pi`, Kreisfläche, Kreisumfang, Rechteckfläche, Primzahlprüfung und Fakultät
 - `Vehicle` mit statischem Zähler und `VehicleRegistry`
 - statisches `Validator`-Framework mit visueller Fehleranzeige
-- `AppLogger` mit `LogLevel`, Filter und Logausgabe
+- Ticket-System: statischer Nummern-Generator, `Priority`-enum, Filter ohne LINQ

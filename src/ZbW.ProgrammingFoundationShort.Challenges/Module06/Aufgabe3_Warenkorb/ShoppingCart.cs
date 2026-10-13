@@ -10,38 +10,65 @@ public class ShoppingCart
   public decimal GetTotal()
   {
     decimal total = 0;
-    foreach (var item in _items)
+    foreach (Product item in _items)
+    {
       total += item.Total;
+    }
+
     return total;
   }
 
   public void AddProduct(Product product)
   {
     // Prüfen ob Produkt bereits vorhanden
-    var existing = _items.Find(p => p.Name == product.Name);
+    Product existing = FindByName(product.Name);
     if (existing != null)
+    {
       existing.Quantity += product.Quantity;
+    }
     else
+    {
       _items.Add(product);
+    }
   }
 
   public bool RemoveProduct(string name)
   {
-    var produkt = _items.Find(p => p.Name == name);
-    if (produkt == null) return false;
+    Product produkt = FindByName(name);
+    if (produkt == null)
+    {
+      return false;
+    }
+
     _items.Remove(produkt);
     return true;
   }
 
   public string GetReceipt()
   {
-    var sb = new System.Text.StringBuilder();
-    sb.AppendLine("========== KASSENBON ==========");
-    foreach (var item in _items)
-      sb.AppendLine(item.ToString());
-    sb.AppendLine(new string('-', 45));
-    sb.AppendLine($"{"TOTAL",-20} {"",14} {GetTotal(),10:C}");
-    sb.AppendLine($"Anzahl Artikel: {GetItemCount()}");
-    return sb.ToString();
+    string nl = Environment.NewLine;
+    string bon = "========== KASSENBON ==========" + nl;
+    foreach (Product item in _items)
+    {
+      bon += item.ToString() + nl;
+    }
+
+    bon += new string('-', 45) + nl;
+    bon += $"{"TOTAL",-20} {"",14} {GetTotal(),10:F2} CHF" + nl;
+    bon += $"Anzahl Artikel: {GetItemCount()}" + nl;
+    return bon;
+  }
+
+  private Product FindByName(string name)
+  {
+    foreach (Product item in _items)
+    {
+      if (item.Name == name)
+      {
+        return item;
+      }
+    }
+
+    return null;
   }
 }

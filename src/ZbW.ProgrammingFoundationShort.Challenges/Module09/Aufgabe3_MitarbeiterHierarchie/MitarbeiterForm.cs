@@ -2,83 +2,91 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module09.Aufgabe3_Mitarbeite
 
 public sealed class MitarbeiterForm : Form
 {
-  private readonly List<Employee> employees = new List<Employee>();
-  private readonly ComboBox cmbType;
-  private readonly TextBox txtName;
-  private readonly TextBox txtBaseSalary;
-  private readonly TextBox txtExtra;
-  private readonly TextBox txtTeamSize;
-  private readonly ListBox lstEmployees;
-  private readonly Label lblTotal;
+  private readonly List<Employee> _employees = new List<Employee>();
+  private readonly ComboBox CmbType;
+  private readonly TextBox TxtName;
+  private readonly TextBox TxtBaseSalary;
+  private readonly TextBox TxtExtra;
+  private readonly TextBox TxtTeamSize;
+  private readonly ListBox LstEmployees;
+  private readonly Label LblTotal;
 
   public MitarbeiterForm()
   {
     Text = "Mitarbeiter-Hierarchie – Aufgabe 3";
     ClientSize = new Size(650, 390);
 
-    cmbType = new ComboBox { Location = new Point(120, 12), Size = new Size(180, 23), DropDownStyle = ComboBoxStyle.DropDownList };
-    cmbType.Items.AddRange(new object[] { "FullTime", "PartTime", "Manager" });
-    cmbType.SelectedIndex = 0;
-    txtName = new TextBox { Location = new Point(120, 45), Size = new Size(180, 23), Text = "Anna" };
-    txtBaseSalary = new TextBox { Location = new Point(120, 78), Size = new Size(100, 23), Text = "8000" };
-    txtExtra = new TextBox { Location = new Point(120, 111), Size = new Size(180, 23), Text = "10" };
-    txtTeamSize = new TextBox { Location = new Point(120, 144), Size = new Size(80, 23), Text = "5" };
+    CmbType = new ComboBox { Location = new Point(120, 12), Size = new Size(180, 23), DropDownStyle = ComboBoxStyle.DropDownList };
+    CmbType.Items.AddRange(new object[] { "FullTime", "PartTime", "Manager" });
+    CmbType.SelectedIndex = 0;
+    TxtName = new TextBox { Location = new Point(120, 45), Size = new Size(180, 23), Text = "Anna" };
+    TxtBaseSalary = new TextBox { Location = new Point(120, 78), Size = new Size(100, 23), Text = "8000" };
+    TxtExtra = new TextBox { Location = new Point(120, 111), Size = new Size(180, 23), Text = "10" };
+    TxtTeamSize = new TextBox { Location = new Point(120, 144), Size = new Size(80, 23), Text = "5" };
     Button cmdAdd = new Button { Location = new Point(120, 180), Size = new Size(120, 28), Text = "Hinzufügen" };
-    lstEmployees = new ListBox { Location = new Point(330, 12), Size = new Size(300, 300) };
-    lblTotal = new Label { Location = new Point(330, 325), Size = new Size(300, 35) };
+    LstEmployees = new ListBox { Location = new Point(330, 12), Size = new Size(300, 300) };
+    LblTotal = new Label { Location = new Point(330, 325), Size = new Size(300, 35) };
 
     Controls.Add(new Label { Location = new Point(12, 15), Size = new Size(100, 20), Text = "Typ:" });
     Controls.Add(new Label { Location = new Point(12, 48), Size = new Size(100, 20), Text = "Name:" });
     Controls.Add(new Label { Location = new Point(12, 81), Size = new Size(100, 20), Text = "Basislohn:" });
     Controls.Add(new Label { Location = new Point(12, 114), Size = new Size(100, 20), Text = "Bonus/Std/Team:" });
     Controls.Add(new Label { Location = new Point(12, 147), Size = new Size(100, 20), Text = "Teamgrösse:" });
-    Controls.Add(cmbType);
-    Controls.Add(txtName);
-    Controls.Add(txtBaseSalary);
-    Controls.Add(txtExtra);
-    Controls.Add(txtTeamSize);
+    Controls.Add(CmbType);
+    Controls.Add(TxtName);
+    Controls.Add(TxtBaseSalary);
+    Controls.Add(TxtExtra);
+    Controls.Add(TxtTeamSize);
     Controls.Add(cmdAdd);
-    Controls.Add(lstEmployees);
-    Controls.Add(lblTotal);
+    Controls.Add(LstEmployees);
+    Controls.Add(LblTotal);
 
     cmdAdd.Click += CmdAdd_Click;
   }
 
   private void CmdAdd_Click(object sender, EventArgs e)
   {
-    if (!decimal.TryParse(txtBaseSalary.Text, out decimal baseSalary) || !double.TryParse(txtExtra.Text, out double extra))
+    if (!decimal.TryParse(TxtBaseSalary.Text, out decimal baseSalary) || !double.TryParse(TxtExtra.Text, out double extra))
+    {
       return;
+    }
 
     Employee employee;
 
-    if (cmbType.SelectedItem?.ToString() == "Manager")
+    if (CmbType.SelectedItem?.ToString() == "Manager")
     {
-      if (!int.TryParse(txtTeamSize.Text, out int teamSize))
+      if (!int.TryParse(TxtTeamSize.Text, out int teamSize))
+      {
         return;
+      }
 
-      employee = new Manager(txtName.Text, employees.Count + 1, baseSalary, extra, teamSize);
+      employee = new Manager(TxtName.Text, _employees.Count + 1, baseSalary, extra, teamSize);
     }
-    else if (cmbType.SelectedItem?.ToString() == "PartTime")
-      employee = new PartTimeEmployee(txtName.Text, employees.Count + 1, (int)extra, baseSalary);
+    else if (CmbType.SelectedItem?.ToString() == "PartTime")
+    {
+      employee = new PartTimeEmployee(TxtName.Text, _employees.Count + 1, (int)extra, baseSalary);
+    }
     else
-      employee = new FullTimeEmployee(txtName.Text, employees.Count + 1, baseSalary, extra);
+    {
+      employee = new FullTimeEmployee(TxtName.Text, _employees.Count + 1, baseSalary, extra);
+    }
 
-    employees.Add(employee);
+    _employees.Add(employee);
     RefreshEmployees();
   }
 
   private void RefreshEmployees()
   {
-    lstEmployees.Items.Clear();
+    LstEmployees.Items.Clear();
     decimal total = 0;
 
-    foreach (Employee employee in employees)
+    foreach (Employee employee in _employees)
     {
       total += employee.CalculateSalary();
-      lstEmployees.Items.Add(employee.GetEmployeeInfo());
+      LstEmployees.Items.Add(employee.GetEmployeeInfo());
     }
 
-    lblTotal.Text = $"Gesamtlohnkosten: {total:F2} CHF";
+    LblTotal.Text = $"Gesamtlohnkosten: {total:F2} CHF";
   }
 }
 

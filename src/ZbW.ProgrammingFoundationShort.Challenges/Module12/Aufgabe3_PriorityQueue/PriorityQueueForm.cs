@@ -2,7 +2,7 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module12.Aufgabe3_PriorityQu
 
 public sealed class PriorityQueueForm : Form
 {
-  private readonly ListBox lstOutput;
+  private readonly ListBox LstOutput;
 
   public PriorityQueueForm()
   {
@@ -10,15 +10,15 @@ public sealed class PriorityQueueForm : Form
     ClientSize = new Size(760, 380);
 
     Button cmdRun = new Button { Location = new Point(12, 12), Size = new Size(180, 30), Text = "Reihenfolge zeigen" };
-    lstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(720, 270) };
+    LstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(720, 270) };
 
     cmdRun.Click += CmdRun_Click;
 
     Controls.Add(cmdRun);
-    Controls.Add(lstOutput);
+    Controls.Add(LstOutput);
   }
 
-  private void CmdRun_Click(object? sender, EventArgs e)
+  private void CmdRun_Click(object sender, EventArgs e)
   {
     List<PatientCase> cases = new List<PatientCase>
     {
@@ -32,14 +32,14 @@ public sealed class PriorityQueueForm : Form
     List<string> normalOrder = cases.Select(patientCase => patientCase.Name).ToList();
     List<string> priorityOrder = BuildTreatmentOrder(cases);
 
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add("Normale Queue:");
-    lstOutput.Items.Add(string.Join(" -> ", normalOrder));
-    lstOutput.Items.Add("");
-    lstOutput.Items.Add("PriorityQueue (kleinere Priority-Zahl = dringender):");
-    lstOutput.Items.Add(string.Join(" -> ", priorityOrder));
-    lstOutput.Items.Add("");
-    lstOutput.Items.Add("Fazit: Priorität kann fachlich wichtiger sein als Eingangsreihenfolge.");
+    LstOutput.Items.Clear();
+    LstOutput.Items.Add("Normale Queue:");
+    LstOutput.Items.Add(string.Join(" -> ", normalOrder));
+    LstOutput.Items.Add("");
+    LstOutput.Items.Add("PriorityQueue (kleinere Priority-Zahl = dringender):");
+    LstOutput.Items.Add(string.Join(" -> ", priorityOrder));
+    LstOutput.Items.Add("");
+    LstOutput.Items.Add("Fazit: Priorität kann fachlich wichtiger sein als Eingangsreihenfolge.");
   }
 
   public static List<string> BuildTreatmentOrder(IEnumerable<PatientCase> cases)

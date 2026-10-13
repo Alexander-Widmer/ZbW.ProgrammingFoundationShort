@@ -41,9 +41,13 @@ public partial class ZahlenRatespielForm : Form
     LblVersuche.Text = $"Versuche: {_versuche}";
 
     if (tipp < _geheimzahl)
+    {
       LblHinweis.Text = $"{tipp} ist zu klein!";
+    }
     else if (tipp > _geheimzahl)
+    {
       LblHinweis.Text = $"{tipp} ist zu gross!";
+    }
     else
     {
       LblHinweis.Text = $"Richtig! {_geheimzahl} war die gesuchte Zahl!";

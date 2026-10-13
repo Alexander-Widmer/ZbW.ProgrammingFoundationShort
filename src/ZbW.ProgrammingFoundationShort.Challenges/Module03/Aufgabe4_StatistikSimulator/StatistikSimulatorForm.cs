@@ -35,24 +35,25 @@ public partial class StatistikSimulatorForm : Form
       }
 
       // Ergebnis aufbauen
-      var sb = new System.Text.StringBuilder();
-      sb.AppendLine($"Simulation: {anzahl} Würfe\r\n");
-      sb.AppendLine("Augenzahl | Häufigkeit | Anteil");
-      sb.AppendLine(new string('-', 40));
+      string nl = Environment.NewLine;
+      string text = $"Simulation: {anzahl} Würfe{nl}{nl}";
+      text += "Augenzahl | Häufigkeit | Anteil" + nl;
+      text += "----------------------------------------" + nl;
 
       double summe = 0;
       for (int i = 1; i <= 6; i++)
       {
         double prozent = (double)haeufigkeit[i] / anzahl * 100;
         summe += i * haeufigkeit[i];
-        sb.AppendLine($"   {i}      |   {haeufigkeit[i],5}   |  {prozent,5:F1}%");
+        text += $"   {i}      |   {haeufigkeit[i],5}   |  {prozent,5:F1}%" + nl;
       }
 
       double durchschnitt = summe / anzahl;
-      sb.AppendLine(new string('-', 40));
-      sb.AppendLine($"Durchschnitt: {durchschnitt:F3} (Erwartungswert: 3.500)");
+      text += "----------------------------------------" + nl;
+      text += $"Durchschnitt: {durchschnitt:F3} (Erwartungswert: 3.500)" + nl;
+      text += "Je mehr Würfe, desto näher liegen die Anteile bei 16.7 % (Gesetz der grossen Zahlen).";
 
-      TxtErgebnis.Text = sb.ToString();
+      TxtErgebnis.Text = text;
     }
     catch (ArgumentException ex)
     {

@@ -35,7 +35,10 @@ public partial class TemperaturAuswertungForm : Form
   {
     double summe = 0;
     for (int i = 0; i < werte.Length; i++)
+    {
       summe += werte[i];
+    }
+
     return summe / werte.Length;
   }
 
@@ -43,7 +46,13 @@ public partial class TemperaturAuswertungForm : Form
   {
     double max = werte[0];
     for (int i = 1; i < werte.Length; i++)
-      if (werte[i] > max) max = werte[i];
+    {
+      if (werte[i] > max)
+      {
+        max = werte[i];
+      }
+    }
+
     return max;
   }
 
@@ -51,7 +60,13 @@ public partial class TemperaturAuswertungForm : Form
   {
     double min = werte[0];
     for (int i = 1; i < werte.Length; i++)
-      if (werte[i] < min) min = werte[i];
+    {
+      if (werte[i] < min)
+      {
+        min = werte[i];
+      }
+    }
+
     return min;
   }
 }

@@ -43,18 +43,32 @@ public partial class WortzaehlerForm : Form
   {
     int count = 0;
     for (int i = 0; i < text.Length; i++)
+    {
       if (text[i] != ' ' && text[i] != '\r' && text[i] != '\n' && text[i] != '\t')
+      {
         count++;
+      }
+    }
+
     return count;
   }
 
   private static string LongestWord(string[] woerter)
   {
-    if (woerter.Length == 0) return "";
+    if (woerter.Length == 0)
+    {
+      return "";
+    }
+
     string longest = woerter[0];
     for (int i = 1; i < woerter.Length; i++)
+    {
       if (woerter[i].Length > longest.Length)
+      {
         longest = woerter[i];
+      }
+    }
+
     return longest;
   }
 }

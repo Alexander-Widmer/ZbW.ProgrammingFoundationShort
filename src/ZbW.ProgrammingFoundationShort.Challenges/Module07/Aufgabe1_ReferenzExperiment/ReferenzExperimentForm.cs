@@ -1,7 +1,7 @@
 namespace ZbW.ProgrammingFoundationShort.Challenges.Module07.Aufgabe1_ReferenzExperiment;
 
 /// <summary>
-///   Aufgabe 1 – Referenz-Experiment (⭐⭐ Mittel)
+///   Aufgabe 1 – Referenz-Experiment (⭐ Einfach)
 ///   Zeigt den Unterschied zwischen Wert- und Referenztypen in WinForms.
 /// </summary>
 public partial class ReferenzExperimentForm : Form
@@ -36,5 +36,28 @@ public partial class ReferenzExperimentForm : Form
     var c2 = new Counter(c1.Value); // neues Objekt
     c2.Value = 99;
     LblEchteKopie.Text = $"Echte Kopie:\r\nc1 = {c1} (unverändert)\r\nc2 = {c2}\r\n→ neue Instanz mit 'new'";
+  }
+
+  private void CmdMethode_Click(object sender, EventArgs e)
+  {
+    // Transfer: Was passiert, wenn man Werte bzw. Objekte an eine Methode übergibt?
+    int zahl = 10;
+    Counter counter = new Counter(10);
+
+    Erhoehe(zahl);       // Methode bekommt eine KOPIE des int
+    Erhoehe(counter);    // Methode bekommt eine Kopie der REFERENZ → gleiches Objekt
+
+    LblMethode.Text = $"Methoden-Test:\r\nint nach Aufruf = {zahl} (unverändert)\r\n" +
+                      $"Counter nach Aufruf = {counter} (verändert!)";
+  }
+
+  private static void Erhoehe(int wert)
+  {
+    wert = wert + 1;
+  }
+
+  private static void Erhoehe(Counter counter)
+  {
+    counter.Value = counter.Value + 1;
   }
 }

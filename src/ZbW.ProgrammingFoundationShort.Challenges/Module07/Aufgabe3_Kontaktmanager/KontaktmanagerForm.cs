@@ -23,9 +23,9 @@ public partial class KontaktmanagerForm : Form
       Birthday = DateTime.TryParse(TxtBirthday.Text, out DateTime bday) ? bday : null
     };
 
-    if (string.IsNullOrEmpty(contact.FirstName) || string.IsNullOrEmpty(contact.LastName))
+    if (string.IsNullOrEmpty(contact.FirstName) || string.IsNullOrEmpty(contact.LastName) || string.IsNullOrEmpty(contact.Phone))
     {
-      MessageBox.Show("Vor- und Nachname sind erforderlich.",
+      MessageBox.Show("Vorname, Nachname und Telefonnummer sind erforderlich.",
         "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
@@ -39,6 +39,19 @@ public partial class KontaktmanagerForm : Form
 
     AktualisiereAusgabe();
     TxtFirst.Clear(); TxtLast.Clear(); TxtPhone.Clear(); TxtEmail.Clear(); TxtBirthday.Clear();
+  }
+
+  private void CmdLoeschen_Click(object sender, EventArgs e)
+  {
+    if (!_contactManager.Remove(TxtPhone.Text.Trim()))
+    {
+      MessageBox.Show("Kein Kontakt mit dieser Telefonnummer gefunden.",
+        "Nicht gefunden", MessageBoxButtons.OK, MessageBoxIcon.Information);
+      return;
+    }
+
+    AktualisiereAusgabe();
+    TxtPhone.Clear();
   }
 
   private void CmdSuchen_Click(object sender, EventArgs e)

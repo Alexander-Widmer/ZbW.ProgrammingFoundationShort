@@ -12,21 +12,16 @@ public partial class BibliothekForm : Form
     InitializeComponent();
 
     // Demo-Bücher vorab laden
-    _library.AddBook(new Book { Title = "Clean Code", Author = "Robert C. Martin", ISBN = "978-0132350884" });
-    _library.AddBook(new Book { Title = "The Pragmatic Programmer", Author = "David Thomas", ISBN = "978-0201616224" });
-    _library.AddBook(new Book { Title = "Design Patterns", Author = "Gang of Four", ISBN = "978-0201633610" });
+    _library.AddBook(new Book("Clean Code", "Robert C. Martin", "978-0132350884"));
+    _library.AddBook(new Book("The Pragmatic Programmer", "David Thomas", "978-0201616224"));
+    _library.AddBook(new Book("Design Patterns", "Gang of Four", "978-0201633610"));
 
     AktualisiereListe();
   }
 
   private void CmdHinzufuegen_Click(object sender, EventArgs e)
   {
-    var book = new Book
-    {
-      Title = TxtTitle.Text.Trim(),
-      Author = TxtAuthor.Text.Trim(),
-      ISBN = TxtISBN.Text.Trim()
-    };
+    Book book = new Book(TxtTitle.Text.Trim(), TxtAuthor.Text.Trim(), TxtISBN.Text.Trim());
 
     if (string.IsNullOrEmpty(book.Title) || string.IsNullOrEmpty(book.Author))
     {
@@ -65,7 +60,10 @@ public partial class BibliothekForm : Form
     var result = _library.SearchByAuthor(TxtAuthor.Text.Trim());
     LstBuecher.Items.Clear();
     foreach (var book in result)
+    {
       LstBuecher.Items.Add(book.ToString());
+    }
+
     LblStatus.Text = $"{result.Count} Treffer für Autor \"{TxtAuthor.Text.Trim()}\"";
   }
 
@@ -73,7 +71,10 @@ public partial class BibliothekForm : Form
   {
     LstBuecher.Items.Clear();
     foreach (var book in _library.GetAll())
+    {
       LstBuecher.Items.Add(book.ToString());
+    }
+
     LblStatus.Text = $"Bücher: {_library.GetAll().Count} gesamt, {_library.AvailableCount} verfügbar";
   }
 }

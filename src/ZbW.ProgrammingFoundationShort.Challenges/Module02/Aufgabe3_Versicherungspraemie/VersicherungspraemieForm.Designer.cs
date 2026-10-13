@@ -16,9 +16,9 @@ partial class VersicherungspraemieForm
     LblAlter = new Label();
     TxtAlter = new TextBox();
     GrpTyp = new GroupBox();
-    RdoBasis = new RadioButton();
-    RdoStandard = new RadioButton();
-    RdoPremium = new RadioButton();
+    RadBasis = new RadioButton();
+    RadStandard = new RadioButton();
+    RadPremium = new RadioButton();
     ChkUnfall = new CheckBox();
     CmdBerechnen = new Button();
     LblErgebnis = new Label();
@@ -37,25 +37,25 @@ partial class VersicherungspraemieForm
     GrpTyp.Name = "GrpTyp";
     GrpTyp.Size = new Size(220, 95);
     GrpTyp.Text = "Versicherungstyp";
-    GrpTyp.Controls.Add(RdoBasis);
-    GrpTyp.Controls.Add(RdoStandard);
-    GrpTyp.Controls.Add(RdoPremium);
+    GrpTyp.Controls.Add(RadBasis);
+    GrpTyp.Controls.Add(RadStandard);
+    GrpTyp.Controls.Add(RadPremium);
 
-    RdoBasis.AutoSize = true;
-    RdoBasis.Checked = true;
-    RdoBasis.Location = new Point(10, 20);
-    RdoBasis.Name = "RdoBasis";
-    RdoBasis.Text = "Basis (×1.0)";
+    RadBasis.AutoSize = true;
+    RadBasis.Checked = true;
+    RadBasis.Location = new Point(10, 20);
+    RadBasis.Name = "RadBasis";
+    RadBasis.Text = "Basis (×1.0)";
 
-    RdoStandard.AutoSize = true;
-    RdoStandard.Location = new Point(10, 45);
-    RdoStandard.Name = "RdoStandard";
-    RdoStandard.Text = "Standard (×1.4)";
+    RadStandard.AutoSize = true;
+    RadStandard.Location = new Point(10, 45);
+    RadStandard.Name = "RadStandard";
+    RadStandard.Text = "Standard (×1.4)";
 
-    RdoPremium.AutoSize = true;
-    RdoPremium.Location = new Point(10, 68);
-    RdoPremium.Name = "RdoPremium";
-    RdoPremium.Text = "Premium (×1.8)";
+    RadPremium.AutoSize = true;
+    RadPremium.Location = new Point(10, 68);
+    RadPremium.Name = "RadPremium";
+    RadPremium.Text = "Premium (×1.8)";
 
     ChkUnfall.AutoSize = true;
     ChkUnfall.Location = new Point(12, 155);
@@ -93,9 +93,9 @@ partial class VersicherungspraemieForm
   private Label LblAlter;
   private TextBox TxtAlter;
   private GroupBox GrpTyp;
-  private RadioButton RdoBasis;
-  private RadioButton RdoStandard;
-  private RadioButton RdoPremium;
+  private RadioButton RadBasis;
+  private RadioButton RadStandard;
+  private RadioButton RadPremium;
   private CheckBox ChkUnfall;
   private Button CmdBerechnen;
   private Label LblErgebnis;

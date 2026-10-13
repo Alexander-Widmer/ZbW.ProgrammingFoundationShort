@@ -4,14 +4,14 @@
 
 | # | Name                  | Typ      | Schwierigkeit |
 |---|-----------------------|----------|---------------|
-| 1 | TierHierarchie        | WinForms | Einfach       |
-| 2 | GeometrieHierarchie   | WinForms | Mittel        |
+| 1 | FahrzeugHierarchie    | WinForms | Einfach       |
+| 2 | KoerperHierarchie     | WinForms | Mittel        |
 | 3 | MitarbeiterHierarchie | WinForms | Schwer        |
 | 4 | SpielEntities         | WinForms | Bonus         |
 
 ## Inhalte
 
-- Tierhierarchie mit `Animal`, `Dog`, `Cat` und `Bird`
-- abstrakte `Shape`-Hierarchie mit Kreis, Rechteck und Dreieck
+- Fahrzeughierarchie mit `Vehicle`, `Car`, `Motorcycle` und `Truck` (Konstruktoren mit `base`)
+- abstrakte `Solid`-Hierarchie mit Würfel, Quader und Kugel
 - Mitarbeiterhierarchie mit Polymorphismus bei der Gehaltsberechnung
 - Mini-Kampfsystem mit auswählbaren `GameEntity`-Typen

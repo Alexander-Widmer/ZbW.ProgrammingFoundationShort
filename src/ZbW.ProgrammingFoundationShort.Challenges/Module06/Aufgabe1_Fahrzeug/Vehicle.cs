@@ -5,8 +5,16 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module06.Aufgabe1_Fahrzeug;
 /// </summary>
 public class Vehicle
 {
-  public string Make { get; set; } = "";
-  public string Model { get; set; } = "";
+  public Vehicle(string make, string model, int year, double mileage)
+  {
+    Make = make;
+    Model = model;
+    Year = year;
+    Mileage = mileage;
+  }
+
+  public string Make { get; set; }
+  public string Model { get; set; }
   public int Year { get; set; }
   public double Mileage { get; private set; }
 
@@ -18,7 +26,10 @@ public class Vehicle
   public void Drive(double km)
   {
     if (km <= 0)
+    {
       throw new ArgumentException("Kilometeranzahl muss positiv sein.");
+    }
+
     Mileage += km;
   }
 }

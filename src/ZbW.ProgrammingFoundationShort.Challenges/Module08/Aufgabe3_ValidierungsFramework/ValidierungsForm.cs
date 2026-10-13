@@ -2,11 +2,11 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module08.Aufgabe3_Validierun
 
 public sealed class ValidierungsForm : Form
 {
-  private readonly TextBox txtEmail;
-  private readonly TextBox txtAge;
-  private readonly TextBox txtName;
-  private readonly TextBox txtPhone;
-  private readonly Label lblResult;
+  private readonly TextBox TxtEmail;
+  private readonly TextBox TxtAge;
+  private readonly TextBox TxtName;
+  private readonly TextBox TxtPhone;
+  private readonly Label LblResult;
 
   public ValidierungsForm()
   {
@@ -17,12 +17,12 @@ public sealed class ValidierungsForm : Form
     Label lblEmail = new Label { Location = new Point(12, 50), Size = new Size(100, 20), Text = "E-Mail:" };
     Label lblAge = new Label { Location = new Point(12, 85), Size = new Size(100, 20), Text = "Alter:" };
     Label lblPhone = new Label { Location = new Point(12, 120), Size = new Size(100, 20), Text = "Telefon:" };
-    txtName = new TextBox { Location = new Point(120, 12), Size = new Size(240, 23), Text = "Anna" };
-    txtEmail = new TextBox { Location = new Point(120, 47), Size = new Size(240, 23), Text = "test@zbw.ch" };
-    txtAge = new TextBox { Location = new Point(120, 82), Size = new Size(80, 23), Text = "18" };
-    txtPhone = new TextBox { Location = new Point(120, 117), Size = new Size(160, 23), Text = "+41791234567" };
+    TxtName = new TextBox { Location = new Point(120, 12), Size = new Size(240, 23), Text = "Anna" };
+    TxtEmail = new TextBox { Location = new Point(120, 47), Size = new Size(240, 23), Text = "test@zbw.ch" };
+    TxtAge = new TextBox { Location = new Point(120, 82), Size = new Size(80, 23), Text = "18" };
+    TxtPhone = new TextBox { Location = new Point(120, 117), Size = new Size(160, 23), Text = "+41791234567" };
     Button cmdValidate = new Button { Location = new Point(120, 155), Size = new Size(110, 28), Text = "Prüfen" };
-    lblResult = new Label { Location = new Point(12, 195), Size = new Size(460, 60) };
+    LblResult = new Label { Location = new Point(12, 195), Size = new Size(460, 60) };
 
     cmdValidate.Click += CmdValidate_Click;
 
@@ -30,52 +30,56 @@ public sealed class ValidierungsForm : Form
     Controls.Add(lblEmail);
     Controls.Add(lblAge);
     Controls.Add(lblPhone);
-    Controls.Add(txtName);
-    Controls.Add(txtEmail);
-    Controls.Add(txtAge);
-    Controls.Add(txtPhone);
+    Controls.Add(TxtName);
+    Controls.Add(TxtEmail);
+    Controls.Add(TxtAge);
+    Controls.Add(TxtPhone);
     Controls.Add(cmdValidate);
-    Controls.Add(lblResult);
+    Controls.Add(LblResult);
   }
 
   private void CmdValidate_Click(object sender, EventArgs e)
   {
-    List<string> errors = new List<string>();
     ResetColors();
+    string nameError = "";
+    string emailError = "";
+    string ageError = "";
+    string phoneError = "";
 
-    if (!Validator.IsNotEmpty(txtName.Text))
+    if (!Validator.IsNotEmpty(TxtName.Text))
     {
-      MarkInvalid(txtName);
-      errors.Add("Name darf nicht leer sein.");
+      MarkInvalid(TxtName);
+      nameError = "Name darf nicht leer sein.";
     }
 
-    if (!Validator.IsValidEmail(txtEmail.Text))
+    if (!Validator.IsValidEmail(TxtEmail.Text))
     {
-      MarkInvalid(txtEmail);
-      errors.Add("E-Mail ist ungültig.");
+      MarkInvalid(TxtEmail);
+      emailError = "E-Mail ist ungültig.";
     }
 
-    if (!int.TryParse(txtAge.Text, out int age) || !Validator.IsInRange(age, 16, 120))
+    if (!int.TryParse(TxtAge.Text, out int age) || !Validator.IsInRange(age, 16, 120))
     {
-      MarkInvalid(txtAge);
-      errors.Add("Alter muss zwischen 16 und 120 liegen.");
+      MarkInvalid(TxtAge);
+      ageError = "Alter muss zwischen 16 und 120 liegen.";
     }
 
-    if (!Validator.IsValidSwissPhone(txtPhone.Text))
+    if (!Validator.IsValidSwissPhone(TxtPhone.Text))
     {
-      MarkInvalid(txtPhone);
-      errors.Add("Telefonnummer ist ungültig.");
+      MarkInvalid(TxtPhone);
+      phoneError = "Telefonnummer ist ungültig.";
     }
 
-    lblResult.Text = errors.Count == 0 ? "Alle Eingaben sind gültig." : string.Join(Environment.NewLine, errors);
+    string errors = Validator.CollectErrors(nameError, emailError, ageError, phoneError);
+    LblResult.Text = errors == "" ? "Eingabe erfolgreich." : errors;
   }
 
   private void ResetColors()
   {
-    txtName.BackColor = SystemColors.Window;
-    txtEmail.BackColor = SystemColors.Window;
-    txtAge.BackColor = SystemColors.Window;
-    txtPhone.BackColor = SystemColors.Window;
+    TxtName.BackColor = SystemColors.Window;
+    TxtEmail.BackColor = SystemColors.Window;
+    TxtAge.BackColor = SystemColors.Window;
+    TxtPhone.BackColor = SystemColors.Window;
   }
 
   private void MarkInvalid(TextBox textBox)
@@ -94,7 +98,9 @@ public static class Validator
   public static bool IsValidEmail(string email)
   {
     if (string.IsNullOrWhiteSpace(email))
+    {
       return false;
+    }
 
     int atIndex = email.IndexOf('@');
     int dotIndex = email.IndexOf('.', atIndex + 1);
@@ -114,21 +120,36 @@ public static class Validator
   public static bool IsValidSwissPhone(string phone)
   {
     if (string.IsNullOrWhiteSpace(phone))
-      return false;
-
-    string digits = new string(phone.Where(char.IsDigit).ToArray());
-    bool validPrefix = phone.StartsWith("+41", StringComparison.Ordinal) || phone.StartsWith("0", StringComparison.Ordinal);
-    return validPrefix && digits.Length >= 10 && digits.Length <= 12;
-  }
-
-  public static string Validate(string value, params Func<string, bool>[] checks)
-  {
-    foreach (Func<string, bool> check in checks)
     {
-      if (!check(value))
-        return "Wert ist ungültig.";
+      return false;
     }
 
-    return "";
+    // Ziffern zählen (Leerzeichen und + werden ignoriert)
+    int digitCount = 0;
+    foreach (char character in phone)
+    {
+      if (char.IsDigit(character))
+      {
+        digitCount++;
+      }
+    }
+
+    bool validPrefix = phone.StartsWith("+41", StringComparison.Ordinal) || phone.StartsWith("0", StringComparison.Ordinal);
+    return validPrefix && digitCount >= 10 && digitCount <= 12;
+  }
+
+  /// <summary>Gibt eine Fehlermeldung zurück oder "" – params aus Block 05.</summary>
+  public static string CollectErrors(params string[] errors)
+  {
+    string result = "";
+    foreach (string error in errors)
+    {
+      if (error != "")
+      {
+        result += error + Environment.NewLine;
+      }
+    }
+
+    return result;
   }
 }

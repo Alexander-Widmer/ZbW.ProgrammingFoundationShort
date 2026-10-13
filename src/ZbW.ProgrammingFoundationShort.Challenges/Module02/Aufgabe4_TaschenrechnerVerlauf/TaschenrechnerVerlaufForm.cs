@@ -30,10 +30,22 @@ public partial class TaschenrechnerVerlaufForm : Form
 
     // Operation ermitteln
     string op;
-    if (RdoPlus.Checked) op = "+";
-    else if (RdoMinus.Checked) op = "-";
-    else if (RdoMal.Checked) op = "×";
-    else op = "÷";
+    if (RadPlus.Checked)
+    {
+      op = "+";
+    }
+    else if (RadMinus.Checked)
+    {
+      op = "-";
+    }
+    else if (RadMal.Checked)
+    {
+      op = "×";
+    }
+    else
+    {
+      op = "÷";
+    }
 
     // Division durch 0 prüfen (ohne try-catch)
     if (op == "÷" && zahl2 == 0)

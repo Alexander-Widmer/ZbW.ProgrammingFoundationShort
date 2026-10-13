@@ -25,10 +25,25 @@ public partial class PasswortGeneratorForm : Form
       }
 
       string pool = "";
-      if (ChkGross.Checked) pool += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-      if (ChkKlein.Checked) pool += "abcdefghijklmnopqrstuvwxyz";
-      if (ChkZahlen.Checked) pool += "0123456789";
-      if (ChkSonder.Checked) pool += "!@#$%^&*";
+      if (ChkGross.Checked)
+      {
+        pool += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+      }
+
+      if (ChkKlein.Checked)
+      {
+        pool += "abcdefghijklmnopqrstuvwxyz";
+      }
+
+      if (ChkZahlen.Checked)
+      {
+        pool += "0123456789";
+      }
+
+      if (ChkSonder.Checked)
+      {
+        pool += "!@#$%^&*";
+      }
 
       if (pool.Length == 0)
       {
@@ -37,11 +52,15 @@ public partial class PasswortGeneratorForm : Form
         return;
       }
 
-      var passwort = new System.Text.StringBuilder();
+      // Hinweis: Random ist für Übungen ok, aber nicht kryptografisch sicher.
+      // Für echte Passwörter: System.Security.Cryptography.RandomNumberGenerator.
+      string passwort = "";
       for (int i = 0; i < laenge; i++)
-        passwort.Append(pool[_random.Next(pool.Length)]);
+      {
+        passwort += pool[_random.Next(pool.Length)];
+      }
 
-      LblPasswort.Text = passwort.ToString();
+      LblPasswort.Text = passwort;
     }
     catch (Exception ex)
     {

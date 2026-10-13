@@ -26,22 +26,36 @@ public partial class VersicherungspraemieForm : Form
     // Basisprämie nach Alter
     double basis;
     if (alter < 25)
+    {
       basis = 150;
+    }
     else if (alter <= 45)
+    {
       basis = 200;
+    }
     else if (alter <= 65)
+    {
       basis = 280;
+    }
     else
+    {
       basis = 350;
+    }
 
     // Versicherungstyp ermitteln
     InsuranceType typ;
-    if (RdoStandard.Checked)
+    if (RadStandard.Checked)
+    {
       typ = InsuranceType.Standard;
-    else if (RdoPremium.Checked)
+    }
+    else if (RadPremium.Checked)
+    {
       typ = InsuranceType.Premium;
+    }
     else
+    {
       typ = InsuranceType.Basis;
+    }
 
     // Multiplikator per switch
     double multiplikator = typ switch
@@ -56,7 +70,9 @@ public partial class VersicherungspraemieForm : Form
 
     // Unfallzusatz
     if (ChkUnfall.Checked)
+    {
       praemie += 20;
+    }
 
     LblErgebnis.Text = $"Alter: {alter} Jahre\r\n" +
                        $"Versicherungstyp: {typ}\r\n" +

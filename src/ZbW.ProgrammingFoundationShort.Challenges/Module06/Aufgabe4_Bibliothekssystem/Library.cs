@@ -5,30 +5,81 @@ public class Library
 {
   private readonly List<Book> _books = new();
 
-  public int AvailableCount => _books.Count(b => b.IsAvailable);
+  public int AvailableCount
+  {
+    get
+    {
+      int count = 0;
+      foreach (Book book in _books)
+      {
+        if (book.IsAvailable)
+        {
+          count++;
+        }
+      }
 
-  public void AddBook(Book book) => _books.Add(book);
+      return count;
+    }
+  }
+
+  public void AddBook(Book book)
+  {
+    _books.Add(book);
+  }
 
   public bool BorrowBook(string isbn)
   {
-    var book = _books.Find(b => b.ISBN == isbn);
-    if (book == null || !book.IsAvailable) return false;
+    Book book = FindByIsbn(isbn);
+    if (book == null || !book.IsAvailable)
+    {
+      return false;
+    }
+
     book.IsAvailable = false;
     return true;
   }
 
   public bool ReturnBook(string isbn)
   {
-    var book = _books.Find(b => b.ISBN == isbn);
-    if (book == null || book.IsAvailable) return false;
+    Book book = FindByIsbn(isbn);
+    if (book == null || book.IsAvailable)
+    {
+      return false;
+    }
+
     book.IsAvailable = true;
     return true;
   }
 
   public List<Book> SearchByAuthor(string author)
   {
-    return _books.FindAll(b => b.Author.Contains(author, StringComparison.OrdinalIgnoreCase));
+    List<Book> result = new List<Book>();
+    foreach (Book book in _books)
+    {
+      if (book.Author.ToLower().Contains(author.ToLower()))
+      {
+        result.Add(book);
+      }
+    }
+
+    return result;
   }
 
-  public List<Book> GetAll() => new(_books);
+  public List<Book> GetAll()
+  {
+    return new List<Book>(_books);
+  }
+
+  private Book FindByIsbn(string isbn)
+  {
+    foreach (Book book in _books)
+    {
+      if (book.ISBN == isbn)
+      {
+        return book;
+      }
+    }
+
+    return null;
+  }
 }

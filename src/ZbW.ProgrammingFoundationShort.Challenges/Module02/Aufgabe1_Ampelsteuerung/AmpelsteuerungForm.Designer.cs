@@ -14,9 +14,9 @@ partial class AmpelsteuerungForm
   private void InitializeComponent()
   {
     GrpFarbe = new GroupBox();
-    RdoRot = new RadioButton();
-    RdoGelb = new RadioButton();
-    RdoGruen = new RadioButton();
+    RadRot = new RadioButton();
+    RadGelb = new RadioButton();
+    RadGruen = new RadioButton();
     CmdAnzeigen = new Button();
     LblMeldung = new Label();
     LblAmpel = new Label();
@@ -28,28 +28,28 @@ partial class AmpelsteuerungForm
     GrpFarbe.Name = "GrpFarbe";
     GrpFarbe.Size = new Size(200, 100);
     GrpFarbe.Text = "Ampelfarbe";
-    GrpFarbe.Controls.Add(RdoRot);
-    GrpFarbe.Controls.Add(RdoGelb);
-    GrpFarbe.Controls.Add(RdoGruen);
+    GrpFarbe.Controls.Add(RadRot);
+    GrpFarbe.Controls.Add(RadGelb);
+    GrpFarbe.Controls.Add(RadGruen);
 
-    // RdoRot
-    RdoRot.AutoSize = true;
-    RdoRot.Checked = true;
-    RdoRot.Location = new Point(10, 20);
-    RdoRot.Name = "RdoRot";
-    RdoRot.Text = "Rot";
+    // RadRot
+    RadRot.AutoSize = true;
+    RadRot.Checked = true;
+    RadRot.Location = new Point(10, 20);
+    RadRot.Name = "RadRot";
+    RadRot.Text = "Rot";
 
-    // RdoGelb
-    RdoGelb.AutoSize = true;
-    RdoGelb.Location = new Point(10, 45);
-    RdoGelb.Name = "RdoGelb";
-    RdoGelb.Text = "Gelb";
+    // RadGelb
+    RadGelb.AutoSize = true;
+    RadGelb.Location = new Point(10, 45);
+    RadGelb.Name = "RadGelb";
+    RadGelb.Text = "Gelb";
 
-    // RdoGruen
-    RdoGruen.AutoSize = true;
-    RdoGruen.Location = new Point(10, 68);
-    RdoGruen.Name = "RdoGruen";
-    RdoGruen.Text = "Grün";
+    // RadGruen
+    RadGruen.AutoSize = true;
+    RadGruen.Location = new Point(10, 68);
+    RadGruen.Name = "RadGruen";
+    RadGruen.Text = "Grün";
 
     // CmdAnzeigen
     CmdAnzeigen.Location = new Point(12, 120);
@@ -88,9 +88,9 @@ partial class AmpelsteuerungForm
   }
 
   private GroupBox GrpFarbe;
-  private RadioButton RdoRot;
-  private RadioButton RdoGelb;
-  private RadioButton RdoGruen;
+  private RadioButton RadRot;
+  private RadioButton RadGelb;
+  private RadioButton RadGruen;
   private Button CmdAnzeigen;
   private Label LblMeldung;
   private Label LblAmpel;

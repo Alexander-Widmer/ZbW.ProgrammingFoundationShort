@@ -17,12 +17,18 @@ public partial class AmpelsteuerungForm : Form
   {
     // Gewählte Farbe aus RadioButtons ermitteln
     TrafficLightColor farbe;
-    if (RdoRot.Checked)
+    if (RadRot.Checked)
+    {
       farbe = TrafficLightColor.Red;
-    else if (RdoGelb.Checked)
+    }
+    else if (RadGelb.Checked)
+    {
       farbe = TrafficLightColor.Yellow;
+    }
     else
+    {
       farbe = TrafficLightColor.Green;
+    }
 
     // Meldung und Farbe per switch-case setzen
     string meldung;

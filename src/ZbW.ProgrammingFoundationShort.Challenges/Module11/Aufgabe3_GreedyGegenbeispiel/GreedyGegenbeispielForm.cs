@@ -2,7 +2,7 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module11.Aufgabe3_GreedyGege
 
 public sealed class GreedyGegenbeispielForm : Form
 {
-  private readonly ListBox lstOutput;
+  private readonly ListBox LstOutput;
 
   public GreedyGegenbeispielForm()
   {
@@ -10,26 +10,26 @@ public sealed class GreedyGegenbeispielForm : Form
     ClientSize = new Size(620, 340);
 
     Button cmdRun = new Button { Location = new Point(12, 12), Size = new Size(190, 30), Text = "Gegenbeispiel zeigen" };
-    lstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(580, 240) };
+    LstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(580, 240) };
 
     cmdRun.Click += CmdRun_Click;
 
     Controls.Add(cmdRun);
-    Controls.Add(lstOutput);
+    Controls.Add(LstOutput);
   }
 
-  private void CmdRun_Click(object? sender, EventArgs e)
+  private void CmdRun_Click(object sender, EventArgs e)
   {
     int[] coins = { 4, 3, 1 };
     int amount = 6;
     List<int> greedy = MakeGreedyChange(amount, coins);
     List<int> optimal = MakeOptimalChange(amount, coins);
 
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add($"Münzen: {string.Join(", ", coins)} | Betrag: {amount}");
-    lstOutput.Items.Add($"Greedy: {string.Join(" + ", greedy)} = {greedy.Count} Münzen");
-    lstOutput.Items.Add($"Optimal: {string.Join(" + ", optimal)} = {optimal.Count} Münzen");
-    lstOutput.Items.Add("Warum scheitert Greedy? Die lokal beste Münze 4 blockiert hier die globale Lösung 3 + 3.");
+    LstOutput.Items.Clear();
+    LstOutput.Items.Add($"Münzen: {string.Join(", ", coins)} | Betrag: {amount}");
+    LstOutput.Items.Add($"Greedy: {string.Join(" + ", greedy)} = {greedy.Count} Münzen");
+    LstOutput.Items.Add($"Optimal: {string.Join(" + ", optimal)} = {optimal.Count} Münzen");
+    LstOutput.Items.Add("Warum scheitert Greedy? Die lokal beste Münze 4 blockiert hier die globale Lösung 3 + 3.");
   }
 
   public static List<int> MakeGreedyChange(int amount, int[] coins)

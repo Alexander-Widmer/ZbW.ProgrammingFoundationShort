@@ -2,8 +2,8 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module11.Aufgabe4_FibonacciM
 
 public sealed class FibonacciMemoizationForm : Form
 {
-  private readonly NumericUpDown numN;
-  private readonly ListBox lstOutput;
+  private readonly NumericUpDown NumN;
+  private readonly ListBox LstOutput;
 
   public FibonacciMemoizationForm()
   {
@@ -12,29 +12,29 @@ public sealed class FibonacciMemoizationForm : Form
 
     Controls.Add(new Label { Location = new Point(12, 18), Size = new Size(80, 20), Text = "n:" });
 
-    numN = new NumericUpDown { Location = new Point(95, 15), Size = new Size(80, 23), Minimum = 0, Maximum = 45, Value = 35 };
+    NumN = new NumericUpDown { Location = new Point(95, 15), Size = new Size(80, 23), Minimum = 0, Maximum = 35, Value = 30 };
     Button cmdCompare = new Button { Location = new Point(195, 13), Size = new Size(140, 28), Text = "Vergleichen" };
-    lstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(640, 250) };
+    LstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(640, 250) };
 
     cmdCompare.Click += CmdCompare_Click;
 
-    Controls.Add(numN);
+    Controls.Add(NumN);
     Controls.Add(cmdCompare);
-    Controls.Add(lstOutput);
+    Controls.Add(LstOutput);
   }
 
-  private void CmdCompare_Click(object? sender, EventArgs e)
+  private void CmdCompare_Click(object sender, EventArgs e)
   {
-    int n = (int)numN.Value;
+    int n = (int)NumN.Value;
 
     CountedResult slow = FibonacciRecursiveSlow(n);
     CountedResult memoized = FibonacciMemoized(n);
 
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add($"Fibonacci({n}) = {memoized.Value}");
-    lstOutput.Items.Add($"Naive Rekursion: {slow.Calls:N0} Aufrufe");
-    lstOutput.Items.Add($"Memoization: {memoized.Calls:N0} Aufrufe");
-    lstOutput.Items.Add("Merksatz: Memoization speichert bereits berechnete Teilprobleme.");
+    LstOutput.Items.Clear();
+    LstOutput.Items.Add($"Fibonacci({n}) = {memoized.Value}");
+    LstOutput.Items.Add($"Naive Rekursion: {slow.Calls:N0} Aufrufe");
+    LstOutput.Items.Add($"Memoization: {memoized.Calls:N0} Aufrufe");
+    LstOutput.Items.Add("Merksatz: Memoization speichert bereits berechnete Teilprobleme.");
   }
 
   public static CountedResult FibonacciRecursiveSlow(int n)

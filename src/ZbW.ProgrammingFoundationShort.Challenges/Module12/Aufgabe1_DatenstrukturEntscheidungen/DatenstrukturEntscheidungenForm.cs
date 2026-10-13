@@ -2,7 +2,7 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module12.Aufgabe1_Datenstruk
 
 public sealed class DatenstrukturEntscheidungenForm : Form
 {
-  private readonly ListBox lstOutput;
+  private readonly ListBox LstOutput;
 
   public DatenstrukturEntscheidungenForm()
   {
@@ -10,21 +10,21 @@ public sealed class DatenstrukturEntscheidungenForm : Form
     ClientSize = new Size(760, 360);
 
     Button cmdShow = new Button { Location = new Point(12, 12), Size = new Size(170, 30), Text = "Lösung anzeigen" };
-    lstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(720, 250) };
+    LstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(720, 250) };
 
     cmdShow.Click += CmdShow_Click;
 
     Controls.Add(cmdShow);
-    Controls.Add(lstOutput);
+    Controls.Add(LstOutput);
   }
 
-  private void CmdShow_Click(object? sender, EventArgs e)
+  private void CmdShow_Click(object sender, EventArgs e)
   {
-    lstOutput.Items.Clear();
+    LstOutput.Items.Clear();
 
     foreach (Decision decision in GetDecisions())
     {
-      lstOutput.Items.Add($"{decision.Situation}: {decision.DataStructure} – {decision.Reason}");
+      LstOutput.Items.Add($"{decision.Situation}: {decision.DataStructure} – {decision.Reason}");
     }
   }
 

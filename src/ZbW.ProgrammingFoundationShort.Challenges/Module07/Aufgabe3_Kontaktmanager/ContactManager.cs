@@ -7,6 +7,7 @@ public class ContactManager
 
   public bool Add(Contact contact)
   {
+    // Contains nutzt das überschriebene Equals (gleiche Telefonnummer = Duplikat)
     if (_contacts.Contains(contact))
     {
       return false;
@@ -18,18 +19,36 @@ public class ContactManager
 
   public bool Remove(string phone)
   {
-    Contact? contact = _contacts.Find(c => c.Phone.Equals(phone, StringComparison.OrdinalIgnoreCase));
-    return contact is not null && _contacts.Remove(contact);
+    for (int i = 0; i < _contacts.Count; i++)
+    {
+      if (_contacts[i].Phone == phone)
+      {
+        _contacts.RemoveAt(i);
+        return true;
+      }
+    }
+
+    return false;
   }
 
-  public List<Contact> Search(string query)
+  public List<Contact> Search(string name)
   {
-    return _contacts.FindAll(c =>
-      c.FirstName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-      c.LastName.Contains(query, StringComparison.OrdinalIgnoreCase) ||
-      c.Email.Contains(query, StringComparison.OrdinalIgnoreCase));
+    List<Contact> result = new List<Contact>();
+    string suchtext = name.ToLower();
+
+    foreach (Contact contact in _contacts)
+    {
+      if (contact.FirstName.ToLower().Contains(suchtext) || contact.LastName.ToLower().Contains(suchtext))
+      {
+        result.Add(contact);
+      }
+    }
+
+    return result;
   }
 
-  public List<Contact> GetAll() => new(_contacts);
+  public List<Contact> GetAll()
+  {
+    return new List<Contact>(_contacts);
+  }
 }
-

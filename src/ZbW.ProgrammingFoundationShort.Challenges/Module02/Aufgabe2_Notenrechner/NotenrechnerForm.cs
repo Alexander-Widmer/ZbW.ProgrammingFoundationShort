@@ -24,13 +24,21 @@ public partial class NotenrechnerForm : Form
     // Bewertung per if/else-if
     string bewertung;
     if (note >= 5.5)
+    {
       bewertung = "Sehr gut";
+    }
     else if (note >= 4.5)
+    {
       bewertung = "Gut";
+    }
     else if (note >= 4.0)
+    {
       bewertung = "Genügend";
+    }
     else
+    {
       bewertung = "Ungenügend";
+    }
 
     // Ergebnis aufbauen
     string ergebnis = $"Note {note:F1}: {bewertung}";

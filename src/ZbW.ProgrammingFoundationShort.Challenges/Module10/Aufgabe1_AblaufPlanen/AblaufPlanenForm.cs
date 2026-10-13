@@ -2,8 +2,8 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module10.Aufgabe1_AblaufPlan
 
 public sealed class AblaufPlanenForm : Form
 {
-  private readonly TextBox txtFlowchart;
-  private readonly TextBox txtTodos;
+  private readonly TextBox TxtFlowchart;
+  private readonly TextBox TxtTodos;
 
   public AblaufPlanenForm()
   {
@@ -18,15 +18,15 @@ public sealed class AblaufPlanenForm : Form
              "Alter < 0: ungültig | unter 6: gratis | 6-15: Kinderpreis | 16-64: Normalpreis | ab 65: Seniorenpreis"
     };
 
-    Button cmdTemplate = new Button { Location = new Point(12, 95), Size = new Size(170, 30), Text = "Vorlage einfügen" };
-    txtFlowchart = new TextBox
+    Button cmdMusterloesung = new Button { Location = new Point(12, 95), Size = new Size(170, 30), Text = "Musterlösung anzeigen" };
+    TxtFlowchart = new TextBox
     {
       Location = new Point(12, 135),
       Size = new Size(350, 360),
       Multiline = true,
       ScrollBars = ScrollBars.Vertical
     };
-    txtTodos = new TextBox
+    TxtTodos = new TextBox
     {
       Location = new Point(380, 135),
       Size = new Size(360, 360),
@@ -34,17 +34,29 @@ public sealed class AblaufPlanenForm : Form
       ScrollBars = ScrollBars.Vertical
     };
 
-    cmdTemplate.Click += CmdTemplate_Click;
+    cmdMusterloesung.Click += CmdMusterloesung_Click;
 
     Controls.Add(lblRules);
-    Controls.Add(cmdTemplate);
-    Controls.Add(txtFlowchart);
-    Controls.Add(txtTodos);
+    Controls.Add(cmdMusterloesung);
+    Controls.Add(TxtFlowchart);
+    Controls.Add(TxtTodos);
   }
 
-  private void CmdTemplate_Click(object? sender, EventArgs e)
+  private void CmdMusterloesung_Click(object sender, EventArgs e)
   {
-    txtFlowchart.Text = "Start\r\n  |\r\nAlter einlesen\r\n  |\r\nAlter gültig?\r\n  |-- nein --> Ungültig --> Ende\r\n  |\r\n ja\r\n  |\r\nPreisgruppe bestimmen\r\n  |\r\nErgebnis anzeigen\r\n  |\r\nEnde";
-    txtTodos.Text = "static string GetTicketType(int age)\r\n{\r\n    // TODO: Ungültiges Alter prüfen\r\n    // TODO: Gratis prüfen\r\n    // TODO: Kinderpreis prüfen\r\n    // TODO: Normalpreis prüfen\r\n    // TODO: Seniorenpreis zurückgeben\r\n}";
+    // Musterlösung – erst anzeigen, nachdem du selbst geplant hast!
+    TxtFlowchart.Text = "Start\r\n  |\r\nAlter einlesen\r\n  |\r\n" +
+                        "Alter < 0? --ja--> \"Ungültig\" --> Ende\r\n  | nein\r\n" +
+                        "Alter < 6? --ja--> \"Gratis\" --> Ende\r\n  | nein\r\n" +
+                        "Alter <= 15? --ja--> \"Kinderpreis\" --> Ende\r\n  | nein\r\n" +
+                        "Alter <= 64? --ja--> \"Normalpreis\" --> Ende\r\n  | nein\r\n" +
+                        "\"Seniorenpreis\" --> Ende";
+    TxtTodos.Text = "static string GetTicketType(int age)\r\n{\r\n" +
+                    "    // TODO: age < 0 → \"Ungültig\"\r\n" +
+                    "    // TODO: age < 6 → \"Gratis\"\r\n" +
+                    "    // TODO: age <= 15 → \"Kinderpreis\"\r\n" +
+                    "    // TODO: age <= 64 → \"Normalpreis\"\r\n" +
+                    "    // TODO: sonst → \"Seniorenpreis\"\r\n" +
+                    "    return \"TODO\";\r\n}";
   }
 }

@@ -15,18 +15,14 @@ public partial class StudentNotenForm : Form
 
   private void CmdNeuerStudent_Click(object sender, EventArgs e)
   {
-    if (string.IsNullOrWhiteSpace(TxtName.Text) || string.IsNullOrWhiteSpace(TxtStudentId.Text))
+    if (string.IsNullOrWhiteSpace(TxtName.Text) || !int.TryParse(TxtStudentId.Text, out int studentId))
     {
-      MessageBox.Show("Bitte Name und Matrikelnummer eingeben.",
+      MessageBox.Show("Bitte Name und eine Matrikelnummer (Zahl) eingeben.",
         "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Warning);
       return;
     }
 
-    _aktuellerStudent = new Student
-    {
-      Name = TxtName.Text.Trim(),
-      StudentId = TxtStudentId.Text.Trim()
-    };
+    _aktuellerStudent = new Student(TxtName.Text.Trim(), studentId);
 
     _studenten.Add(_aktuellerStudent);
     AktualisiereStudentListe();
@@ -70,6 +66,8 @@ public partial class StudentNotenForm : Form
   {
     LstStudenten.Items.Clear();
     foreach (var s in _studenten)
+    {
       LstStudenten.Items.Add(s.ToString());
+    }
   }
 }

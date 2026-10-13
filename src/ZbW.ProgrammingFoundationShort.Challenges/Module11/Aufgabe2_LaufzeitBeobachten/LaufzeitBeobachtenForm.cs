@@ -2,9 +2,9 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module11.Aufgabe2_LaufzeitBe
 
 public sealed class LaufzeitBeobachtenForm : Form
 {
-  private readonly NumericUpDown numTarget;
-  private readonly ListBox lstOutput;
-  private readonly int[] numbers = Enumerable.Range(1, 63).Select(value => value * 2).ToArray();
+  private readonly NumericUpDown NumTarget;
+  private readonly ListBox LstOutput;
+  private readonly int[] _numbers = Enumerable.Range(1, 63).Select(value => value * 2).ToArray();
 
   public LaufzeitBeobachtenForm()
   {
@@ -13,29 +13,29 @@ public sealed class LaufzeitBeobachtenForm : Form
 
     Controls.Add(new Label { Location = new Point(12, 18), Size = new Size(100, 20), Text = "Zielwert:" });
 
-    numTarget = new NumericUpDown { Location = new Point(115, 15), Size = new Size(90, 23), Minimum = 1, Maximum = 130, Value = 64 };
+    NumTarget = new NumericUpDown { Location = new Point(115, 15), Size = new Size(90, 23), Minimum = 1, Maximum = 130, Value = 64 };
     Button cmdSearch = new Button { Location = new Point(220, 13), Size = new Size(130, 28), Text = "Vergleichen" };
-    lstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(580, 285) };
+    LstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(580, 285) };
 
     cmdSearch.Click += CmdSearch_Click;
 
-    Controls.Add(numTarget);
+    Controls.Add(NumTarget);
     Controls.Add(cmdSearch);
-    Controls.Add(lstOutput);
+    Controls.Add(LstOutput);
   }
 
-  private void CmdSearch_Click(object? sender, EventArgs e)
+  private void CmdSearch_Click(object sender, EventArgs e)
   {
-    int target = (int)numTarget.Value;
-    SearchResult linear = LinearSearch(numbers, target);
-    SearchResult binary = BinarySearch(numbers, target);
+    int target = (int)NumTarget.Value;
+    SearchResult linear = LinearSearch(_numbers, target);
+    SearchResult binary = BinarySearch(_numbers, target);
 
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add($"Array: {numbers.Length} sortierte Zahlen von {numbers.First()} bis {numbers.Last()}");
-    lstOutput.Items.Add($"Gesucht: {target}");
-    lstOutput.Items.Add($"Lineare Suche: Index {linear.Index}, Vergleiche {linear.Comparisons}");
-    lstOutput.Items.Add($"Binäre Suche: Index {binary.Index}, Vergleiche {binary.Comparisons}");
-    lstOutput.Items.Add("Interpretation: Binäre Suche halbiert den Suchraum und wächst deshalb langsamer im Aufwand.");
+    LstOutput.Items.Clear();
+    LstOutput.Items.Add($"Array: {_numbers.Length} sortierte Zahlen von {_numbers.First()} bis {_numbers.Last()}");
+    LstOutput.Items.Add($"Gesucht: {target}");
+    LstOutput.Items.Add($"Lineare Suche: Index {linear.Index}, Vergleiche {linear.Comparisons}");
+    LstOutput.Items.Add($"Binäre Suche: Index {binary.Index}, Vergleiche {binary.Comparisons}");
+    LstOutput.Items.Add("Interpretation: Binäre Suche halbiert den Suchraum und wächst deshalb langsamer im Aufwand.");
   }
 
   public static SearchResult LinearSearch(int[] sortedNumbers, int target)

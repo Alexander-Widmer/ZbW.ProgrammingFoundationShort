@@ -1,71 +1,123 @@
 namespace ZbW.ProgrammingFoundationShort.Challenges.Module10.Aufgabe3_DatenstrukturWahl;
 
+/// <summary>
+///   Aufgabe 3 (Optional) – Datenstruktur wählen (Transfer)
+///   A: Rückgängig im Mini-Editor → Stack (das Zuletzt-Eingegebene kommt zuerst zurück)
+///   B: Lagerbestand pro Artikelnummer → Dictionary (Zugriff über den Schlüssel)
+///   C: Besucher in Ankunftsreihenfolge → List (Reihenfolge bleibt erhalten)
+/// </summary>
 public sealed class DatenstrukturWahlForm : Form
 {
-  private readonly ListBox lstOutput;
-  private readonly Stack<string> history = new Stack<string>();
+  private readonly Stack<string> _eingaben = new Stack<string>();
+  private readonly Dictionary<string, int> _lager = new Dictionary<string, int>();
+  private readonly List<string> _besucher = new List<string>();
+
+  private readonly TextBox TxtWort;
+  private readonly Label LblEditor;
+  private readonly TextBox TxtArtikel;
+  private readonly NumericUpDown NumMenge;
+  private readonly Label LblLager;
+  private readonly TextBox TxtBesucher;
+  private readonly ListBox LstBesucher;
 
   public DatenstrukturWahlForm()
   {
     Text = "Datenstruktur wählen – Aufgabe 3";
-    ClientSize = new Size(620, 360);
+    ClientSize = new Size(640, 420);
 
-    Button cmdList = new Button { Location = new Point(12, 12), Size = new Size(150, 30), Text = "List Beispiel" };
-    Button cmdDictionary = new Button { Location = new Point(172, 12), Size = new Size(150, 30), Text = "Dictionary Beispiel" };
-    Button cmdStack = new Button { Location = new Point(332, 12), Size = new Size(150, 30), Text = "Stack Beispiel" };
-    lstOutput = new ListBox { Location = new Point(12, 60), Size = new Size(580, 270) };
+    // A: Mini-Editor mit Rückgängig (Stack)
+    Controls.Add(new Label { Location = new Point(12, 12), Size = new Size(600, 20), Text = "A) Mini-Editor mit Rückgängig – Stack<string>" });
+    TxtWort = new TextBox { Location = new Point(12, 37), Size = new Size(150, 23), Text = "Hallo" };
+    Button cmdSchreiben = new Button { Location = new Point(170, 35), Size = new Size(100, 27), Text = "Schreiben" };
+    Button cmdRueckgaengig = new Button { Location = new Point(275, 35), Size = new Size(100, 27), Text = "Rückgängig" };
+    LblEditor = new Label { Location = new Point(12, 68), Size = new Size(600, 40) };
 
-    cmdList.Click += (_, _) => ShowListExample();
-    cmdDictionary.Click += (_, _) => ShowDictionaryExample();
-    cmdStack.Click += (_, _) => ShowStackExample();
+    // B: Lagerbestand (Dictionary)
+    Controls.Add(new Label { Location = new Point(12, 120), Size = new Size(600, 20), Text = "B) Lagerbestand pro Artikelnummer – Dictionary<string, int>" });
+    TxtArtikel = new TextBox { Location = new Point(12, 145), Size = new Size(150, 23), Text = "A-100" };
+    NumMenge = new NumericUpDown { Location = new Point(170, 145), Size = new Size(70, 23), Minimum = 1, Maximum = 1000, Value = 5 };
+    Button cmdEinlagern = new Button { Location = new Point(250, 143), Size = new Size(100, 27), Text = "Einlagern" };
+    LblLager = new Label { Location = new Point(12, 176), Size = new Size(600, 40) };
 
-    Controls.Add(cmdList);
-    Controls.Add(cmdDictionary);
-    Controls.Add(cmdStack);
-    Controls.Add(lstOutput);
+    // C: Besucherliste (List)
+    Controls.Add(new Label { Location = new Point(12, 228), Size = new Size(600, 20), Text = "C) Besucher in Ankunftsreihenfolge – List<string>" });
+    TxtBesucher = new TextBox { Location = new Point(12, 253), Size = new Size(150, 23), Text = "Anna" };
+    Button cmdAnkunft = new Button { Location = new Point(170, 251), Size = new Size(100, 27), Text = "Ankunft" };
+    LstBesucher = new ListBox { Location = new Point(12, 285), Size = new Size(600, 115) };
+
+    cmdSchreiben.Click += CmdSchreiben_Click;
+    cmdRueckgaengig.Click += CmdRueckgaengig_Click;
+    cmdEinlagern.Click += CmdEinlagern_Click;
+    cmdAnkunft.Click += CmdAnkunft_Click;
+
+    Controls.Add(TxtWort);
+    Controls.Add(cmdSchreiben);
+    Controls.Add(cmdRueckgaengig);
+    Controls.Add(LblEditor);
+    Controls.Add(TxtArtikel);
+    Controls.Add(NumMenge);
+    Controls.Add(cmdEinlagern);
+    Controls.Add(LblLager);
+    Controls.Add(TxtBesucher);
+    Controls.Add(cmdAnkunft);
+    Controls.Add(LstBesucher);
   }
 
-  private void ShowListExample()
+  private void CmdSchreiben_Click(object sender, EventArgs e)
   {
-    List<string> todos = new List<string> { "Ablauf planen", "TODOs schreiben", "Code testen" };
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add("List<T>: mehrere Werte flexibel speichern");
+    _eingaben.Push(TxtWort.Text);
+    ZeigeEditor();
+  }
 
-    foreach (string todo in todos)
+  private void CmdRueckgaengig_Click(object sender, EventArgs e)
+  {
+    if (_eingaben.Count == 0)
     {
-      lstOutput.Items.Add(todo);
+      LblEditor.Text = "Nichts mehr rückgängig zu machen.";
+      return;
     }
+
+    _eingaben.Pop(); // das zuletzt Geschriebene entfernen (LIFO)
+    ZeigeEditor();
   }
 
-  private void ShowDictionaryExample()
+  private void ZeigeEditor()
   {
-    Dictionary<string, string> phoneBook = new Dictionary<string, string>
+    // Ein Stack wird von oben nach unten durchlaufen → für die Anzeige umdrehen
+    string text = "";
+    foreach (string wort in _eingaben)
     {
-      ["Ana"] = "079 111 22 33",
-      ["Ben"] = "079 444 55 66"
-    };
-
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add("Dictionary<K,V>: Schlüssel führt zum Wert");
-    lstOutput.Items.Add($"Ana: {phoneBook["Ana"]}");
-    lstOutput.Items.Add($"Ben: {phoneBook["Ben"]}");
-  }
-
-  private void ShowStackExample()
-  {
-    if (history.Count == 0)
-    {
-      history.Push("start.ch");
-      history.Push("lernen.zbw.ch");
-      history.Push("github.com");
+      text = wort + " " + text;
     }
 
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add("Stack<T>: zuletzt hinein, zuerst heraus");
+    LblEditor.Text = $"Text: {text}";
+  }
 
-    while (history.Count > 0)
+  private void CmdEinlagern_Click(object sender, EventArgs e)
+  {
+    string artikel = TxtArtikel.Text.Trim();
+    int menge = (int)NumMenge.Value;
+
+    if (_lager.ContainsKey(artikel))
     {
-      lstOutput.Items.Add($"Zurück zu: {history.Pop()}");
+      _lager[artikel] += menge;
+    }
+    else
+    {
+      _lager[artikel] = menge;
+    }
+
+    LblLager.Text = $"{artikel}: {_lager[artikel]} Stück | {_lager.Count} verschiedene Artikel";
+  }
+
+  private void CmdAnkunft_Click(object sender, EventArgs e)
+  {
+    _besucher.Add(TxtBesucher.Text.Trim());
+
+    LstBesucher.Items.Clear();
+    for (int i = 0; i < _besucher.Count; i++)
+    {
+      LstBesucher.Items.Add($"{i + 1}. {_besucher[i]}");
     }
   }
 }

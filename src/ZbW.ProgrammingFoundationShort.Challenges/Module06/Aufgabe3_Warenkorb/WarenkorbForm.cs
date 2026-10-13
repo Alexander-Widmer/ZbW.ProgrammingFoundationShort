@@ -28,12 +28,8 @@ public partial class WarenkorbForm : Form
       return;
     }
 
-    var produkt = new Product
-    {
-      Name = TxtProdukt.Text.Trim(),
-      Price = preis,
-      Quantity = menge
-    };
+    Product produkt = new Product(TxtProdukt.Text.Trim(), preis);
+    produkt.Quantity = menge;
 
     _warenkorb.AddProduct(produkt);
     TxtKassenbon.Text = _warenkorb.GetReceipt();

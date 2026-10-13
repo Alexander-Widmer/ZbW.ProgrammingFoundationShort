@@ -18,10 +18,10 @@ partial class TaschenrechnerVerlaufForm
     LblZahl2 = new Label();
     TxtZahl2 = new TextBox();
     GrpOp = new GroupBox();
-    RdoPlus = new RadioButton();
-    RdoMinus = new RadioButton();
-    RdoMal = new RadioButton();
-    RdoDiv = new RadioButton();
+    RadPlus = new RadioButton();
+    RadMinus = new RadioButton();
+    RadMal = new RadioButton();
+    RadDiv = new RadioButton();
     CmdBerechnen = new Button();
     LblErgebnis = new Label();
     LblVerlauf = new Label();
@@ -49,31 +49,31 @@ partial class TaschenrechnerVerlaufForm
     GrpOp.Name = "GrpOp";
     GrpOp.Size = new Size(280, 40);
     GrpOp.Text = "Operation";
-    GrpOp.Controls.Add(RdoPlus);
-    GrpOp.Controls.Add(RdoMinus);
-    GrpOp.Controls.Add(RdoMal);
-    GrpOp.Controls.Add(RdoDiv);
+    GrpOp.Controls.Add(RadPlus);
+    GrpOp.Controls.Add(RadMinus);
+    GrpOp.Controls.Add(RadMal);
+    GrpOp.Controls.Add(RadDiv);
 
-    RdoPlus.AutoSize = true;
-    RdoPlus.Checked = true;
-    RdoPlus.Location = new Point(10, 15);
-    RdoPlus.Name = "RdoPlus";
-    RdoPlus.Text = "+";
+    RadPlus.AutoSize = true;
+    RadPlus.Checked = true;
+    RadPlus.Location = new Point(10, 15);
+    RadPlus.Name = "RadPlus";
+    RadPlus.Text = "+";
 
-    RdoMinus.AutoSize = true;
-    RdoMinus.Location = new Point(60, 15);
-    RdoMinus.Name = "RdoMinus";
-    RdoMinus.Text = "-";
+    RadMinus.AutoSize = true;
+    RadMinus.Location = new Point(60, 15);
+    RadMinus.Name = "RadMinus";
+    RadMinus.Text = "-";
 
-    RdoMal.AutoSize = true;
-    RdoMal.Location = new Point(110, 15);
-    RdoMal.Name = "RdoMal";
-    RdoMal.Text = "×";
+    RadMal.AutoSize = true;
+    RadMal.Location = new Point(110, 15);
+    RadMal.Name = "RadMal";
+    RadMal.Text = "×";
 
-    RdoDiv.AutoSize = true;
-    RdoDiv.Location = new Point(160, 15);
-    RdoDiv.Name = "RdoDiv";
-    RdoDiv.Text = "÷";
+    RadDiv.AutoSize = true;
+    RadDiv.Location = new Point(160, 15);
+    RadDiv.Name = "RadDiv";
+    RadDiv.Text = "÷";
 
     CmdBerechnen.Location = new Point(12, 130);
     CmdBerechnen.Name = "CmdBerechnen";
@@ -123,10 +123,10 @@ partial class TaschenrechnerVerlaufForm
   private Label LblZahl2;
   private TextBox TxtZahl2;
   private GroupBox GrpOp;
-  private RadioButton RdoPlus;
-  private RadioButton RdoMinus;
-  private RadioButton RdoMal;
-  private RadioButton RdoDiv;
+  private RadioButton RadPlus;
+  private RadioButton RadMinus;
+  private RadioButton RadMal;
+  private RadioButton RadDiv;
   private Button CmdBerechnen;
   private Label LblErgebnis;
   private Label LblVerlauf;

@@ -2,9 +2,9 @@ namespace ZbW.ProgrammingFoundationShort.Challenges.Module12.Aufgabe2_KleineImpl
 
 public sealed class KleineImplementationForm : Form
 {
-  private readonly TextBox txtNames;
-  private readonly TextBox txtText;
-  private readonly ListBox lstOutput;
+  private readonly TextBox TxtNames;
+  private readonly TextBox TxtText;
+  private readonly ListBox LstOutput;
 
   public KleineImplementationForm()
   {
@@ -14,37 +14,37 @@ public sealed class KleineImplementationForm : Form
     Controls.Add(new Label { Location = new Point(12, 18), Size = new Size(110, 20), Text = "Namen:" });
     Controls.Add(new Label { Location = new Point(12, 55), Size = new Size(110, 20), Text = "Text:" });
 
-    txtNames = new TextBox { Location = new Point(125, 15), Size = new Size(430, 23), Text = "Anna, Ben, Anna, Clara, Ben" };
-    txtText = new TextBox { Location = new Point(125, 52), Size = new Size(430, 23), Text = "rot blau rot grün blau rot" };
+    TxtNames = new TextBox { Location = new Point(125, 15), Size = new Size(430, 23), Text = "Anna, Ben, Anna, Clara, Ben" };
+    TxtText = new TextBox { Location = new Point(125, 52), Size = new Size(430, 23), Text = "rot blau rot grün blau rot" };
     Button cmdRun = new Button { Location = new Point(575, 13), Size = new Size(120, 28), Text = "Auswerten" };
-    lstOutput = new ListBox { Location = new Point(12, 100), Size = new Size(720, 270) };
+    LstOutput = new ListBox { Location = new Point(12, 100), Size = new Size(720, 270) };
 
     cmdRun.Click += CmdRun_Click;
 
-    Controls.Add(txtNames);
-    Controls.Add(txtText);
+    Controls.Add(TxtNames);
+    Controls.Add(TxtText);
     Controls.Add(cmdRun);
-    Controls.Add(lstOutput);
+    Controls.Add(LstOutput);
   }
 
-  private void CmdRun_Click(object? sender, EventArgs e)
+  private void CmdRun_Click(object sender, EventArgs e)
   {
-    string[] names = txtNames.Text
+    string[] names = TxtNames.Text
       .Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
 
     List<string> uniqueNames = RemoveDuplicatesPreserveOrder(names);
-    Dictionary<string, int> wordCounts = CountWords(txtText.Text);
+    Dictionary<string, int> wordCounts = CountWords(TxtText.Text);
 
-    lstOutput.Items.Clear();
-    lstOutput.Items.Add($"Eindeutige Namen: {string.Join(", ", uniqueNames)}");
-    lstOutput.Items.Add("Worthäufigkeiten:");
+    LstOutput.Items.Clear();
+    LstOutput.Items.Add($"Eindeutige Namen: {string.Join(", ", uniqueNames)}");
+    LstOutput.Items.Add("Worthäufigkeiten:");
 
     foreach (KeyValuePair<string, int> pair in wordCounts)
     {
-      lstOutput.Items.Add($"  {pair.Key}: {pair.Value}");
+      LstOutput.Items.Add($"  {pair.Key}: {pair.Value}");
     }
 
-    lstOutput.Items.Add("Warum nicht nur List<T>? List.Contains durchsucht nacheinander; HashSet/Dictionary passen besser zur Suche.");
+    LstOutput.Items.Add("Warum nicht nur List<T>? List.Contains durchsucht nacheinander; HashSet/Dictionary passen besser zur Suche.");
   }
 
   public static List<string> RemoveDuplicatesPreserveOrder(IEnumerable<string> values)
