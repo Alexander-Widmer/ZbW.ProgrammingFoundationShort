@@ -64,12 +64,14 @@ Alternativ auf der Kommandozeile (einmalig `upstream` einrichten):
 ```powershell
 git remote add upstream https://github.com/jpp7/ZbW.ProgrammingFoundationShort.git
 git fetch upstream
-git merge upstream/main
+git merge upstream/main --no-edit
 git push
 ```
 
-Bei einem Merge-Konflikt in einer Datei, die du selbst bearbeitet hast: deine Version behalten oder beide Varianten
-zusammenführen – im Zweifel im Unterricht nachfragen.
+Auf der GitHub-Webseite **nie «Discard commits»** wählen – das löscht deine eigenen Commits im Fork. Bei einem
+Merge-Konflikt in einer Datei, die du selbst bearbeitet hast: deine Version behalten oder beide Varianten
+zusammenführen. Ausführliche Anleitung mit IDE-Varianten und Konfliktlösung: Kursunterlagen, Vorbereitung
+`00.06-Fork-aktualisieren`.
 
 ## Start
 
