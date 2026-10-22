@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Module01\Aufgabe1_Bmi\BmiForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module01\Aufgabe2_Waehrungsrechner\WaehrungsrechnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module01\Aufgabe3_ZahlenAnalyse\ZahlenAnalyseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module01\Aufgabe4_Einheitenrechner\EinheitenrechnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Aufgabe1_Ampelsteuerung\AmpelsteuerungForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Aufgabe2_Notenrechner\NotenrechnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Aufgabe3_Versicherungspraemie\VersicherungspraemieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Aufgabe4_TaschenrechnerVerlauf\TaschenrechnerVerlaufForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module03\Aufgabe1_Multiplikationstabelle\MultiplikationstabelleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module03\Aufgabe2_ZahlenRatespiel\ZahlenRatespielForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module03\Aufgabe3_PasswortGenerator\PasswortGeneratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module03\Aufgabe4_StatistikSimulator\StatistikSimulatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module04\Aufgabe1_TemperaturAuswertung\TemperaturAuswertungForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module04\Aufgabe2_Wortzaehler\WortzaehlerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module04\Aufgabe3_MatrizenRechner\MatrizenRechnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module04\Aufgabe4_SortierVisualisierung\SortierVisualisierungForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Aufgabe1_Einkaufsliste\EinkaufslisteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Aufgabe2_Woerterbuch\WoerterbuchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Aufgabe3_InventarVerwaltung\InventarVerwaltungForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Aufgabe4_HaeufigkeitsAnalyse\HaeufigkeitsAnalyseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module06\Aufgabe1_Fahrzeug\FahrzeugForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module06\Aufgabe2_StudentNotenVerwaltung\StudentNotenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module06\Aufgabe3_Warenkorb\WarenkorbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module06\Aufgabe4_Bibliothekssystem\BibliothekForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module07\Aufgabe1_ReferenzExperiment\ReferenzExperimentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module07\Aufgabe2_EqualsImplementieren\EqualsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module07\Aufgabe3_Kontaktmanager\KontaktmanagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module07\Aufgabe4_DeepCopy\DeepCopyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module08\Aufgabe1_MathBibliothek\MathBibliothekForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module08\Aufgabe2_InstanceCounter\InstanceCounterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module08\Aufgabe3_ValidierungsFramework\ValidierungsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module08\Aufgabe4_StatischerLogger\StatischerLoggerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module09\Aufgabe1_TierHierarchie\TierHierarchieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module09\Aufgabe2_GeometrieHierarchie\GeometrieForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module09\Aufgabe3_MitarbeiterHierarchie\MitarbeiterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module09\Aufgabe4_SpielEntities\SpielEntitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module10\Aufgabe1_AblaufPlanen\AblaufPlanenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module10\Aufgabe2_TodosUmsetzen\TodosUmsetzenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module10\Aufgabe3_DatenstrukturWahl\DatenstrukturWahlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module11\Aufgabe1_WortUmkehren\WortUmkehrenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module11\Aufgabe2_LaufzeitBeobachten\LaufzeitBeobachtenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module11\Aufgabe3_GreedyGegenbeispiel\GreedyGegenbeispielForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module11\Aufgabe4_FibonacciMemoization\FibonacciMemoizationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module12\Aufgabe1_DatenstrukturEntscheidungen\DatenstrukturEntscheidungenForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module12\Aufgabe2_KleineImplementation\KleineImplementationForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module12\Aufgabe3_PriorityQueue\PriorityQueueForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module12\Aufgabe4_EinfacherCache\EinfacherCacheForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

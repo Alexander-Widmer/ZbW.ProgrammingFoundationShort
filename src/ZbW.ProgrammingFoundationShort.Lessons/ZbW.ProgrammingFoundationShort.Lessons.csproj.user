@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Module01\Auftrag2_Temperaturrechner\TemperaturrechnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module01\Auftrag2_Temperaturrechner\_Loesung\TemperaturrechnerFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Auftrag1_Notenrechner\NotenrechnerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Auftrag1_Notenrechner\_Loesung\NotenrechnerFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Auftrag2_WochentageApp\WochentageAppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Auftrag2_WochentageApp\_Loesung\WochentageAppFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Auftrag3_RabattKalkulator\RabattKalkulatorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module02\Auftrag3_RabattKalkulator\_Loesung\RabattKalkulatorFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module03\Auftrag3_SichererDateiLeser\SichererDateiLeserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module03\Auftrag3_SichererDateiLeser\_Loesung\SichererDateiLeserFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module04\Auftrag2_NotenVerwaltung\NotenVerwaltungForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module04\Auftrag2_NotenVerwaltung\_Loesung\NotenVerwaltungFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Auftrag1_Einkaufsliste\EinkaufslisteForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Auftrag1_Einkaufsliste\_Loesung\EinkaufslisteFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Auftrag2_WoerterbuchApp\WoerterbuchAppForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module05\Auftrag2_WoerterbuchApp\_Loesung\WoerterbuchAppFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module06\Auftrag2_FahrzeugVerwaltung\FahrzeugVerwaltungForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module06\Auftrag2_FahrzeugVerwaltung\_Loesung\FahrzeugVerwaltungFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module07\Auftrag3_Kontaktmanager\KontaktmanagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module07\Auftrag3_Kontaktmanager\_Loesung\KontaktmanagerFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module08\Auftrag2_MathUtils\MathUtilsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module08\Auftrag3_TrafficLightLogger\TrafficLightForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Module08\Auftrag3_TrafficLightLogger\_Loesung\TrafficLightFormLoesung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>
